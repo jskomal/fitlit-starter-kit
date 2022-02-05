@@ -51,4 +51,8 @@ describe('User', () => {
   it('should hold an array of friends', () => {
     expect(user.friends).to.deep.equal([16, 4, 8])
   })
+
+  it('should have a method to return the User\'s first name', () => {
+    expect(user.returnFirstName()).to.equal('Luisa')
+  })
 })
