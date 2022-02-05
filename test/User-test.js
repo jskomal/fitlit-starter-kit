@@ -3,7 +3,7 @@ import User from '../src/User'
 
 describe('User', () => {
   beforeEach(() => {
-    const user1 = {
+    const testUser = {
       id: 1,
       name: 'Luisa Hane',
       address: '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
@@ -12,7 +12,15 @@ describe('User', () => {
       dailyStepGoal: 10000,
       friends: [16, 4, 8],
     }
+
+    const user = new User(testUser)
   })
 
-  it()
+  it('should be a function', () => {
+    expect(User).to.be.a('function')
+  })
+
+  it('should instantiate the User class' () => {
+    expect(user).to.be.an.instanceof(User)
+  })
 })
