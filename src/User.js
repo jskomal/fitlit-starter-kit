@@ -6,7 +6,7 @@ class User {
     this.email = userData.email;
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
-    this.friends = userData.friends;
+    this.friends = userData.friends; 
   }
   returnFirstName() {
     const firstName = this.name.split(' ')
