@@ -61,5 +61,7 @@ describe('User Repository', () => {
     })
   })
 
-  
+  it('should have a method to return the average step goal for all users' , () => {
+    expect(userData.returnAvgSteps()).to.equal(6666)
+  })
 })
