@@ -1,17 +1,43 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
-import './css/styles.css';
-
+import './css/styles.css'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
 // An example of how you tell webpack to use a JS file
+import userData from './data/users'
+import UserRepository from './UserRepository'
+import User from './User'
 
-import userData from './data/users';
+let users
+// query selectors
+const welcomeUser = document.querySelector('#welcomeName')
 
-import UserRepository from './UserRepository';
+// user card
+const userName = document.querySelector('#name')
+const userAddress = document.querySelector('#address')
+const userEmail = document.querySelector('#email')
+const userStrideLength = document.querySelector('#strideLength')
+const userDailyStepGoal = document.querySelector('#dailyStepGoal')
+
+// functions
+const getRandomIndex = (array) => {
+  return Math.floor(Math.random() * array.length)
+}
+
+const selectRandomUser = () => {
+  const randomIndex = getRandomIndex(users)
+  console.log(users[randomIndex])
+  return users[randomIndex]
+}
+
+const loadRandomUser = () => {
+  const randomUser = selectRandomUser()
+  welcomeUser.innerText = `Welcome, ${randomUser.name}`
+}
+
+//globals
+users = userData.map((person) => {
+  return new User(person)
+})
+
+// event listeners
+// welcomeUser.addEventListener('load', loadRandomUser)
