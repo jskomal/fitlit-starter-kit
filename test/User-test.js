@@ -2,8 +2,11 @@ import { expect } from 'chai'
 import User from '../src/User'
 
 describe('User', () => {
+  let user;
+  let userData;
+
   beforeEach(() => {
-    const userData = {
+    userData = {
       id: 1,
       name: 'Luisa Hane',
       address: '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
@@ -13,7 +16,7 @@ describe('User', () => {
       friends: [16, 4, 8]
     }
 
-    const user = new User(userData)
+    user = new User(userData)
   })
 
   it('should be a function', () => {
