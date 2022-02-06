@@ -32,7 +32,7 @@ describe('User', () => {
   })
 
   it('should have a name', () => {
-    expect(user.name).to.equal('Lusia Hane')
+    expect(user.name).to.equal('Luisa Hane')
   })
 
   it('should have an address', () => {
