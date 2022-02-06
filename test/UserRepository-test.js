@@ -33,6 +33,8 @@ describe('User Repository', () => {
     })
 
     const userData = [user1, user2, user3]
+
+    const userRepository = new UserRepository(userData)
   })
   
   it('should be a function', function () {
@@ -40,8 +42,12 @@ describe('User Repository', () => {
   })
 
   it('should be an instantiation of the UserRepository class', () => {
-    
+    expect(userData).to.be.an.instanceof(UserRepository)
   })
 
+  it('should hold all of the user data in the repository' , () => {
+    expect(userData.data).to.eql(userData)
+  } )
 
+  
 })
