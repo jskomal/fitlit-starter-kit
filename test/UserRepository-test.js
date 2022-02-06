@@ -48,15 +48,15 @@ describe('User Repository', () => {
   })
 
   it('should be an instantiation of the UserRepository class', () => {
-    expect(userData).to.be.an.instanceof(UserRepository)
+    expect(userRepository).to.be.an.instanceof(UserRepository)
   })
 
   it('should hold all of the user data in the repository' , () => {
-    expect(userData.data).to.eql(userData)
+    expect(userRepository.data).to.eql(userData)
   } )
 
   it('should have a method to return a user by id', () => {
-    expect(userData.returnUserById(1)).to.eql({
+    expect(userRepository.returnUserById(1)).to.eql({
       id: 1,
       name: 'Luisa Hane',
       address: '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
@@ -68,6 +68,6 @@ describe('User Repository', () => {
   })
 
   it('should have a method to return the average step goal for all users' , () => {
-    expect(userData.returnAvgSteps()).to.equal(6666)
+    expect(userRepository.returnAvgSteps()).to.equal(6666)
   })
 })
