@@ -7,7 +7,6 @@ import './css/styles.css'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-let users
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
 
@@ -17,11 +16,12 @@ const userAddress = document.querySelector('#address')
 const userEmail = document.querySelector('#email')
 const userStrideLength = document.querySelector('#strideLength')
 const userDailyStepGoal = document.querySelector('#dailyStepGoal')
-
+const compareUserSteps =  document.querySelector('#compareStepGoal')
 //globals
-users = userData.map((person) => {
+const users = userData.map((person) => {
   return new User(person)
 })
+const userRepo = new UserRepository(users)
 
 // functions
 const getRandomIndex = (array) => {
@@ -36,11 +36,12 @@ const selectRandomUser = () => {
 const displayRandomUser = () => {
   const randomUser = selectRandomUser()
   welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
-  userName.innerText = `name: ${randomUser.name}`
-  userAddress.innerText = `address: ${randomUser.address}`
-  userEmail.innerText = `email: ${randomUser.email}`
-  userStrideLength.innerText = `your stride length: ${randomUser.strideLength}`
-  userDailyStepGoal.innerText = `your daily step goal: ${randomUser.dailyStepGoal}`
+  userName.innerText = `NAME: ${randomUser.name}`
+  userAddress.innerText = `ADDRESS: ${randomUser.address}`
+  userEmail.innerText = `EMAIL: ${randomUser.email}`
+  userStrideLength.innerText = `STRIDE LENGTH: ${randomUser.strideLength}`
+  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
+  compareUserSteps.innerText = `Your step goal is ${((randomUser.dailyStepGoal/userRepo.returnAvgSteps()).toFixed(2))*100}% of the average goal of ${userRepo.returnAvgSteps()}`
 }
 
 
