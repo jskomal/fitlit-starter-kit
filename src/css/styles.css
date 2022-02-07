@@ -62,12 +62,12 @@ nav {
 .welcome-nav {
   display: flex;
   align-items: center;
-  width: 72%;
+  width: 62%;
   background-color: #F3F6FB;
 }
 
 .user-card {
-  width: 25%;
+  width: 35%;
   background-color: #F3F6FB;
   display:flex;
   flex-direction: column;
@@ -76,13 +76,13 @@ nav {
 
 .activities-wrapper {
   display: flex;
-  width: 100%;
-  height: 70%;
+  width: 100vw;
+  height: 70vh;
   justify-content: space-between;
 }
 
 .activity-box, .sleep-box, .hydration-box {
-  width: 30%;
+  width: 30vw;
   height: 100%;
   background-color: #F3F6FB;
   border-top: 10px solid #ff8552;
