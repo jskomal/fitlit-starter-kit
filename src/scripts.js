@@ -33,7 +33,7 @@ const selectRandomUser = () => {
   return users[randomIndex]
 }
 
-const loadRandomUser = () => {
+const displayRandomUser = () => {
   const randomUser = selectRandomUser()
   welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
   userName.innerText = `name: ${randomUser.name}`
@@ -46,6 +46,6 @@ const loadRandomUser = () => {
 
 
 // event listeners
-window.addEventListener('load', loadRandomUser)
+window.addEventListener('load', displayRandomUser)
 
 
