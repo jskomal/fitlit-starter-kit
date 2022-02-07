@@ -1,5 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Biryani:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+  background-color: #31393C;
   height: 100%;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Biryani', sans-serif;
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  margin-left: 0.5em;
+  padding: 0, 0.25em;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+h1 {
+  font-family: 'Tenor Sans', sans-serif;
+}
+
+nav, section {
+  border-radius: 3px;
+}
+
+.nav-wrapper {
+  display: flex;
+  height: 20vh;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+nav {
+  height: 100%;
+  border-left: 10px solid #7699d4;
+}
+
+.welcome-nav {
+  display: flex;
+  align-items: center;
+  width: 62%;
+  background-color: #F3F6FB;
+}
+
+.user-card {
+  width: 35%;
+  background-color: #F3F6FB;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.activities-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+  justify-content: space-between;
+}
+
+.activity-box, .sleep-box, .hydration-box {
+  width: 30vw;
+  height: 100%;
+  background-color: #F3F6FB;
+  border-top: 10px solid #ff8552;
+}
+
+.activity-box {
+  margin-left: 1rem;
+}
+
+.hydration-box {
+  margin-right: 1rem;
+}
+
+
+

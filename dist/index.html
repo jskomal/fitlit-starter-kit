@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <div class="nav-wrapper">
+      <nav class="welcome-nav">
+        <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+        <div class="welcome-text"> 
+          <h1>Get Fit Get Lit</h1>
+          <h2 id="welcomeName">Welcome -user goes here-</h2>
+        </div>
+      </nav>
+      <nav class="user-card">
+        <h3 id="name">USER NAME</h3>
+        <h4 id="address">ADDRESS</h4>
+        <h4 id="email">EMAIL</h4>
+        <h4 id="strideLength">STRIDE LENGTH</h4>
+        <h4 id="dailyStepGoal">DAILY STEP GOAL</h4>
+        <h4 id="compareStepGoal">COMPARE STEP</h4>
+      </nav>
+    </div>
+    <div class="activities-wrapper">
+      <section class="activity-box">
+        <h3>this is activity</h3>
+      </section>
+      <section class="sleep-box">
+        <h3> this is sleep</h3>
+      </section>
+      <section class="hydration-box">
+        <h3> this is hydration</h3>
+      </section>
+    </div>
+ <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>
