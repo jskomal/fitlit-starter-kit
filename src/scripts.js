@@ -6,21 +6,21 @@ import User from './User'
 import './css/styles.css'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import { userDataFetch, userDataSleep, userDataActivity, userDataHydration } from './apiCalls'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
 
-// user card
+  // user card
 const userName = document.querySelector('#name')
 const userAddress = document.querySelector('#address')
 const userEmail = document.querySelector('#email')
 const userStrideLength = document.querySelector('#strideLength')
 const userDailyStepGoal = document.querySelector('#dailyStepGoal')
 const compareUserSteps =  document.querySelector('#compareStepGoal')
+
 //globals
-const users = userData.map((person) => {
-  return new User(person)
-})
+const users = userData.map((person) => new User(person))
 const userRepo = new UserRepository(users)
 
 // functions
