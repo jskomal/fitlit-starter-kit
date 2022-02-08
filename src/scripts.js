@@ -2,11 +2,13 @@
 import userData from './data/users'
 import UserRepository from './UserRepository'
 import User from './User'
+import {fetchUserData, fetchSleepData, fetchActivityData, fetchHydrationData} from './apiCalls'
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
+
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -19,12 +21,33 @@ const userStrideLength = document.querySelector('#strideLength')
 const userDailyStepGoal = document.querySelector('#dailyStepGoal')
 const compareUserSteps =  document.querySelector('#compareStepGoal')
 //globals
-const users = userData.map((person) => {
-  return new User(person)
-})
-const userRepo = new UserRepository(users)
+// const users = userData.map((person) => {
+//   return new User(person)
+// })
+// const userRepo = new UserRepository(users)
+
+let users;
+let userRepo;
+let hydrationData;
+let sleepData;
+let activityData;
+
 
 // functions
+const fetchAllData = () => {
+  Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
+  .then(allData => parseAllData(allData))
+}
+
+const parseAllData = (allData) => {
+  users = allData[0].userData.map(person => new User(person))
+  userRepo = new UserRepository(users)
+  hydrationData = allData[3].hydrationData
+  sleepData = allData[1].sleepData
+  activityData = allData[2].activityData
+  displayRandomUser()
+}
+
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 }
@@ -48,4 +71,5 @@ const displayRandomUser = () => {
 
 
 // event listeners
-window.addEventListener('load', displayRandomUser)
+window.addEventListener('load', fetchAllData)
+
