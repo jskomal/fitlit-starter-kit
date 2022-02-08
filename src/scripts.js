@@ -6,6 +6,7 @@ import User from './User'
 import './css/styles.css'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/succulent.svg'
+import './images/grey_waves.jpg'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
