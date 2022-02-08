@@ -75,7 +75,7 @@ nav {
 }
 
 .welcome-nav, .user-card, .activity-box, .sleep-box, .hydration-box {
-  background-color: #ccd0d4;
+  background-color: #ccd0d4b4;
 }
 
 .user-card {
@@ -114,7 +114,7 @@ nav {
 }
 
 .fade {
-  background-color: #ADB2B6;
+  background-color: #adb2b6bd;
   transition: all 500ms ease-in-out;
   transform: scale(1);
 }
