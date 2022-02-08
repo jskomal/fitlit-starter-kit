@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
 
 body, html {
-  background-color: #31393C;
+  background: url('../images/grey_waves.jpg') #31393C;
   height: 100%;
+  background-size: cover;
+  transition: all 500ms ease-in-out;
 }
 
 *, *::before, *::after {
