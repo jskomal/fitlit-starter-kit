@@ -1,11 +1,9 @@
-// An example of how you tell webpack to use a JS file
-import userData from './data/users'
 import UserRepository from './UserRepository'
 import User from './User'
 import {fetchUserData, fetchSleepData, fetchActivityData, fetchHydrationData} from './apiCalls'
-// An example of how you tell webpack to use a CSS file
+
 import './css/styles.css'
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
 
@@ -20,12 +18,8 @@ const userEmail = document.querySelector('#email')
 const userStrideLength = document.querySelector('#strideLength')
 const userDailyStepGoal = document.querySelector('#dailyStepGoal')
 const compareUserSteps =  document.querySelector('#compareStepGoal')
-//globals
-// const users = userData.map((person) => {
-//   return new User(person)
-// })
-// const userRepo = new UserRepository(users)
 
+//globals
 let users;
 let userRepo;
 let hydrationData;
@@ -67,7 +61,6 @@ const displayRandomUser = () => {
   userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
   compareUserSteps.innerText = `Your step goal is ${((randomUser.dailyStepGoal/userRepo.returnAvgSteps()).toFixed(2))*100}% of the average goal of ${userRepo.returnAvgSteps()}`
 }
-
 
 
 // event listeners
