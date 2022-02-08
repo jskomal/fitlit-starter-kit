@@ -91,20 +91,35 @@ nav {
 }
 
 .activity-box, .sleep-box, .hydration-box {
+  display: flex;
+  justify-content: center;
   width: 30vw;
   height: 100%;
   border-top: 10px solid #ff8552;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity-box > p, .sleep-box > p, .hydration-box > p {
+  font-size: 1.5vw;
+  margin: 0;
+}
+
+.card-text {
+  font-size: 2.5vw;
+  font-weight: 800;
+  color: #31393C;
 }
 
 .fade {
-  opacity:0.8;
+  background-color: #ADB2B6;
   transition: all 500ms ease-in-out;
   transform: scale(1);
 }
 
 .fade:hover {
  transform: scale(1.04);
- opacity:1;
+ background-color: #ccd0d4;
 }
 
 .activity-box {
