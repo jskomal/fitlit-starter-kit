@@ -30,6 +30,7 @@ input, button, textarea, select {
 }
 
 p, h1, h2, h3, h4, h5, h6 {
+  font-size: .8vw;
   overflow-wrap: break-word;
   margin-left: 0.5em;
   padding: 0, 0.25em;
@@ -41,6 +42,12 @@ p, h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-family: 'Tenor Sans', sans-serif;
+  font-size: 3vw;
+}
+
+#welcomeName {
+  color: #7699d4;
+  font-size: 2.5vw;
 }
 
 nav, section {
@@ -63,12 +70,14 @@ nav {
   display: flex;
   align-items: center;
   width: 62%;
-  background-color: #F3F6FB;
+}
+
+.welcome-nav, .user-card, .activity-box, .sleep-box, .hydration-box {
+  background-color: #ccd0d4;
 }
 
 .user-card {
   width: 35%;
-  background-color: #F3F6FB;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
@@ -84,8 +93,18 @@ nav {
 .activity-box, .sleep-box, .hydration-box {
   width: 30vw;
   height: 100%;
-  background-color: #F3F6FB;
   border-top: 10px solid #ff8552;
+}
+
+.fade {
+  opacity:0.8;
+  transition: all 500ms ease-in-out;
+  transform: scale(1);
+}
+
+.fade:hover {
+ transform: scale(1.04);
+ opacity:1;
 }
 
 .activity-box {
@@ -95,6 +114,3 @@ nav {
 .hydration-box {
   margin-right: 1rem;
 }
-
-
-
