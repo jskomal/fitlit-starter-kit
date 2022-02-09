@@ -19,6 +19,7 @@ import Hydration from './Hydration'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
+const calendar = document.querySelector('#calendar')
 
 // user card
 const userName = document.querySelector('#name')
@@ -38,6 +39,7 @@ let userRepo
 let hydrationData
 let sleepData
 let activityData
+let hydrationUsers = []
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
@@ -56,11 +58,7 @@ const fetchAllData = () => {
 }
 
 const parseHydrationData = (hydrationData) => {
-  // input is unfliltered Data
-  // need to filter data into only like userIDs
-  // then instantiate class on each of those filtered datasets
   const filteredData = {}
-  const hydrationUsers = []
   hydrationData.forEach((waterLogEntry) => {
     if (waterLogEntry.userID in filteredData) {
       filteredData[waterLogEntry.userID].push({
@@ -76,12 +74,16 @@ const parseHydrationData = (hydrationData) => {
       ]
     }
   })
-  console.log(filteredData)
   Object.keys(filteredData).forEach(userID => {
     hydrationUsers.push(new Hydration(userID, filteredData))
   })
-  console.log(hydrationUsers)
-  // const hydratedClassUsers = new Hydration(filteredData)
+}
+
+const updateHydrationCard = (randomUser) => {
+  const userWater = hydrationUsers.find(user => {
+    return user.userID == randomUser.id
+  }).getWaterByDate(calendar.value)
+  userWaterToday.innerText = `You drank ${userWater} oz today!`
 }
 
 const parseAllData = (allData) => {
@@ -115,7 +117,6 @@ const updateUserCard = (randomUser) => {
   }% of the average goal of ${userRepo.returnAvgSteps()}`
 }
 
-const updateHydrationCard = (randomUser) => {}
 
 const displayRandomUser = () => {
   const randomUser = selectRandomUser()
