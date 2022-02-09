@@ -62,4 +62,7 @@ describe('Hydration', () => {
     expect(hydratedUser.userID).to.equal(1)
   })
 
+  it('should have an a property that holds the amount of water per day', () => {
+    expect(hydratedUser.waterData).to.deep.equal([{"2019/06/15": 85}, {"2019/06/16": 69}, {"2019/06/22": 54}])
+  })
 });
