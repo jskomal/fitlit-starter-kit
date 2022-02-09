@@ -12,6 +12,10 @@ import './css/styles.css'
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
 
+// import { dayjs } from 'dayjs'
+const dayjs = require('dayjs')
+//import dayjs from 'dayjs' // ES 2015
+// dayjs().format()
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
 
@@ -73,3 +77,5 @@ const displayRandomUser = () => {
 
 // event listeners
 window.addEventListener('load', fetchAllData)
+
+console.log(dayjs())
