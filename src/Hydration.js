@@ -1,31 +1,31 @@
+import dayjs from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
+
 class Hydration {
   constructor(filteredUserData) {
     this.userID = filteredUserData[0].userID
-    this.waterData = filteredUserData.reduce((acc, currentEntry) => {
-      acc.push({ [currentEntry.date]: currentEntry.numOunces })
-      return acc
-    }, [])
-    this.allWaterOz = filteredUserData.reduce((acc, currentEntry) => {
-      acc.push(currentEntry.numOunces)
-      return acc
-    }, [])
+    this.waterData = filteredUserData.map(waterLogEntry => {
+      return { userID: waterLogEntry.userID, date: dayjs(waterLogEntry.date), numOunces: waterLogEntry.numOunces}
+    })
   }
 
-  //[{ '2019/06/15': 85 },
-  // { '2019/06/16': 69 },
-  // { '2019/06/22': 54 }]
-
   getAvgWater() {
-    return parseFloat(((this.allWaterOz.reduce((acc, currentEntry) => {
-      acc += currentEntry
-      return acc
-    }, 0))/this.allWaterOz.length).toFixed(2))
+    return parseFloat((this.waterData.reduce((acc, waterLogEntry) => {
+      return acc + waterLogEntry.numOunces
+    },0)/this.waterData.length).toFixed(2))
   }
 
   getWaterByDate(date) {
-    return this.waterData.find((waterLogEntry) => {
-      return waterLogEntry[date]
-    })[date]
+    return this.waterData.find(waterLogEntry => {
+      return dayjs(date).isSame(waterLogEntry.date)
+    }).numOunces
+  }
+
+  getWaterInWeek(date) {
+    return this.waterData.filter(waterLogEntry => {
+      return dayjs(date).isBetween(dayjs(date), dayjs(date).subtract(1, 'week'), null, '[]')
+    }).map(waterLogEntry => waterLogEntry.numOunces)
   }
 }
 
