@@ -67,6 +67,10 @@ describe('Hydration', () => {
     ])
   })
 
+  it('should have a method to calculate the total average water consumption per day', () => {
+    expect(hydratedUser.getAvgWater()).to.equal(69.33)
+  })
+
   it('should have a method that takes in a date and returns the amount of water they consumed that day', () => {
     expect(hydratedUser.getWaterByDate('2019/06/22')).to.equal(54)
   })
