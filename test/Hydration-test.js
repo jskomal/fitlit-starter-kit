@@ -3,16 +3,15 @@ import User from '../src/User'
 import Hydration from '../src/Hydration'
 
 describe('Hydration', () => {
-  let user;
-  let userData;
-  let userHydrationData1;
-  let userHydrationData2;
-  let userHydrationData3;
-  let testFilteredData;
-  let hydratedUser;
+  let user
+  let userData
+  let userHydrationData1
+  let userHydrationData2
+  let userHydrationData3
+  let testFilteredData
+  let hydratedUser
 
   beforeEach(() => {
-
     userData = {
       id: 1,
       name: 'Luisa Hane',
@@ -20,34 +19,32 @@ describe('Hydration', () => {
       email: 'Diana.Hayes1@hotmail.com',
       strideLength: 4.3,
       dailyStepGoal: 10000,
-      friends: [16, 4, 8]
+      friends: [16, 4, 8],
     }
 
     user = new User(userData)
 
     userHydrationData1 = {
       userID: 1,
-      date: "2019/06/15",
+      date: '2019/06/15',
       numOunces: 85,
     }
 
     userHydrationData2 = {
-      userID:1,
-      date:"2019/06/16",
-      numOunces:69
+      userID: 1,
+      date: '2019/06/16',
+      numOunces: 69,
     }
 
     userHydrationData3 = {
-      userID:1,
-      date:"2019/06/22",
-      numOunces: 54
+      userID: 1,
+      date: '2019/06/22',
+      numOunces: 54,
     }
 
     testFilteredData = [userHydrationData1, userHydrationData2, userHydrationData3]
 
     hydratedUser = new Hydration(testFilteredData)
-
-
   })
 
   it('should be a function', () => {
@@ -63,6 +60,14 @@ describe('Hydration', () => {
   })
 
   it('should have an a property that holds the amount of water per day', () => {
-    expect(hydratedUser.waterData).to.deep.equal([{"2019/06/15": 85}, {"2019/06/16": 69}, {"2019/06/22": 54}])
+    expect(hydratedUser.waterData).to.deep.equal([
+      { '2019/06/15': 85 },
+      { '2019/06/16': 69 },
+      { '2019/06/22': 54 },
+    ])
   })
-});
+
+  it('should have a method that takes in a date and returns the amount of water they consumed that day', () => {
+    expect(hydratedUser.getWaterByDate('2019/06/22')).to.equal(54)
+  })
+})
