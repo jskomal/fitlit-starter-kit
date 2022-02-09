@@ -1,3 +1,6 @@
+import dayjs from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
 import UserRepository from './UserRepository'
 import User from './User'
 import {
@@ -12,10 +15,6 @@ import './css/styles.css'
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
 
-// import { dayjs } from 'dayjs'
-const dayjs = require('dayjs')
-//import dayjs from 'dayjs' // ES 2015
-// dayjs().format()
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
 
@@ -26,6 +25,10 @@ const userEmail = document.querySelector('#email')
 const userStrideLength = document.querySelector('#strideLength')
 const userDailyStepGoal = document.querySelector('#dailyStepGoal')
 const compareUserSteps = document.querySelector('#compareStepGoal')
+
+// hydration card
+const userWaterToday = document.querySelector('#waterToday')
+const userWaterThisWeek = document.querySelector('#waterThisWeek')
 
 //globals
 let users
@@ -62,8 +65,7 @@ const selectRandomUser = () => {
   return users[randomIndex]
 }
 
-const displayRandomUser = () => {
-  const randomUser = selectRandomUser()
+const updateUserCard = (randomUser) => {
   welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
   userName.innerText = `NAME: ${randomUser.name}`
   userAddress.innerText = `ADDRESS: ${randomUser.address}`
@@ -75,7 +77,13 @@ const displayRandomUser = () => {
   }% of the average goal of ${userRepo.returnAvgSteps()}`
 }
 
+const updateHydrationCard = (randomUser) => {}
+
+const displayRandomUser = () => {
+  const randomUser = selectRandomUser()
+  updateUserCard(randomUser)
+  updateHydrationCard(randomUser)
+}
+
 // event listeners
 window.addEventListener('load', fetchAllData)
-
-console.log(dayjs())
