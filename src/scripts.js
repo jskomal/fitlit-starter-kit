@@ -1,12 +1,16 @@
 import UserRepository from './UserRepository'
 import User from './User'
-import {fetchUserData, fetchSleepData, fetchActivityData, fetchHydrationData} from './apiCalls'
+import {
+  fetchUserData,
+  fetchSleepData,
+  fetchActivityData,
+  fetchHydrationData,
+} from './apiCalls'
 
 import './css/styles.css'
 
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
-
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -17,24 +21,27 @@ const userAddress = document.querySelector('#address')
 const userEmail = document.querySelector('#email')
 const userStrideLength = document.querySelector('#strideLength')
 const userDailyStepGoal = document.querySelector('#dailyStepGoal')
-const compareUserSteps =  document.querySelector('#compareStepGoal')
+const compareUserSteps = document.querySelector('#compareStepGoal')
 
 //globals
-let users;
-let userRepo;
-let hydrationData;
-let sleepData;
-let activityData;
-
+let users
+let userRepo
+let hydrationData
+let sleepData
+let activityData
 
 // functions
 const fetchAllData = () => {
-  Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
-  .then(allData => parseAllData(allData))
+  Promise.all([
+    fetchUserData(),
+    fetchSleepData(),
+    fetchActivityData(),
+    fetchHydrationData(),
+  ]).then((allData) => parseAllData(allData))
 }
 
 const parseAllData = (allData) => {
-  users = allData[0].userData.map(person => new User(person))
+  users = allData[0].userData.map((person) => new User(person))
   userRepo = new UserRepository(users)
   hydrationData = allData[3].hydrationData
   sleepData = allData[1].sleepData
@@ -59,10 +66,10 @@ const displayRandomUser = () => {
   userEmail.innerText = `EMAIL: ${randomUser.email}`
   userStrideLength.innerText = `STRIDE LENGTH: ${randomUser.strideLength}`
   userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
-  compareUserSteps.innerText = `Your step goal is ${((randomUser.dailyStepGoal/userRepo.returnAvgSteps()).toFixed(2))*100}% of the average goal of ${userRepo.returnAvgSteps()}`
+  compareUserSteps.innerText = `Your step goal is ${
+    (randomUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
+  }% of the average goal of ${userRepo.returnAvgSteps()}`
 }
-
 
 // event listeners
 window.addEventListener('load', fetchAllData)
-
