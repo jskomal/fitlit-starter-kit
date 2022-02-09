@@ -38,6 +38,12 @@ let hydrationData
 let sleepData
 let activityData
 
+const datePicker = datepicker('#calendar', {
+  startDate: new Date(2019, 5, 15),
+  minDate: new Date(2019, 5, 15),
+  maxDate: new Date(2020, 0, 22)
+})
+
 // functions
 const fetchAllData = () => {
   Promise.all([

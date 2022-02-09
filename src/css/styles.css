@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Biryani:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+@import '~js-datepicker/dist/datepicker.min.css';
 
 body, html {
   background: url('../images/grey_waves.jpg') #31393C;
@@ -49,7 +50,7 @@ h1 {
 
 #welcomeName {
   color: #7699d4;
-  font-size: 2.5vw;
+  font-size: 2vw;
 }
 
 nav, section {
@@ -130,4 +131,17 @@ nav {
 
 .hydration-box {
   margin-right: 1rem;
+}
+
+.calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 12vw
+}
+
+.calendar {
+  width: 8vw;
+  text-align: center;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.20);
 }
