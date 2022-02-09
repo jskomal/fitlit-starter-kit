@@ -8,6 +8,10 @@ describe('Hydration', () => {
   let userHydrationData1
   let userHydrationData2
   let userHydrationData3
+  let userHydrationData4
+  let userHydrationData5
+  let userHydrationData6
+  let userHydrationData7
   let testFilteredData
   let hydratedUser
 
@@ -38,11 +42,43 @@ describe('Hydration', () => {
 
     userHydrationData3 = {
       userID: 1,
-      date: '2019/06/22',
+      date: '2019/06/17',
       numOunces: 54,
     }
 
-    testFilteredData = [userHydrationData1, userHydrationData2, userHydrationData3]
+    userHydrationData4 = {
+      userID: 1,
+      date: '2019/06/18',
+      numOunces: 41,
+    }
+
+    userHydrationData5 = {
+      userID: 1,
+      date: '2019/06/19',
+      numOunces: 37,
+    }
+
+    userHydrationData6 = {
+      userID: 1,
+      date: '2019/06/20',
+      numOunces: 75,
+    }
+
+    userHydrationData7 = {
+      userID: 1,
+      date: '2019/06/21',
+      numOunces: 47,
+    }
+
+    testFilteredData = [
+      userHydrationData1,
+      userHydrationData2,
+      userHydrationData3,
+      userHydrationData4,
+      userHydrationData5,
+      userHydrationData6,
+      userHydrationData7,
+    ]
 
     hydratedUser = new Hydration(testFilteredData)
   })
@@ -63,15 +99,19 @@ describe('Hydration', () => {
     expect(hydratedUser.waterData).to.deep.equal([
       { '2019/06/15': 85 },
       { '2019/06/16': 69 },
-      { '2019/06/22': 54 },
+      { '2019/06/17': 54 },
+      { '2019/06/18': 41 },
+      { '2019/06/19': 37 },
+      { '2019/06/20': 75 },
+      { '2019/06/21': 47 }
     ])
   })
 
   it('should have a method to calculate the total average water consumption per day', () => {
-    expect(hydratedUser.getAvgWater()).to.equal(69.33)
+    expect(hydratedUser.getAvgWater()).to.equal(58.29)
   })
 
   it('should have a method that takes in a date and returns the amount of water they consumed that day', () => {
-    expect(hydratedUser.getWaterByDate('2019/06/22')).to.equal(54)
+    expect(hydratedUser.getWaterByDate('2019/06/21')).to.equal(47)
   })
 })
