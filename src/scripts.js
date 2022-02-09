@@ -40,6 +40,7 @@ let hydrationData
 let sleepData
 let activityData
 let hydrationUsers = []
+let currentUser
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
@@ -102,7 +103,9 @@ const getRandomIndex = (array) => {
 
 const selectRandomUser = () => {
   const randomIndex = getRandomIndex(users)
+  currentUser = users[randomIndex]
   return users[randomIndex]
+
 }
 
 const updateUserCard = (randomUser) => {
@@ -126,3 +129,9 @@ const displayRandomUser = () => {
 
 // event listeners
 window.addEventListener('load', fetchAllData)
+calendar.addEventListener('blur', () => {
+  const userWater = hydrationUsers.find(user => {
+    return user.userID == currentUser.id
+  }).getWaterByDate(calendar.value)
+  userWaterToday.innerText = `You drank ${userWater} oz today!`
+})
