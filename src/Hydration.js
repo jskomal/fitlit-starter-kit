@@ -3,10 +3,13 @@ import isBetween from 'dayjs/plugin/isBetween'
 dayjs.extend(isBetween)
 
 class Hydration {
-  constructor(filteredUserData) {
-    this.userID = filteredUserData[0].userID
-    this.waterData = filteredUserData.map(waterLogEntry => {
-      return { userID: waterLogEntry.userID, date: dayjs(waterLogEntry.date), numOunces: waterLogEntry.numOunces}
+  constructor(userID, filteredUserData) {
+    this.userID = userID
+    this.waterData = filteredUserData[userID].map((waterLogEntry) => {
+      return {
+        date: dayjs(waterLogEntry.date),
+        numOunces: waterLogEntry.numOunces,
+      }
     })
   }
 
