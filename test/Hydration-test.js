@@ -1,11 +1,8 @@
 import dayjs from 'dayjs'
 import { expect } from 'chai'
-import User from '../src/User'
 import Hydration from '../src/Hydration'
 
 describe('Hydration', () => {
-  let user
-  let userData
   let userHydrationData1
   let userHydrationData2
   let userHydrationData3
@@ -17,61 +14,42 @@ describe('Hydration', () => {
   let hydratedUser
 
   beforeEach(() => {
-    userData = {
-      id: 1,
-      name: 'Luisa Hane',
-      address: '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
-      email: 'Diana.Hayes1@hotmail.com',
-      strideLength: 4.3,
-      dailyStepGoal: 10000,
-      friends: [16, 4, 8],
-    }
-
-    user = new User(userData)
-
     userHydrationData1 = {
-      userID: 1,
-      date: '2019/06/15',
-      numOunces: 85,
+        date: '2019/06/15',
+        numOunces: 85,
     }
 
     userHydrationData2 = {
-      userID: 1,
-      date: '2019/06/16',
-      numOunces: 69,
+        date: '2019/06/16',
+        numOunces: 69,
     }
 
     userHydrationData3 = {
-      userID: 1,
-      date: '2019/06/17',
-      numOunces: 54,
+        date: '2019/06/17',
+        numOunces: 54,
     }
 
     userHydrationData4 = {
-      userID: 1,
-      date: '2019/06/18',
-      numOunces: 41,
+        date: '2019/06/18',
+        numOunces: 41,
     }
 
     userHydrationData5 = {
-      userID: 1,
-      date: '2019/06/19',
-      numOunces: 37,
+        date: '2019/06/19',
+        numOunces: 37
     }
 
     userHydrationData6 = {
-      userID: 1,
-      date: '2019/06/20',
-      numOunces: 75,
+        date: '2019/06/20',
+        numOunces: 75
     }
 
     userHydrationData7 = {
-      userID: 1,
-      date: '2019/06/21',
-      numOunces: 47,
+        date: '2019/06/21',
+        numOunces: 47
     }
 
-    testFilteredData = [
+    testFilteredData = {1: [
       userHydrationData1,
       userHydrationData2,
       userHydrationData3,
@@ -79,9 +57,9 @@ describe('Hydration', () => {
       userHydrationData5,
       userHydrationData6,
       userHydrationData7,
-    ]
+    ]}
 
-    hydratedUser = new Hydration(testFilteredData)
+    hydratedUser = new Hydration(1, testFilteredData)
   })
 
   it('should be a function', () => {
@@ -98,13 +76,13 @@ describe('Hydration', () => {
 
   it('should have an a property that holds the amount of water per day', () => {
     expect(hydratedUser.waterData).to.deep.equal([
-      { userID: 1, date: dayjs('2019/06/15'), numOunces: 85 },
-      { userID: 1, date: dayjs('2019/06/16'), numOunces: 69 },
-      { userID: 1, date: dayjs('2019/06/17'), numOunces: 54 },
-      { userID: 1, date: dayjs('2019/06/18'), numOunces: 41 },
-      { userID: 1, date: dayjs('2019/06/19'), numOunces: 37 },
-      { userID: 1, date: dayjs('2019/06/20'), numOunces: 75 },
-      { userID: 1, date: dayjs('2019/06/21'), numOunces: 47 },
+      { date: dayjs('2019/06/15'), numOunces: 85 },
+      { date: dayjs('2019/06/16'), numOunces: 69 },
+      { date: dayjs('2019/06/17'), numOunces: 54 },
+      { date: dayjs('2019/06/18'), numOunces: 41 },
+      { date: dayjs('2019/06/19'), numOunces: 37 },
+      { date: dayjs('2019/06/20'), numOunces: 75 },
+      { date: dayjs('2019/06/21'), numOunces: 47 },
     ])
   })
 
@@ -118,8 +96,7 @@ describe('Hydration', () => {
 
   it('should have a method to return ounces of water drank per day over the course of a week', () => {
     expect(hydratedUser.getWaterInWeek('2019/06/21')).to.deep.equal([
-      85, 69, 54, 41, 37, 75, 47
+      85, 69, 54, 41, 37, 75, 47,
     ])
   })
 })
-
