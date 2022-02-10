@@ -103,13 +103,13 @@ const displayHydrationChart = () => {
     type: 'bar',
     data: {
       labels: [
-        'Today',
-        'Yesterday',
-        'Presturday',
-        'Yassturday',
-        'So long ago',
-        'Like... almost a week ago',
         'a week ago',
+        'Like... almost a week ago',
+        'So long ago',
+        'Yassturday',
+        'Presturday',
+        'Yesterday',
+        'Today',
       ],
       datasets: [
         {
@@ -159,7 +159,6 @@ const parseHydrationData = (hydrationData) => {
 }
 
 const loadHydrationCard = (randomUser) => {
-  setTimeout(() => {
     const userWater = hydrationUsers.find((user) => {
       return user.userID == randomUser.id
     })
@@ -167,8 +166,6 @@ const loadHydrationCard = (randomUser) => {
     userWaterToday.innerText = `You drank ${userWater.getWaterByDate(
       calendar.value.substring(4)
     )} oz today!`
-    hydrationChart.update()
-  }, 500)
 }
 
 // event listeners
