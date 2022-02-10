@@ -46,7 +46,7 @@ let hydrationUsers = []
 let currentUser
 let currentHydrationUser
 let hydrationChart
-
+let currentHydrationChartData
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
@@ -76,7 +76,6 @@ const selectRandomUser = () => {
   currentHydrationUser = hydrationUsers.find((user) => {
     return user.userID == currentUser.id
   })
-  displayHydrationChart()
   return users[randomIndex]
 }
 
@@ -84,6 +83,7 @@ const displayRandomUser = () => {
   const randomUser = selectRandomUser()
   updateUserCard(randomUser)
   loadHydrationCard(randomUser)
+  displayHydrationChart()
 }
 
 const updateUserCard = (randomUser) => {
@@ -114,8 +114,8 @@ const displayHydrationChart = () => {
       datasets: [
         {
           label: 'Ounces',
-          data: currentHydrationUser.getWaterInWeek(calendar.value),
-          backgroundColor: '#7699d4',
+          data: currentHydrationChartData,
+          backgroundColor: ['#7699d4', '#ff8552'],
         },
       ],
     },
@@ -159,13 +159,16 @@ const parseHydrationData = (hydrationData) => {
 }
 
 const loadHydrationCard = (randomUser) => {
-  const userWater = hydrationUsers
-    .find((user) => {
+  setTimeout(() => {
+    const userWater = hydrationUsers.find((user) => {
       return user.userID == randomUser.id
     })
-    .getWaterByDate(calendar.value)
-  userWaterToday.innerText = `You drank ${userWater} oz today!`
-  hydrationChart.update()
+    currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
+    userWaterToday.innerText = `You drank ${userWater.getWaterByDate(
+      calendar.value.substring(4)
+    )} oz today!`
+    hydrationChart.update()
+  }, 500)
 }
 
 // event listeners
@@ -176,7 +179,20 @@ calendar.addEventListener('blur', () => {
     return user.userID == currentUser.id
   })
   currentHydrationUser = userWater
-  userWaterToday.innerText = `You drank ${userWater.getWaterByDate(
-    calendar.value
-  )} oz today!`
+})
+
+calendar.addEventListener('focusout', () => {
+  setTimeout(() => {
+    hydrationChart.data.datasets = [
+      {
+        label: 'Ounces',
+        data: currentHydrationUser.getWaterInWeek(calendar.value.substring(4)),
+        backgroundColor: ['#7699d4', '#ff8552'],
+      },
+    ]
+    userWaterToday.innerText = `You drank ${currentHydrationUser.getWaterByDate(
+      calendar.value.substring(4)
+    )} oz today!`
+    hydrationChart.update()
+  },500)
 })
