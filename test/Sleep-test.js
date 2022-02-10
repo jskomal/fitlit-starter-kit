@@ -4,8 +4,15 @@ import User from '../src/Sleep'
 describe('Sleep', () => {
   let user;
   let userData;
+  let sleep
 
+  it('should be a function', function () {
+    expect(Sleep).to.be.a('function')
+  })
 
+  it('should be an instantiation of the UserRepository class', () => {
+    expect(sleep).to.be.an.instanceof(Sleep)
+  })
 
 // For a user (identified by their userID), the average number of hours slept per day
 // For a user, their average sleep quality per day over all time
