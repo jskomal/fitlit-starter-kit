@@ -2,7 +2,9 @@ import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 dayjs.extend(isBetween)
 import datepicker from 'js-datepicker'
-import Chart from 'chart.js'
+
+import Chart from 'chart.js/auto'
+
 import UserRepository from './UserRepository'
 import User from './User'
 import {
@@ -43,6 +45,8 @@ let activityData
 let hydrationUsers = []
 let currentUser
 let currentHydrationUser
+let hydrationChart
+
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
@@ -50,10 +54,9 @@ const datePicker = datepicker('#calendar', {
   maxDate: new Date(2020, 0, 22),
 })
 
-
-
-
 // functions
+
+// on load
 const fetchAllData = () => {
   Promise.all([
     fetchUserData(),
@@ -61,6 +64,76 @@ const fetchAllData = () => {
     fetchActivityData(),
     fetchHydrationData(),
   ]).then((allData) => parseAllData(allData))
+}
+
+const getRandomIndex = (array) => {
+  return Math.floor(Math.random() * array.length)
+}
+
+const selectRandomUser = () => {
+  const randomIndex = getRandomIndex(users)
+  currentUser = users[randomIndex]
+  currentHydrationUser = hydrationUsers.find((user) => {
+    return user.userID == currentUser.id
+  })
+  displayHydrationChart()
+  return users[randomIndex]
+}
+
+const displayRandomUser = () => {
+  const randomUser = selectRandomUser()
+  updateUserCard(randomUser)
+  loadHydrationCard(randomUser)
+}
+
+const updateUserCard = (randomUser) => {
+  welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
+  userName.innerText = `NAME: ${randomUser.name}`
+  userAddress.innerText = `ADDRESS: ${randomUser.address}`
+  userEmail.innerText = `EMAIL: ${randomUser.email}`
+  userStrideLength.innerText = `STRIDE LENGTH: ${randomUser.strideLength}`
+  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
+  compareUserSteps.innerText = `Your step goal is ${
+    (randomUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
+  }% of the average goal of ${userRepo.returnAvgSteps()}`
+}
+
+const displayHydrationChart = () => {
+  hydrationChart = new Chart(hydrationCanvas, {
+    type: 'bar',
+    data: {
+      labels: [
+        'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like... almost a week ago',
+        'a week ago',
+      ],
+      datasets: [
+        {
+          label: 'Ounces',
+          data: currentHydrationUser.getWaterInWeek(calendar.value),
+          backgroundColor: '#7699d4',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  })
+}
+
+// parse fetches
+const parseAllData = (allData) => {
+  users = allData[0].userData.map((person) => new User(person))
+  userRepo = new UserRepository(users)
+  hydrationData = allData[3].hydrationData
+  parseHydrationData(hydrationData)
+  sleepData = allData[1].sleepData
+  activityData = allData[2].activityData
+  displayRandomUser()
 }
 
 const parseHydrationData = (hydrationData) => {
@@ -76,106 +149,34 @@ const parseHydrationData = (hydrationData) => {
         {
           date: waterLogEntry.date,
           numOunces: waterLogEntry.numOunces,
-        }
+        },
       ]
     }
   })
-  Object.keys(filteredData).forEach(userID => {
+  Object.keys(filteredData).forEach((userID) => {
     hydrationUsers.push(new Hydration(userID, filteredData))
   })
 }
 
-const updateHydrationCard = (randomUser) => {
-  const userWater = hydrationUsers.find(user => {
-    return user.userID == randomUser.id
-  }).getWaterByDate(calendar.value)
+const loadHydrationCard = (randomUser) => {
+  const userWater = hydrationUsers
+    .find((user) => {
+      return user.userID == randomUser.id
+    })
+    .getWaterByDate(calendar.value)
   userWaterToday.innerText = `You drank ${userWater} oz today!`
-}
-
-const parseAllData = (allData) => {
-  users = allData[0].userData.map((person) => new User(person))
-  userRepo = new UserRepository(users)
-  hydrationData = allData[3].hydrationData
-  parseHydrationData(hydrationData)
-  sleepData = allData[1].sleepData
-  activityData = allData[2].activityData
-  displayRandomUser()
-}
-
-const getRandomIndex = (array) => {
-  return Math.floor(Math.random() * array.length)
-}
-
-const selectRandomUser = () => {
-  const randomIndex = getRandomIndex(users)
-  currentUser = users[randomIndex]
-  currentHydrationUser = hydrationUsers.find(user => {
-    return user.userID == currentUser.id
-  })
-  return users[randomIndex]
-
-}
-
-const updateUserCard = (randomUser) => {
-  welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
-  userName.innerText = `NAME: ${randomUser.name}`
-  userAddress.innerText = `ADDRESS: ${randomUser.address}`
-  userEmail.innerText = `EMAIL: ${randomUser.email}`
-  userStrideLength.innerText = `STRIDE LENGTH: ${randomUser.strideLength}`
-  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
-  compareUserSteps.innerText = `Your step goal is ${
-    (randomUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
-  }% of the average goal of ${userRepo.returnAvgSteps()}`
-}
-
-
-const displayRandomUser = () => {
-  const randomUser = selectRandomUser()
-  updateUserCard(randomUser)
-  updateHydrationCard(randomUser)
+  hydrationChart.update()
 }
 
 // event listeners
 window.addEventListener('load', fetchAllData)
+
 calendar.addEventListener('blur', () => {
-  const userWater = hydrationUsers.find(user => {
+  const userWater = hydrationUsers.find((user) => {
     return user.userID == currentUser.id
   })
   currentHydrationUser = userWater
-  userWaterToday.innerText = `You drank ${userWater.getWaterByDate(calendar.value)} oz today!`
+  userWaterToday.innerText = `You drank ${userWater.getWaterByDate(
+    calendar.value
+  )} oz today!`
 })
-
-// let hydrationChart
-
-// const timeout = () => {
-//   setTimeout(() => {
-    
-//     hydrationChart = new Chart(hydrationCanvas, {
-//       type: 'bar',
-//       data: {
-//         labels: ['monday', 'tuesday', 'wed', 'thurs', 'fri', 'sat', 'sun'],
-//         datasets: [{
-//           label: 'Ounces', 
-//           data: currentHydrationUser.getWaterInWeek(calendar.value)
-//         }]
-//       },
-//       options: {},
-    
-//     });
-//   }, 5000) 
-// }
-
-// timeout()
-
-// const hydrationChart = new Chart(hydrationCanvas, {
-//   type: 'bar',
-//   data: {
-//     labels: ['monday', 'tuesday', 'wed', 'thurs', 'fri', 'sat', 'sun'],
-//     datasets: [{
-//       label: 'Ounces', 
-//       data: currentHydrationUser.getWaterInWeek(calendar.value)
-//     }]
-//   },
-//   options: {},
-
-// });
