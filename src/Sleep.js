@@ -1,0 +1,6 @@
+
+class Sleep {
+  constructor() {
+    
+  }
+}
