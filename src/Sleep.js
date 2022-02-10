@@ -1,10 +1,27 @@
+import dayjs from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
 
 class Sleep {
-  constructor(userID, userSleepData) {
+  constructor(userID, sleepData) {
     this.userID = userID;
+    this.sleepData = sleepData[userID].map((sleepLogEntry) => {
+      return {
+        date: dayjs(sleepLogEntry.date),
+        hoursSlept: sleepLogEntry.hoursSlept,
+        sleepQuality: sleepLogEntry.sleepQuality
+      }
+    })
   }
 }
 
+
+// this.waterData = filteredUserData[userID].map((waterLogEntry) => {
+//   return {
+//     date: dayjs(waterLogEntry.date),
+//     numOunces: waterLogEntry.numOunces,
+//   }
+// })
 
 export default Sleep;
 
