@@ -13,15 +13,13 @@ class Sleep {
       }
     })
   }
+  getAvgSleep() {
+    return parseFloat((this.sleepData.reduce((acc, sleepLogEntry) => {
+      return acc + sleepLogEntry.hoursSlept
+    },0)/this.sleepData.length).toFixed(2))
+  }
 }
 
-
-// this.waterData = filteredUserData[userID].map((waterLogEntry) => {
-//   return {
-//     date: dayjs(waterLogEntry.date),
-//     numOunces: waterLogEntry.numOunces,
-//   }
-// })
 
 export default Sleep;
 
