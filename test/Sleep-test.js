@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import Sleep from '../src/Sleep'
+import dayjs from 'dayjs'
 
 describe.only('Sleep', () => {
   let sleep
@@ -89,4 +90,16 @@ describe.only('Sleep', () => {
     expect(sleep.userID).to.equal(1)
   })
 
+  it('should hold all the users sleep information', () => {
+    expect(sleep.userSleepData).to.deep.equal([
+      {date: dayjs('Jun 19 2019'), hoursSlept: 7.5, sleepQuality: 4.1},
+      {date: dayjs('Jun 20 2019'), hoursSlept: 6.2, sleepQuality: 2.1},
+      {date: dayjs('Jun 21 2019'), hoursSlept: 6.1, sleepQuality: 3.4},
+      {date: dayjs('Jun 22 2019'), hoursSlept: 6.2, sleepQuality: 2.4},
+      {date: dayjs('Jun 23 2019'), hoursSlept: 5.1, sleepQuality: 3.4},
+      {date: dayjs('Jun 24 2019'), hoursSlept: 8.1, sleepQuality: 3},
+      {date: dayjs('Jun 25 2019'), hoursSlept: 2.1, sleepQuality: 1},
+      {date: dayjs('Jun 26 2019'), hoursSlept: 8, sleepQuality: 2.1}
+    ])
+  })
 });
