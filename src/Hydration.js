@@ -31,7 +31,7 @@ class Hydration {
         dayjs(waterLogEntry.date, 'MMM D YYYY'),
         dayjs(waterLogEntry.date, 'MMM D YYYY').add(1, 'week'),
         null,
-        '[]'
+        '[)'
       )
     }).map(waterLogEntry => waterLogEntry.numOunces)
   }
