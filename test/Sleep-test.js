@@ -2,12 +2,19 @@ import { expect } from 'chai'
 import Sleep from '../src/Sleep'
 
 describe.only('Sleep', () => {
-  let user;
-  let userData;
   let sleep
+  let userSleepData1
+  let userSleepData2
+  let userSleepData3
+  let userSleepData4
+  let userSleepData5
+  let userSleepData6
+  let userSleepData7
+  let userSleepData8
+  let testFilteredData
 
   beforeEach(() => {
-    sleep = new Sleep()
+
     userSleepData1 = {
       date: 'Jun 19 2019',
       hoursSlept: 7.5,
@@ -55,6 +62,19 @@ describe.only('Sleep', () => {
       hoursSlept: 8,
       sleepQuality: 2.1,
     }
+
+    testFilteredData = { 1:[
+      userSleepData1,
+      userSleepData2,
+      userSleepData3,
+      userSleepData4,
+      userSleepData5,
+      userSleepData6,
+      userSleepData7,
+      userSleepData8
+    ]}
+
+    sleep = new Sleep(1, testFilteredData)
   })
 
   it('should be a function', function () {
@@ -62,20 +82,11 @@ describe.only('Sleep', () => {
   })
 
   it('should be an instantiation of the UserRepository class', () => {
-    let sleep = new Sleep()
     expect(sleep).to.be.an.instanceof(Sleep)
   })
 
   it('should have an id', () => {
-    let sleep = new Sleep()
-    expect(sleep).
+    expect(sleep.userID).to.equal(1)
   })
 
 });
-// For a user (identified by their userID), the average number of hours slept per day
-// For a user, their average sleep quality per day over all time
-// For a user, how many hours they slept for a specific day (identified by a date)
-// For a user, their sleep quality for a specific day (identified by a date)
-// For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-// For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-// For all users, the average sleep quality
