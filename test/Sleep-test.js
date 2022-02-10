@@ -102,4 +102,8 @@ describe.only('Sleep', () => {
       {date: dayjs('Jun 26 2019'), hoursSlept: 8, sleepQuality: 2.1}
     ])
   })
+
+  it('Should have a method to return the average number of hours slept per day', () => {
+    expect(sleep.getAvgSleep()).to.equal(6.16)
+  })
 });
