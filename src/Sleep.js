@@ -13,9 +13,14 @@ class Sleep {
       }
     })
   }
-  getAvgSleep() {
+  getAvgSleepTime() {
     return parseFloat((this.sleepData.reduce((acc, sleepLogEntry) => {
       return acc + sleepLogEntry.hoursSlept
+    },0)/this.sleepData.length).toFixed(2))
+  }
+  getAvgSleepQuality() {
+    return parseFloat((this.sleepData.reduce((acc, sleepLogEntry) => {
+      return acc + sleepLogEntry.sleepQuality
     },0)/this.sleepData.length).toFixed(2))
   }
 }
