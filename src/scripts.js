@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 dayjs.extend(isBetween)
 import datepicker from 'js-datepicker'
+import Chart from 'chart.js'
 import UserRepository from './UserRepository'
 import User from './User'
 import {
@@ -31,7 +32,7 @@ const compareUserSteps = document.querySelector('#compareStepGoal')
 
 // hydration card
 const userWaterToday = document.querySelector('#waterToday')
-const userWaterThisWeek = document.querySelector('#waterThisWeek')
+const hydrationCanvas = document.querySelector('#hydrationChart').getContext('2d')
 
 //globals
 let users
@@ -41,12 +42,16 @@ let sleepData
 let activityData
 let hydrationUsers = []
 let currentUser
+let currentHydrationUser
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
   minDate: new Date(2019, 5, 15),
   maxDate: new Date(2020, 0, 22),
 })
+
+
+
 
 // functions
 const fetchAllData = () => {
@@ -104,6 +109,9 @@ const getRandomIndex = (array) => {
 const selectRandomUser = () => {
   const randomIndex = getRandomIndex(users)
   currentUser = users[randomIndex]
+  currentHydrationUser = hydrationUsers.find(user => {
+    return user.userID == currentUser.id
+  })
   return users[randomIndex]
 
 }
@@ -132,6 +140,42 @@ window.addEventListener('load', fetchAllData)
 calendar.addEventListener('blur', () => {
   const userWater = hydrationUsers.find(user => {
     return user.userID == currentUser.id
-  }).getWaterByDate(calendar.value)
-  userWaterToday.innerText = `You drank ${userWater} oz today!`
+  })
+  currentHydrationUser = userWater
+  userWaterToday.innerText = `You drank ${userWater.getWaterByDate(calendar.value)} oz today!`
 })
+
+// let hydrationChart
+
+// const timeout = () => {
+//   setTimeout(() => {
+    
+//     hydrationChart = new Chart(hydrationCanvas, {
+//       type: 'bar',
+//       data: {
+//         labels: ['monday', 'tuesday', 'wed', 'thurs', 'fri', 'sat', 'sun'],
+//         datasets: [{
+//           label: 'Ounces', 
+//           data: currentHydrationUser.getWaterInWeek(calendar.value)
+//         }]
+//       },
+//       options: {},
+    
+//     });
+//   }, 5000) 
+// }
+
+// timeout()
+
+// const hydrationChart = new Chart(hydrationCanvas, {
+//   type: 'bar',
+//   data: {
+//     labels: ['monday', 'tuesday', 'wed', 'thurs', 'fri', 'sat', 'sun'],
+//     datasets: [{
+//       label: 'Ounces', 
+//       data: currentHydrationUser.getWaterInWeek(calendar.value)
+//     }]
+//   },
+//   options: {},
+
+// });
