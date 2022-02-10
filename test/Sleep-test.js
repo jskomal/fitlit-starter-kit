@@ -91,7 +91,7 @@ describe.only('Sleep', () => {
   })
 
   it('should hold all the users sleep information', () => {
-    expect(sleep.userSleepData).to.deep.equal([
+    expect(sleep.sleepData).to.deep.equal([
       {date: dayjs('Jun 19 2019'), hoursSlept: 7.5, sleepQuality: 4.1},
       {date: dayjs('Jun 20 2019'), hoursSlept: 6.2, sleepQuality: 2.1},
       {date: dayjs('Jun 21 2019'), hoursSlept: 6.1, sleepQuality: 3.4},
