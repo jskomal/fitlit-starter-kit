@@ -165,7 +165,27 @@ const parseHydrationData = (hydrationData) => {
 }
 
 const parseSleepData = (sleepData) => {
-  // hey start here
+  const filteredSleepData = {}
+  sleepData.forEach((sleepLogEntry) => {
+    if (sleepLogEntry.userID in filteredSleepData) {
+      filteredSleepData[sleepLogEntry.userID].push({
+        date: sleepLogEntry.date,
+        hoursSlept: sleepLogEntry.hoursSlept,
+        sleepQuality: sleepLogEntry.sleepQuality
+      })
+    } else {
+      filteredSleepData[sleepLogEntry.userID] = [
+        {
+          date: sleepLogEntry.date,
+          hoursSlept: sleepLogEntry.hoursSlept,
+          sleepQuality: sleepLogEntry.sleepQuality
+        },
+      ]
+    }
+  })
+  Object.keys(filteredSleepData).forEach((userID) => {
+    sleepUsers.push(new Sleep(userID, filteredSleepData))
+  })
 }
 
 const loadHydrationCard = (randomUser) => {
