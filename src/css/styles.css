@@ -51,6 +51,9 @@ h1 {
 #welcomeName {
   color: #7699d4;
   font-size: 2vw;
+  -webkit-text-fill-color: #7699d4;
+  -webkit-text-stroke-width: .02vw;
+  -webkit-text-stroke-color: #31393C;
 }
 
 nav, section {
@@ -70,6 +73,7 @@ nav {
 }
 
 .welcome-nav {
+  color: #31393C;
   display: flex;
   align-items: center;
   width: 62%;
@@ -77,6 +81,7 @@ nav {
 
 .welcome-nav, .user-card, .activity-box, .sleep-box, .hydration-box {
   background-color: #ccd0d4;
+  box-shadow: 2.0px 6.0px 6.0px hsl(0deg 0% 0% / 0.10);
 }
 
 .user-card {
@@ -101,7 +106,6 @@ nav {
   border-top: 10px solid #ff8552;
   flex-direction: column;
   align-items: center;
-    box-shadow: 2.0px 6.0px 6.0px hsl(0deg 0% 0% / 0.10);
 }
 
 .activity-box > p, .sleep-box > p, .hydration-box > p {
@@ -115,7 +119,7 @@ nav {
   color: #7699d4;
   -webkit-text-fill-color: #7699d4;
   -webkit-text-stroke-width: .03vw;
-  -webkit-text-stroke-color: #31393C;
+  -webkit-text-stroke-color: #606366;
 }
 
 .fade {
@@ -169,10 +173,10 @@ canvas {
 .sleep-canvas-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  height: 38vh;
+  height: 30vh;
   width: 29vw;
+  justify-content: flex-start;
 }
 
 .sleep-text {
