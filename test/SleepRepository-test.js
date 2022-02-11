@@ -108,9 +108,14 @@ describe.only('Sleep Repository', () => {
   })
 
   it('should be an instantiation of the UserRepository class', () => {
-    expect(sleepRepository).to.be.an.instanceof(Sleep)
+    expect(sleepRepository).to.be.an.instanceof(SleepRepository)
   })
 
+  it('should hold all the user data', () => {
+    expect(sleepRepository.allSleepData).to.deep.equal(testFilteredData)
+  })
+
+//should have a method to return the average sleep quality
 
 
 });
