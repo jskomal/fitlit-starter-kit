@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import Sleep from '../src/Sleep'
 import dayjs from 'dayjs'
 
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let sleep
   let userSleepData1
   let userSleepData2
@@ -82,7 +82,7 @@ describe.only('Sleep', () => {
     expect(Sleep).to.be.a('function')
   })
 
-  it('should be an instantiation of the UserRepository class', () => {
+  it('should be an instantiation of the Sleep class', () => {
     expect(sleep).to.be.an.instanceof(Sleep)
   })
 
