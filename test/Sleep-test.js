@@ -115,4 +115,7 @@ describe.only('Sleep', () => {
     expect(sleep.getSleepTimeByDate('Jun 23 2019')).to.equal(5.1)
   })
 
+  it('shoud have a method that takes in a date and returns the quality of sleep for that day', () => {
+    expect(sleep.getSleepQualityByDate('Jun 23 2019')).to.equal(3.4)
+  })
 });
