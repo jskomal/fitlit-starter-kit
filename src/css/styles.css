@@ -159,3 +159,7 @@ canvas {
   align-items: center;
   height: 45vh;
 }
+
+.sleep-text {
+  text-align: center;
+}
