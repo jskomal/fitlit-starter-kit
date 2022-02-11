@@ -49,6 +49,9 @@ let users
 let userRepo
 let hydrationData
 let sleepData
+let sleepUsers = []
+let sleepRepositoryData
+let currentSleepUser
 let activityData
 let hydrationUsers = []
 let currentUser
@@ -93,6 +96,8 @@ const displayRandomUser = () => {
   updateUserCard(randomUser)
   loadHydrationCard(randomUser)
   displayHydrationChart()
+  loadSleepCard(randomUser)
+  //displaySleepChart()
 }
 
 const updateUserCard = (randomUser) => {
@@ -141,6 +146,7 @@ const parseAllData = (allData) => {
   hydrationData = allData[3].hydrationData
   parseHydrationData(hydrationData)
   sleepData = allData[1].sleepData
+  parseSleepData(sleepData)
   activityData = allData[2].activityData
   displayRandomUser()
 }
@@ -189,6 +195,7 @@ const parseSleepData = (sleepData) => {
   Object.keys(filteredSleepData).forEach((userID) => {
     sleepUsers.push(new Sleep(userID, filteredSleepData))
   })
+  sleepRepositoryData = new SleepRepository(sleepUsers)
 }
 
 const loadHydrationCard = (randomUser) => {
@@ -201,7 +208,15 @@ const loadHydrationCard = (randomUser) => {
     )} oz today!`
 }
 
-con
+const loadSleepCard = (randomUser) => {
+  const userSleep = sleepUsers.find((user) => {
+    return user.userID == randomUser.id
+  })
+  //currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
+  sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
+    calendar.value.substring(4)
+  )} hours today at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
+}
 
 // event listeners
 window.addEventListener('load', fetchAllData)
@@ -211,6 +226,11 @@ calendar.addEventListener('blur', () => {
     return user.userID == currentUser.id
   })
   currentHydrationUser = userWater
+
+  const userSleep = sleepUsers.find((user) => {
+    return user.userID == currentUser.id
+  })
+  currentSleepUser = userSleep
 })
 
 calendar.addEventListener('focusout', () => {
@@ -226,5 +246,21 @@ calendar.addEventListener('focusout', () => {
       calendar.value.substring(4)
     )} oz today!`
     hydrationChart.update()
+  },500)
+})
+
+calendar.addEventListener('focusout', () => {
+  setTimeout(() => {
+    // hydrationChart.data.datasets = [
+    //   {
+    //     label: 'Ounces',
+    //     data: currentHydrationUser.getWaterInWeek(calendar.value.substring(4)),
+    //     backgroundColor: ['#7699d4', '#ff8552'],
+    //   },
+    //]
+    sleepHoursAndQuality.innerText = `You slept for ${currentSleepUser.getSleepTimeByDate(
+      calendar.value.substring(4)
+    )} hours today at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
+    //hydrationChart.update()
   },500)
 })
