@@ -58,6 +58,7 @@ let currentUser
 let currentHydrationUser
 let hydrationChart
 let currentHydrationChartData
+let sleepChart
 let currentSleepTimeChartData
 let currentSleepQualityChartData
 
@@ -289,17 +290,22 @@ calendar.addEventListener('focusout', () => {
 
 calendar.addEventListener('focusout', () => {
   setTimeout(() => {
-    // hydrationChart.data.datasets = [
-    //   {
-    //     label: 'Ounces',
-    //     data: currentHydrationUser.getWaterInWeek(calendar.value.substring(4)),
-    //     backgroundColor: ['#7699d4', '#ff8552'],
-    //   },
-    //]
+      sleepChart.data.datasets = [
+        {
+          label: 'hours',
+          data: currentSleepTimeChartData,
+          backgroundColor: '#ff8552',
+        },
+        {
+          label: 'quality',
+          data: currentSleepQualityChartData,
+          backgroundColor: '#7699d4',
+        },
+      ],
     sleepHoursAndQuality.innerText = `You slept for ${currentSleepUser.getSleepTimeByDate(
       calendar.value.substring(4)
     )} hours today 
     at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
-    //hydrationChart.update()
+    sleepChart.update()
   },500)
 })
