@@ -63,5 +63,3 @@ class Sleep {
 
 
 export default Sleep;
-
-// For all users, the average sleep quality
