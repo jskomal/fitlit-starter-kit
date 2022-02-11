@@ -131,7 +131,7 @@ const displayHydrationChart = () => {
         {
           label: 'Ounces',
           data: currentHydrationChartData,
-          backgroundColor: ['#7699d4', '#ff8552'],
+          backgroundColor: '#7699d4',
         },
       ],
     },
