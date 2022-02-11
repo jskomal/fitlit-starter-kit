@@ -106,7 +106,13 @@ describe.only('Sleep', () => {
   it('Should have a method to return the average number of hours slept per day', () => {
     expect(sleep.getAvgSleepTime()).to.equal(6.16)
   })
+
   it('Should have a method to return a user\'s average sleep quality for all time', () => {
     expect(sleep.getAvgSleepQuality()).to.equal(2.69)
   })
+
+  it('shoud have a method that takes in a date and returns the amount of sleep for that day', () => {
+    expect(sleep.getSleepTimeByDate('Jun 23 2019')).to.equal(5.1)
+  })
+
 });
