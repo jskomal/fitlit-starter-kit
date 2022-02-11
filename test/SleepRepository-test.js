@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 
 describe.only('Sleep Repository', () => {
   let sleep
+  let sleepRepository
   let userSleepData1
   let userSleepData2
   let userSleepData3
@@ -14,6 +15,14 @@ describe.only('Sleep Repository', () => {
   let userSleepData7
   let userSleepData8
   let testFilteredData
+  let userSleep1
+  let userSleep2
+  let userSleep3
+  let userSleep4
+  let sleep1
+  let sleep2
+  let sleep3
+  let sleep4
 
   beforeEach(() => {
 
@@ -65,27 +74,33 @@ describe.only('Sleep Repository', () => {
       sleepQuality: 2.1,
     }
 
-    testFilteredData = [
-    {1: [
+    userSleep1 = {1: [
       userSleepData1,
       userSleepData2,
-    ]},
-    {2: [
+    ]}
+
+    userSleep2 = {2: [
       userSleepData3,
     userSleepData4
-    ]},
-    {3: [
+    ]}
+
+    userSleep3 = {3: [
     userSleepData5,
     userSleepData6
-    ]},
-    {4: [
+    ]}
+
+    userSleep4 = {4: [
     userSleepData7,
     userSleepData8
-    ]},
-  ];
+    ]}
 
-    sleep = new Sleep(1, testFilteredData)
-    sleepRepository = new SleepRepository(sleep)
+    testFilteredData = [userSleep1, userSleep2, userSleep3, userSleep4]
+
+    sleep1 = new Sleep(1, userSleep1)
+    sleep2 = new Sleep(2, userSleep2)
+    sleep3 = new Sleep(3, userSleep3)
+    sleep4 = new Sleep(4, userSleep4)
+    sleepRepository = new SleepRepository(testFilteredData)
   })
 
   it('should be a function', function () {
