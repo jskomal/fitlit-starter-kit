@@ -42,22 +42,24 @@ class Sleep {
     return this.sleepData.filter(sleepLogEntry => {
       return dayjs(date).isBetween(
         dayjs(sleepLogEntry.date, 'MMM D YYYY'),
-        dayjs(sleepLogEntry.date, 'MMM D YYYY').subtract(1, 'week'),
+        dayjs(sleepLogEntry.date, 'MMM D YYYY').add(1, 'week'),
         null,
-        '[)'
+        '[]'
       )
     }).map(sleepLogEntry => sleepLogEntry.hoursSlept)
   }
 
   getSleepQualityInWeek(date){
-    return this.sleepData.filter(sleepLogEntry => {
+    const zzz = this.sleepData.filter(sleepLogEntry => {
       return dayjs(date).isBetween(
         dayjs(sleepLogEntry.date, 'MMM D YYYY'),
-        dayjs(sleepLogEntry.date, 'MMM D YYYY').subtract(1, 'week'),
+        dayjs(sleepLogEntry.date, 'MMM D YYYY').add(1, 'week'),
         null,
-        '[)'
+        '[]'
       )
     }).map(sleepLogEntry => sleepLogEntry.sleepQuality)
+  console.log(zzz)
+  return zzz
   }
 }
 
