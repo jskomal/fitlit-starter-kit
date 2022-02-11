@@ -160,6 +160,15 @@ canvas {
   height: 45vh;
 }
 
+.sleep-canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 38vh;
+  width: 29vw;
+}
+
 .sleep-text {
   text-align: center;
 }
