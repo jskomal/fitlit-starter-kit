@@ -58,7 +58,8 @@ let currentUser
 let currentHydrationUser
 let hydrationChart
 let currentHydrationChartData
-let weeklySleepChart
+let currentSleepTimeChartData
+let currentSleepQualityChartData
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
@@ -97,7 +98,7 @@ const displayRandomUser = () => {
   loadHydrationCard(randomUser)
   displayHydrationChart()
   loadSleepCard(randomUser)
-  //displaySleepChart()
+  displaySleepChart()
 }
 
 const updateUserCard = (randomUser) => {
@@ -130,6 +131,38 @@ const displayHydrationChart = () => {
           label: 'Ounces',
           data: currentHydrationChartData,
           backgroundColor: ['#7699d4', '#ff8552'],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  })
+}
+
+const displaySleepChart = () => {
+  sleepChart = new Chart(sleepCanvas, {
+    type: 'line',
+    data: {
+      labels: [
+        'A week ago',
+        'Like..almost a week ago',
+        'So long ago',
+        'Yassturday',
+        'Presturday',
+        'Yesterday',
+        'Today',
+      ],
+      datasets: [
+        {
+          label: 'hours',
+          data: currentSleepTimeChartData,
+          backgroundColor: '#ff8552',
+        },
+        {
+          label: 'quality',
+          data: currentSleepQualityChartData,
+          backgroundColor: '#7699d4',
         },
       ],
     },
@@ -212,7 +245,8 @@ const loadSleepCard = (randomUser) => {
   const userSleep = sleepUsers.find((user) => {
     return user.userID == randomUser.id
   })
-  //currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
+  currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
+  currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
   sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
     calendar.value.substring(4)
   )} hours today 
