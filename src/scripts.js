@@ -36,6 +36,11 @@ const compareUserSteps = document.querySelector('#compareStepGoal')
 const userWaterToday = document.querySelector('#waterToday')
 const hydrationCanvas = document.querySelector('#hydrationChart').getContext('2d')
 
+//sleep card
+const sleepHoursAndQuality = document.querySelector('#dailySleepHoursAndQuality')
+const allTimeAvgSleepHoursAndQuality = document.querySelector('#allTimeAvgSleepHoursAndQuality')
+const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
+
 //globals
 let users
 let userRepo
@@ -47,6 +52,7 @@ let currentUser
 let currentHydrationUser
 let hydrationChart
 let currentHydrationChartData
+let weeklySleepChart
 
 const datePicker = datepicker('#calendar', {
   startDate: new Date(2019, 5, 15),
@@ -156,6 +162,10 @@ const parseHydrationData = (hydrationData) => {
   Object.keys(filteredData).forEach((userID) => {
     hydrationUsers.push(new Hydration(userID, filteredData))
   })
+}
+
+const parseSleepData = (sleepData) => {
+  // hey start here
 }
 
 const loadHydrationCard = (randomUser) => {
