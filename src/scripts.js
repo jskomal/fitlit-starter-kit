@@ -156,12 +156,12 @@ const displaySleepChart = () => {
       ],
       datasets: [
         {
-          label: 'hours',
+          label: 'Hours',
           data: currentSleepTimeChartData,
           backgroundColor: '#ff8552',
         },
         {
-          label: 'quality',
+          label: 'Quality',
           data: currentSleepQualityChartData,
           backgroundColor: '#7699d4',
         },
