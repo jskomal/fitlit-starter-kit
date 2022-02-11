@@ -123,4 +123,8 @@ describe.only('Sleep', () => {
     expect(sleep.getSleepTimeInWeek('Jun 19 2019')).to.deep.equal([7.5, 6.2, 6.1, 6.2, 5.1, 8.1, 2.1])
   })
 
+  it('should have a method that returns a user\'s sleep quality over the course of week', () => {
+    expect(sleep.getSleepQualityInWeek('Jun 19 2019')).to.deep.equal([4.1, 2.1, 3.4, 2.4, 3.4, 3, 1])
+  })
+
 });
