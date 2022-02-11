@@ -94,12 +94,12 @@ describe.only('Sleep Repository', () => {
     userSleepData8
     ]}
 
-    testFilteredData = [userSleep1, userSleep2, userSleep3, userSleep4]
 
     sleep1 = new Sleep(1, userSleep1)
     sleep2 = new Sleep(2, userSleep2)
     sleep3 = new Sleep(3, userSleep3)
     sleep4 = new Sleep(4, userSleep4)
+    testFilteredData = [sleep1, sleep2, sleep3, sleep4]
     sleepRepository = new SleepRepository(testFilteredData)
   })
 
@@ -115,7 +115,8 @@ describe.only('Sleep Repository', () => {
     expect(sleepRepository.allSleepData).to.deep.equal(testFilteredData)
   })
 
-//should have a method to return the average sleep quality
-
-
+  it('should have a method to return the average sleep quality for all users', () => {
+    expect(sleepRepository.getAvgAllSleepQuality()).to.equal(2.69)
+  })
+  
 });
