@@ -34,7 +34,7 @@ class Hydration {
         '[]'
       )
     }).map(waterLogEntry => waterLogEntry.numOunces)
-    console.log(zzz)
+    
     return zzz
   }
 }

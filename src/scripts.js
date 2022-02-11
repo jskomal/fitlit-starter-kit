@@ -237,9 +237,9 @@ const loadHydrationCard = (randomUser) => {
       return user.userID == randomUser.id
     })
     currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
-    userWaterToday.innerText = `You drank ${userWater.getWaterByDate(
+    userWaterToday.innerText = ` ${userWater.getWaterByDate(
       calendar.value.substring(4)
-    )} oz today!`
+    )}`
 }
 
 const loadSleepCard = (randomUser) => {

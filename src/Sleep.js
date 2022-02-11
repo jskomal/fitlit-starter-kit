@@ -60,7 +60,7 @@ class Sleep {
     }).map(sleepLogEntry => sleepLogEntry.sleepQuality)
   }
 
-  //should we take .reverse() off and add to hydrationData so that 'today' is the first value?
+  //take .reverse() off and add to hydrationData so that 'today' is the first value?
 }
 
 
