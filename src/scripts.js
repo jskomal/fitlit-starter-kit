@@ -119,13 +119,13 @@ const displayHydrationChart = () => {
     type: 'bar',
     data: {
       labels: [
-        'A week ago',
-        'Like..almost a week ago',
-        'So long ago',
-        'Yassturday',
-        'Presturday',
-        'Yesterday',
         'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like..almost a week ago',
+        'A week ago',
       ],
       datasets: [
         {
@@ -146,13 +146,13 @@ const displaySleepChart = () => {
     type: 'line',
     data: {
       labels: [
-        'A week ago',
-        'Like..almost a week ago',
-        'So long ago',
-        'Yassturday',
-        'Presturday',
-        'Yesterday',
         'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like..almost a week ago',
+        'A week ago',
       ],
       datasets: [
         {
