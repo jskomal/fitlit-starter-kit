@@ -46,7 +46,7 @@ class Sleep {
         null,
         '[]'
       )
-    }).map(sleepLogEntry => sleepLogEntry.hoursSlept).reverse()
+    }).map(sleepLogEntry => sleepLogEntry.hoursSlept)
   }
 
   getSleepQualityInWeek(date){
@@ -57,8 +57,10 @@ class Sleep {
         null,
         '[]'
       )
-    }).map(sleepLogEntry => sleepLogEntry.sleepQuality).reverse()
+    }).map(sleepLogEntry => sleepLogEntry.sleepQuality)
   }
+
+  //should we take .reverse() off and add to hydrationData so that 'today' is the first value?
 }
 
 
