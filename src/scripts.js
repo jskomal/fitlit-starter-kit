@@ -215,7 +215,11 @@ const loadSleepCard = (randomUser) => {
   //currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
   sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
     calendar.value.substring(4)
-  )} hours today at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
+  )} hours today 
+  at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
+  allTimeAvgSleepHoursAndQuality.innerText = `Your all time average
+  Sleep Hours: ${userSleep.getAvgSleepTime()}
+  Sleep Quality: ${userSleep.getAvgSleepQuality()}`
 }
 
 // event listeners
@@ -260,7 +264,8 @@ calendar.addEventListener('focusout', () => {
     //]
     sleepHoursAndQuality.innerText = `You slept for ${currentSleepUser.getSleepTimeByDate(
       calendar.value.substring(4)
-    )} hours today at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
+    )} hours today 
+    at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
     //hydrationChart.update()
   },500)
 })
