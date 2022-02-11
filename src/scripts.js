@@ -19,6 +19,9 @@ import './css/styles.css'
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
 import Hydration from './Hydration'
+import Sleep from './Sleep'
+import SleepRepository from './SleepRepository'
+
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -197,6 +200,8 @@ const loadHydrationCard = (randomUser) => {
       calendar.value.substring(4)
     )} oz today!`
 }
+
+con
 
 // event listeners
 window.addEventListener('load', fetchAllData)
