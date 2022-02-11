@@ -103,8 +103,8 @@ const displayHydrationChart = () => {
     type: 'bar',
     data: {
       labels: [
-        'a week ago',
-        'Like... almost a week ago',
+        'A week ago',
+        'Like..almost a week ago',
         'So long ago',
         'Yassturday',
         'Presturday',
