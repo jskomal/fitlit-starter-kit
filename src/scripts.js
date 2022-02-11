@@ -250,7 +250,7 @@ const loadSleepCard = (randomUser) => {
   currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
   sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
     calendar.value.substring(4)
-  )} hours today 
+  )} hours today
   at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
   allTimeAvgSleepHoursAndQuality.innerText = `Your all time average
   Sleep Hours: ${userSleep.getAvgSleepTime()}
@@ -304,7 +304,7 @@ calendar.addEventListener('focusout', () => {
       ],
     sleepHoursAndQuality.innerText = `You slept for ${currentSleepUser.getSleepTimeByDate(
       calendar.value.substring(4)
-    )} hours today 
+    )} hours today
     at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
     sleepChart.update()
   },500)
