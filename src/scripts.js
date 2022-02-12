@@ -63,6 +63,11 @@ let currentSleepTimeChartData
 let currentSleepQualityChartData
 
 const datePicker = datepicker('#calendar', {
+  onSelect: instance => {
+    currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
+    currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
+    showSleepChart()
+  },
   startDate: new Date(2019, 5, 15),
   minDate: new Date(2019, 5, 15),
   maxDate: new Date(2020, 0, 22),
@@ -278,17 +283,18 @@ calendar.addEventListener('focusout', () => {
       {
         label: 'Ounces',
         data: currentHydrationUser.getWaterInWeek(calendar.value.substring(4)),
-        backgroundColor: ['#7699d4', '#ff8552'],
+        backgroundColor: '#7699d4',
       },
     ]
-    userWaterToday.innerText = `You drank ${currentHydrationUser.getWaterByDate(
+    userWaterToday.innerText = ` ${currentHydrationUser.getWaterByDate(
       calendar.value.substring(4)
-    )} oz today!`
+    )}`
     hydrationChart.update()
   },500)
 })
 
-calendar.addEventListener('focusout', () => {
+const showSleepChart = () => {
+  console.log('onSelect')
   setTimeout(() => {
       sleepChart.data.datasets = [
         {
@@ -308,4 +314,4 @@ calendar.addEventListener('focusout', () => {
     at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
     sleepChart.update()
   },500)
-})
+}

@@ -3,7 +3,7 @@ import Sleep from '../src/Sleep'
 import SleepRepository from '../src/SleepRepository'
 import dayjs from 'dayjs'
 
-describe.only('Sleep Repository', () => {
+describe('Sleep Repository', () => {
   let sleep
   let sleepRepository
   let userSleepData1
@@ -118,5 +118,5 @@ describe.only('Sleep Repository', () => {
   it('should have a method to return the average sleep quality for all users', () => {
     expect(sleepRepository.getAvgAllSleepQuality()).to.equal(2.69)
   })
-  
+
 });

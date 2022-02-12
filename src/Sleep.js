@@ -39,29 +39,32 @@ class Sleep {
   }
 
   getSleepTimeInWeek(date){
-    return this.sleepData.filter(sleepLogEntry => {
+    const qqq = this.sleepData.filter(sleepLogEntry => {
       return dayjs(date).isBetween(
-        dayjs(sleepLogEntry.date, 'MMM D YYYY'),
         dayjs(sleepLogEntry.date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(sleepLogEntry.date, 'MMM D YYYY'),
         null,
         '[]'
       )
     }).map(sleepLogEntry => sleepLogEntry.hoursSlept)
+    console.log(qqq)
+    return qqq
   }
 
   getSleepQualityInWeek(date){
-    return this.sleepData.filter(sleepLogEntry => {
+    const zzz = this.sleepData.filter(sleepLogEntry => {
       return dayjs(date).isBetween(
-        dayjs((sleepLogEntry.date), 'MMM D YYYY'),
-        dayjs(sleepLogEntry.date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs((sleepLogEntry.date), 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(sleepLogEntry.date, 'MMM D YYYY'),
         null,
         '[]'
       )
     }).map(sleepLogEntry => sleepLogEntry.sleepQuality)
+    console.log(zzz)
+    return zzz
   }
-
-  //take .reverse() off and add to hydrationData so that 'today' is the first value?
 }
-
+// on change
+// .active event listeners?
 
 export default Sleep;

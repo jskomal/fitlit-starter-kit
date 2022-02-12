@@ -26,16 +26,14 @@ class Hydration {
   }
 
   getWaterInWeek(date) {
-    const zzz = this.waterData.filter(waterLogEntry => {
+    return this.waterData.filter(waterLogEntry => {
       return dayjs(date).isBetween(
-        dayjs(waterLogEntry.date, 'MMM D YYYY'),
+        dayjs((waterLogEntry.date), 'MMM D YYYY'),
         dayjs(waterLogEntry.date, 'MMM D YYYY').subtract(6, 'day'),
         null,
         '[]'
       )
     }).map(waterLogEntry => waterLogEntry.numOunces)
-    
-    return zzz
   }
 }
 
