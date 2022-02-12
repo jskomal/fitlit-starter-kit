@@ -47,26 +47,34 @@ const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
 //globals
 let users
 let userRepo
+
 let hydrationData
+let hydrationUsers = []
+let currentHydrationUser
+let hydrationChart
+
 let sleepData
 let sleepUsers = []
 let sleepRepositoryData
 let currentSleepUser
-let activityData
-let hydrationUsers = []
-let currentUser
-let currentHydrationUser
-let hydrationChart
-let currentHydrationChartData
 let sleepChart
+
+let activityData
+
+let currentUser
+
+let currentHydrationChartData
 let currentSleepTimeChartData
 let currentSleepQualityChartData
 
 const datePicker = datepicker('#calendar', {
-  onSelect: instance => {
-    currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
-    currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
-    showSleepChart()
+  onSelect: (instance, date) => {
+    loadHydrationCard(currentUser)
+    hydrationChart.destroy()
+    displayHydrationChart()
+    loadSleepCard(currentUser)
+    sleepChart.destroy()
+    displaySleepChart()
   },
   startDate: new Date(2019, 5, 15),
   minDate: new Date(2019, 5, 15),
@@ -100,6 +108,7 @@ const selectRandomUser = () => {
 
 const displayRandomUser = () => {
   const randomUser = selectRandomUser()
+  currentUser = randomUser
   updateUserCard(randomUser)
   loadHydrationCard(randomUser)
   displayHydrationChart()
@@ -264,54 +273,3 @@ const loadSleepCard = (randomUser) => {
 
 // event listeners
 window.addEventListener('load', fetchAllData)
-
-calendar.addEventListener('blur', () => {
-  const userWater = hydrationUsers.find((user) => {
-    return user.userID == currentUser.id
-  })
-  currentHydrationUser = userWater
-
-  const userSleep = sleepUsers.find((user) => {
-    return user.userID == currentUser.id
-  })
-  currentSleepUser = userSleep
-})
-
-calendar.addEventListener('focusout', () => {
-  setTimeout(() => {
-    hydrationChart.data.datasets = [
-      {
-        label: 'Ounces',
-        data: currentHydrationUser.getWaterInWeek(calendar.value.substring(4)),
-        backgroundColor: '#7699d4',
-      },
-    ]
-    userWaterToday.innerText = ` ${currentHydrationUser.getWaterByDate(
-      calendar.value.substring(4)
-    )}`
-    hydrationChart.update()
-  },500)
-})
-
-const showSleepChart = () => {
-  console.log('onSelect')
-  setTimeout(() => {
-      sleepChart.data.datasets = [
-        {
-          label: 'hours',
-          data: currentSleepTimeChartData,
-          backgroundColor: '#ff8552',
-        },
-        {
-          label: 'quality',
-          data: currentSleepQualityChartData,
-          backgroundColor: '#7699d4',
-        },
-      ],
-    sleepHoursAndQuality.innerText = `You slept for ${currentSleepUser.getSleepTimeByDate(
-      calendar.value.substring(4)
-    )} hours today
-    at the quality of ${currentSleepUser.getSleepQualityByDate(calendar.value.substring(4))}`
-    sleepChart.update()
-  },500)
-}

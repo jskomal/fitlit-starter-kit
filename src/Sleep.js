@@ -39,7 +39,7 @@ class Sleep {
   }
 
   getSleepTimeInWeek(date){
-    const qqq = this.sleepData.filter(sleepLogEntry => {
+    const weeklySleepTimes = this.sleepData.filter(sleepLogEntry => {
       return dayjs(date).isBetween(
         dayjs(sleepLogEntry.date, 'MMM D YYYY').subtract(6, 'day'),
         dayjs(sleepLogEntry.date, 'MMM D YYYY'),
@@ -47,12 +47,11 @@ class Sleep {
         '[]'
       )
     }).map(sleepLogEntry => sleepLogEntry.hoursSlept)
-    console.log(qqq)
-    return qqq
+    return weeklySleepTimes
   }
 
   getSleepQualityInWeek(date){
-    const zzz = this.sleepData.filter(sleepLogEntry => {
+    const weeklySleepQualities = this.sleepData.filter(sleepLogEntry => {
       return dayjs(date).isBetween(
         dayjs((sleepLogEntry.date), 'MMM D YYYY').subtract(6, 'day'),
         dayjs(sleepLogEntry.date, 'MMM D YYYY'),
@@ -60,11 +59,8 @@ class Sleep {
         '[]'
       )
     }).map(sleepLogEntry => sleepLogEntry.sleepQuality)
-    console.log(zzz)
-    return zzz
+    return weeklySleepQualities
   }
 }
-// on change
-// .active event listeners?
 
 export default Sleep;
