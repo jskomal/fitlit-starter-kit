@@ -1,10 +1,6 @@
-import dayjs from 'dayjs'
-import isBetween from 'dayjs/plugin/isBetween'
-dayjs.extend(isBetween)
+// imports
 import datepicker from 'js-datepicker'
-
 import Chart from 'chart.js/auto'
-
 import UserRepository from './UserRepository'
 import User from './User'
 import {
@@ -13,15 +9,12 @@ import {
   fetchActivityData,
   fetchHydrationData,
 } from './apiCalls'
-
 import './css/styles.css'
-
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
 import Hydration from './Hydration'
 import Sleep from './Sleep'
 import SleepRepository from './SleepRepository'
-
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -39,47 +32,31 @@ const compareUserSteps = document.querySelector('#compareStepGoal')
 const userWaterToday = document.querySelector('#waterToday')
 const hydrationCanvas = document.querySelector('#hydrationChart').getContext('2d')
 
-//sleep card
+// sleep card
 const sleepHoursAndQuality = document.querySelector('#dailySleepHoursAndQuality')
 const allTimeAvgSleepHoursAndQuality = document.querySelector('#allTimeAvgSleepHoursAndQuality')
 const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
 
-//globals
+// globals
 let users
 let userRepo
+let currentUser
 
 let hydrationData
 let hydrationUsers = []
-let currentHydrationUser
 let hydrationChart
 
 let sleepData
 let sleepUsers = []
-let sleepRepositoryData
-let currentSleepUser
 let sleepChart
 
-let activityData
+let sleepRepositoryData
 
-let currentUser
+let activityData
 
 let currentHydrationChartData
 let currentSleepTimeChartData
 let currentSleepQualityChartData
-
-const datePicker = datepicker('#calendar', {
-  onSelect: (instance, date) => {
-    loadHydrationCard(currentUser)
-    hydrationChart.destroy()
-    displayHydrationChart()
-    loadSleepCard(currentUser)
-    sleepChart.destroy()
-    displaySleepChart()
-  },
-  startDate: new Date(2019, 5, 15),
-  minDate: new Date(2019, 5, 15),
-  maxDate: new Date(2020, 0, 22),
-})
 
 // functions
 
@@ -99,34 +76,44 @@ const getRandomIndex = (array) => {
 
 const selectRandomUser = () => {
   const randomIndex = getRandomIndex(users)
-  currentUser = users[randomIndex]
-  currentHydrationUser = hydrationUsers.find((user) => {
-    return user.userID == currentUser.id
-  })
   return users[randomIndex]
 }
 
 const displayRandomUser = () => {
-  const randomUser = selectRandomUser()
-  currentUser = randomUser
-  updateUserCard(randomUser)
-  loadHydrationCard(randomUser)
+  currentUser = selectRandomUser()
+  updateUserCard(currentUser)
+  loadHydrationCard(currentUser)
   displayHydrationChart()
-  loadSleepCard(randomUser)
+  loadSleepCard(currentUser)
   displaySleepChart()
 }
 
-const updateUserCard = (randomUser) => {
-  welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
-  userName.innerText = `NAME: ${randomUser.name}`
-  userAddress.innerText = `ADDRESS: ${randomUser.address}`
-  userEmail.innerText = `EMAIL: ${randomUser.email}`
-  userStrideLength.innerText = `STRIDE LENGTH: ${randomUser.strideLength}`
-  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
+const updateUserCard = (currentUser) => {
+  welcomeUser.innerText = `Welcome, ${currentUser.returnFirstName()}!`
+  userName.innerText = `NAME: ${currentUser.name}`
+  userAddress.innerText = `ADDRESS: ${currentUser.address}`
+  userEmail.innerText = `EMAIL: ${currentUser.email}`
+  userStrideLength.innerText = `STRIDE LENGTH: ${currentUser.strideLength}`
+  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${currentUser.dailyStepGoal}`
   compareUserSteps.innerText = `Your step goal is ${
-    (randomUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
+    (currentUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
   }% of the average goal of ${userRepo.returnAvgSteps()}`
 }
+
+// create charts
+const datePicker = datepicker('#calendar', {
+  onSelect: (instance, date) => {
+    loadHydrationCard(currentUser)
+    hydrationChart.destroy()
+    displayHydrationChart()
+    loadSleepCard(currentUser)
+    sleepChart.destroy()
+    displaySleepChart()
+  },
+  startDate: new Date(2019, 5, 22),
+  minDate: new Date(2019, 5, 15),
+  maxDate: new Date(2020, 0, 22),
+})
 
 const displayHydrationChart = () => {
   hydrationChart = new Chart(hydrationCanvas, {
