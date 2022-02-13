@@ -233,12 +233,14 @@ const parseSleepData = (sleepData) => {
   sleepRepositoryData = new SleepRepository(sleepUsers)
 }
 
-const loadHydrationCard = (randomUser) => {
-    const userWater = hydrationUsers.find((user) => {
-      return user.userID == randomUser.id
+const loadHydrationCard = () => {
+    const currentUserWater = hydrationUsers.find((user) => {
+      return user.userID == currentUser.id
     })
-    currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
-    userWaterToday.innerText = ` ${userWater.getWaterByDate(
+    currentHydrationChartData = currentUserWater.getWaterInWeek(
+      calendar.value.substring(4)
+    )
+    userWaterToday.innerText = ` ${currentUserWater.getWaterByDate(
       calendar.value.substring(4)
     )}`
 }
