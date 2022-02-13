@@ -245,19 +245,25 @@ const loadHydrationCard = () => {
     )}`
 }
 
-const loadSleepCard = (randomUser) => {
-  const userSleep = sleepUsers.find((user) => {
-    return user.userID == randomUser.id
+const loadSleepCard = () => {
+  const currentUserSleep = sleepUsers.find((user) => {
+    return user.userID == currentUser.id
   })
-  currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
-  currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
-  sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
+  currentSleepTimeChartData = currentUserSleep.getSleepTimeInWeek(
+    calendar.value.substring(4)
+  )
+  currentSleepQualityChartData = currentUserSleep.getSleepQualityInWeek(
+    calendar.value.substring(4)
+  )
+  sleepHoursAndQuality.innerText = `You slept for ${currentUserSleep.getSleepTimeByDate(
     calendar.value.substring(4)
   )} hours today
-  at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
+  at the quality of ${currentUserSleep.getSleepQualityByDate(
+    calendar.value.substring(4)
+  )}`
   allTimeAvgSleepHoursAndQuality.innerText = `Your all time average
-  Sleep Hours: ${userSleep.getAvgSleepTime()}
-  Sleep Quality: ${userSleep.getAvgSleepQuality()}`
+  Sleep Hours: ${currentUserSleep.getAvgSleepTime()}
+  Sleep Quality: ${currentUserSleep.getAvgSleepQuality()}`
 }
 
 // event listeners
