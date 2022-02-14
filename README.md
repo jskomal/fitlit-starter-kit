@@ -54,7 +54,9 @@ Repository Link: [Get Fit Get Link ](https://github.com/jskomal/get-fit-get-lit)
 
 ------------
 ### Architecture & Technologies Used
- add stuffs here 
+This application was built using JavaScript, CSS, and HTML and utilizes Test Driven Development with Mocha and Chai.
+
+This application consists of a series of six class files and their corresponding test files, as well as the scripts, css, and HTML files. Lastly there is the apiCalls file which holds the fetch calls for the data.
 
 ------------
 ### Challenges & Wins
