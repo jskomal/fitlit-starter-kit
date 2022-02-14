@@ -1,77 +1,68 @@
-# FitLit Starter Kit
+# Get Fit Get Lit!
+-------
+### Overview
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+Get Fit Get Lit is an interactive webpage that tracks a user's wellness data and renders it on a dashboard. Our goal is to present a useful application for a user to view their latest activity data, goals, and milestones. 
 
-## Setup
+This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Development with Mocha and Chai.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
-
-## Testing
-
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+- The user can choose a date that will display their water intake for the selected day and over the course of that last week
+- The user can also see their sleep time and sleep quality and compare that data against the rest of their week
+- Lastly, the user can view their daily steps and see where they stand with the average amount of daily steps compared to other users 
+ 
+![User Card on Load](https://media4.giphy.com/media/5obYVSmIhsRQ0wvSUa/giphy.gif)
 
 
-## Data Model
+![Selected Date Repopulates Data](https://media1.giphy.com/media/bDyfRjVTE9sMwlSHH1/giphy.gif)
 
-**Users**
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+---------
+### Installation Instructions
+ - Fork and Clone [this](https://github.com/jskomal/get-fit-get-lit) repository
+ - `CD` into the directory
+ - Run `npm install` 
+ - Run `npm start`
+ - In your browser, go to [this link](http://localhost:8080/)
 
-**Activity**
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+-----------
 
-**Hydration**
+### Future Features
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+ - Add functionality on the Activity card that will display miles walked based on a user's number of steps as well as a user's active minutes by the day and by the week
+ - Add functionality on the Activity card that will display if a user reached their step goal for a given day as well as display data that shows all the days where a user exceeded their step goal
+ - Add functionality on the Activity card that will display a user's all time stair climbing record
+ - Add functionality on the Activity card that will display the average number of stairs climbed, steps taken, and active minutes of all users for a specific date
+ - Finally, add accessibilty features that will function with a screen reader as well as a colorblind extension
 
-**Sleep**
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+---------
+
+### Contributors
+
+Katie Toler | [GitHub](https://github.com/KATIETOLER)
+
+Jordan Skomal | [GitHub](https://github.com/jskomal)
+
+Jessica Fatta | [GitHub](https://github.com/JessFatta)
+
+--------
+### Links
+
+Repository Link: [Get Fit Get Link ](https://github.com/jskomal/get-fit-get-lit)
+
+------------
+### Architecture & Technologies Used
+This application was built using JavaScript, CSS, and HTML and utilizes Test Driven Development with Mocha and Chai.
+
+This application consists of a series of six class files and their corresponding test files, as well as the scripts, css, and HTML files. Lastly, there is the apiCalls file which holds the fetch calls for retrieving the data.
+
+------------
+### Wins & Challenges
+##### Wins
+- Successfully implement APIs and Fetch Calls
+- Applied Chart.js, Dayjs, and js-datepicker dependencies to provide a better user experience via charts and a calendar
+
+##### Challenges
+- Implementing Dayjs presented an opportunity to learn how to use plug-ins such as isBetween
+- Webpack poses an added layer of abstraction in web development that, while extremely useful, decentralizes the structure of the user data and requires a higher level view to understand
