@@ -1,77 +1,57 @@
-# FitLit Starter Kit
+# Get Fit Get Lit!
+-------
+### Overview
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+Get Fit Get Lit is an interactive webpage that tracks a user's wellness data and presents it on a dashboard. Our goal is to present a useful dashboard for a user to view and see their latest activity data, goals, and milestones. 
 
-## Setup
+This app is built using JavaScript, HTML, CSS, and utilizes TDD with Mocha and Chai.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+- The user can select a date that will display their water intake for the day and over the course of the last week
+- The user can also see their sleep time and sleep quality and compare against the rest of the week
+- Lastly, the user can see their daily steps and where they stand with the average compared to users 
+ 
+![](https)
 
-## Testing
+---------
+### Installation Instructions
+ - Fork and Clone [this](https://github.com/jskomal/get-fit-get-lit) repository
+ - `CD` into the directory
+ - Run `npm install` 
+ - Run `npm start`
+ - In your browser, go to [this link](http://localhost:8080/)
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+
+-----------------
+### Wins & Challenges
+
+Add stuffs here
+
+-----------
+
+### Future Features
+
+ - Add future functionality here
 
 
-## Data Model
+---------
 
-**Users**
+### Contributors
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+Katie Toler | [GitHub](https://github.com/KATIETOLER)
 
-**Activity**
+Jordan Skomal | [GitHub](https://github.com/jskomal)
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+Jessica Fatta | [GitHub](https://github.com/JessFatta)
 
-**Hydration**
+--------
+### Links
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+Repository Link: [Get Fit Get Link ](https://github.com/jskomal/get-fit-get-lit)
 
-**Sleep**
+------------
+### Architecture & Technologies Used
+ add stuffs here 
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+------------
+### Challenges & Wins
+add stuffs here
