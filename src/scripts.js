@@ -258,12 +258,10 @@ const loadSleepCard = () => {
   sleepHoursAndQuality.innerText = `You slept for ${currentUserSleep.getSleepTimeByDate(
     calendar.value.substring(4)
   )} hours today
-  at the quality of ${currentUserSleep.getSleepQualityByDate(
-    calendar.value.substring(4)
-  )}`
-  allTimeAvgSleepHoursAndQuality.innerText = `Your all time average
-  Sleep Hours: ${currentUserSleep.getAvgSleepTime()}
-  Sleep Quality: ${currentUserSleep.getAvgSleepQuality()}`
+  at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
+  allTimeAvgSleepHoursAndQuality.innerText = `
+  Sleep Hours: ${userSleep.getAvgSleepTime()}
+  Sleep Quality: ${userSleep.getAvgSleepQuality()}`
 }
 
 // event listeners
