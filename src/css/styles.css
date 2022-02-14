@@ -160,6 +160,10 @@ nav {
 }
 
 canvas {
+  height: 60%;
+}
+
+#hydrationChart {
   height: 80%;
 }
 
