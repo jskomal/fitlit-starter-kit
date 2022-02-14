@@ -245,17 +245,13 @@ const loadHydrationCard = () => {
     )}`
 }
 
-const loadSleepCard = () => {
-  const currentUserSleep = sleepUsers.find((user) => {
-    return user.userID == currentUser.id
+const loadSleepCard = (randomUser) => {
+  const userSleep = sleepUsers.find((user) => {
+    return user.userID == randomUser.id
   })
-  currentSleepTimeChartData = currentUserSleep.getSleepTimeInWeek(
-    calendar.value.substring(4)
-  )
-  currentSleepQualityChartData = currentUserSleep.getSleepQualityInWeek(
-    calendar.value.substring(4)
-  )
-  sleepHoursAndQuality.innerText = `You slept for ${currentUserSleep.getSleepTimeByDate(
+  currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
+  currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
+  sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
     calendar.value.substring(4)
   )} hours today
   at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
