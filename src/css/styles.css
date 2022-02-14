@@ -51,6 +51,9 @@ h1 {
 #welcomeName {
   color: #7699d4;
   font-size: 2vw;
+  -webkit-text-fill-color: #7699d4;
+  -webkit-text-stroke-width: .02vw;
+  -webkit-text-stroke-color: #31393C;
 }
 
 nav, section {
@@ -70,6 +73,7 @@ nav {
 }
 
 .welcome-nav {
+  color: #31393C;
   display: flex;
   align-items: center;
   width: 62%;
@@ -77,6 +81,7 @@ nav {
 
 .welcome-nav, .user-card, .activity-box, .sleep-box, .hydration-box {
   background-color: #ccd0d4;
+  box-shadow: 2.0px 6.0px 6.0px hsl(0deg 0% 0% / 0.10);
 }
 
 .user-card {
@@ -111,7 +116,10 @@ nav {
 .card-text {
   font-size: 2.5vw;
   font-weight: 800;
-  color: #31393C;
+  color: #7699d4;
+  -webkit-text-fill-color: #7699d4;
+  -webkit-text-stroke-width: .03vw;
+  -webkit-text-stroke-color: #606366;
 }
 
 .fade {
@@ -144,16 +152,50 @@ nav {
   width: 8vw;
   text-align: center;
   font-size: 0.8vw;
-  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.20);
+  box-shadow: 2.0px 6.0px 6.0px hsl(0deg 0% 0% / 0.10);
   background-color: #dde1e4;
 }
 
 canvas {
-  height: 13vw;
+  height: 60%;
+  /* width: 5%; */
 }
 
 .hydration-canvas-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.5vw;
+  height: 45vh;
+  justify-content: center;
 }
+
+.sleep-canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30vh;
+  width: 29vw;
+  justify-content: flex-start;
+}
+
+.sleep-text {
+  text-align: center;
+}
+
+#waterToday {
+  font-weight: bold;
+  color: #ff8552;
+  font-size: 4vw;
+  -webkit-text-fill-color: #ff8552;
+  -webkit-text-stroke-width: .05vw;
+  -webkit-text-stroke-color: #31393C;
+}
+
+/* .sleep-average {
+  border: 1px solid red;
+}
+
+#allTimeAvgSleepHoursAndQuality {
+  border: 1px solid red;
+} */

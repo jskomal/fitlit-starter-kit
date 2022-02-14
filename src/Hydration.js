@@ -21,7 +21,7 @@ class Hydration {
 
   getWaterByDate(date) {
     return this.waterData.find(waterLogEntry => {
-      return (dayjs(date)).subtract(1,'day').isSame(waterLogEntry.date.subtract(1,'day'))
+      return dayjs(date).isSame(waterLogEntry.date)
     }).numOunces
   }
 
@@ -29,9 +29,9 @@ class Hydration {
     return this.waterData.filter(waterLogEntry => {
       return dayjs(date).isBetween(
         dayjs(waterLogEntry.date, 'MMM D YYYY'),
-        dayjs(waterLogEntry.date, 'MMM D YYYY').add(1, 'week'),
+        dayjs(waterLogEntry.date, 'MMM D YYYY').subtract(6, 'day'),
         null,
-        '[)'
+        '[]'
       )
     }).map(waterLogEntry => waterLogEntry.numOunces)
   }

@@ -1,10 +1,6 @@
-import dayjs from 'dayjs'
-import isBetween from 'dayjs/plugin/isBetween'
-dayjs.extend(isBetween)
+// imports
 import datepicker from 'js-datepicker'
-
 import Chart from 'chart.js/auto'
-
 import UserRepository from './UserRepository'
 import User from './User'
 import {
@@ -13,12 +9,12 @@ import {
   fetchActivityData,
   fetchHydrationData,
 } from './apiCalls'
-
 import './css/styles.css'
-
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
 import Hydration from './Hydration'
+import Sleep from './Sleep'
+import SleepRepository from './SleepRepository'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -36,23 +32,31 @@ const compareUserSteps = document.querySelector('#compareStepGoal')
 const userWaterToday = document.querySelector('#waterToday')
 const hydrationCanvas = document.querySelector('#hydrationChart').getContext('2d')
 
-//globals
+// sleep card
+const sleepHoursAndQuality = document.querySelector('#dailySleepHoursAndQuality')
+const allTimeAvgSleepHoursAndQuality = document.querySelector('#allTimeAvgSleepHoursAndQuality')
+const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
+
+// globals
 let users
 let userRepo
-let hydrationData
-let sleepData
-let activityData
-let hydrationUsers = []
 let currentUser
-let currentHydrationUser
-let hydrationChart
-let currentHydrationChartData
 
-const datePicker = datepicker('#calendar', {
-  startDate: new Date(2019, 5, 15),
-  minDate: new Date(2019, 5, 15),
-  maxDate: new Date(2020, 0, 22),
-})
+let hydrationData
+let hydrationUsers = []
+let hydrationChart
+
+let sleepData
+let sleepUsers = []
+let sleepChart
+
+let sleepRepositoryData
+
+let activityData
+
+let currentHydrationChartData
+let currentSleepTimeChartData
+let currentSleepQualityChartData
 
 // functions
 
@@ -72,50 +76,95 @@ const getRandomIndex = (array) => {
 
 const selectRandomUser = () => {
   const randomIndex = getRandomIndex(users)
-  currentUser = users[randomIndex]
-  currentHydrationUser = hydrationUsers.find((user) => {
-    return user.userID == currentUser.id
-  })
   return users[randomIndex]
 }
 
 const displayRandomUser = () => {
-  const randomUser = selectRandomUser()
-  updateUserCard(randomUser)
-  loadHydrationCard(randomUser)
+  currentUser = selectRandomUser()
+  updateUserCard(currentUser)
+  loadHydrationCard(currentUser)
   displayHydrationChart()
+  loadSleepCard(currentUser)
+  displaySleepChart()
 }
 
-const updateUserCard = (randomUser) => {
-  welcomeUser.innerText = `Welcome, ${randomUser.returnFirstName()}!`
-  userName.innerText = `NAME: ${randomUser.name}`
-  userAddress.innerText = `ADDRESS: ${randomUser.address}`
-  userEmail.innerText = `EMAIL: ${randomUser.email}`
-  userStrideLength.innerText = `STRIDE LENGTH: ${randomUser.strideLength}`
-  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${randomUser.dailyStepGoal}`
+const updateUserCard = (currentUser) => {
+  welcomeUser.innerText = `Welcome, ${currentUser.returnFirstName()}!`
+  userName.innerText = `NAME: ${currentUser.name}`
+  userAddress.innerText = `ADDRESS: ${currentUser.address}`
+  userEmail.innerText = `EMAIL: ${currentUser.email}`
+  userStrideLength.innerText = `STRIDE LENGTH: ${currentUser.strideLength}`
+  userDailyStepGoal.innerText = `DAILY STEP GOAL: ${currentUser.dailyStepGoal}`
   compareUserSteps.innerText = `Your step goal is ${
-    (randomUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
+    (currentUser.dailyStepGoal / userRepo.returnAvgSteps()).toFixed(2) * 100
   }% of the average goal of ${userRepo.returnAvgSteps()}`
 }
+
+// create charts
+const datePicker = datepicker('#calendar', {
+  onSelect: (instance, date) => {
+    loadHydrationCard(currentUser)
+    hydrationChart.destroy()
+    displayHydrationChart()
+    loadSleepCard(currentUser)
+    sleepChart.destroy()
+    displaySleepChart()
+  },
+  startDate: new Date(2019, 5, 22),
+  minDate: new Date(2019, 5, 15),
+  maxDate: new Date(2020, 0, 22),
+})
 
 const displayHydrationChart = () => {
   hydrationChart = new Chart(hydrationCanvas, {
     type: 'bar',
     data: {
       labels: [
-        'a week ago',
-        'Like... almost a week ago',
-        'So long ago',
-        'Yassturday',
-        'Presturday',
-        'Yesterday',
         'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like..almost a week ago',
+        'A week ago',
       ],
       datasets: [
         {
           label: 'Ounces',
           data: currentHydrationChartData,
-          backgroundColor: ['#7699d4', '#ff8552'],
+          backgroundColor: '#7699d4',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  })
+}
+
+const displaySleepChart = () => {
+  sleepChart = new Chart(sleepCanvas, {
+    type: 'line',
+    data: {
+      labels: [
+        'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like..almost a week ago',
+        'A week ago',
+      ],
+      datasets: [
+        {
+          label: 'Hours',
+          data: currentSleepTimeChartData,
+          backgroundColor: '#ff8552',
+        },
+        {
+          label: 'Quality',
+          data: currentSleepQualityChartData,
+          backgroundColor: '#7699d4',
         },
       ],
     },
@@ -132,6 +181,7 @@ const parseAllData = (allData) => {
   hydrationData = allData[3].hydrationData
   parseHydrationData(hydrationData)
   sleepData = allData[1].sleepData
+  parseSleepData(sleepData)
   activityData = allData[2].activityData
   displayRandomUser()
 }
@@ -158,38 +208,63 @@ const parseHydrationData = (hydrationData) => {
   })
 }
 
-const loadHydrationCard = (randomUser) => {
-    const userWater = hydrationUsers.find((user) => {
-      return user.userID == randomUser.id
+const parseSleepData = (sleepData) => {
+  const filteredSleepData = {}
+  sleepData.forEach((sleepLogEntry) => {
+    if (sleepLogEntry.userID in filteredSleepData) {
+      filteredSleepData[sleepLogEntry.userID].push({
+        date: sleepLogEntry.date,
+        hoursSlept: sleepLogEntry.hoursSlept,
+        sleepQuality: sleepLogEntry.sleepQuality
+      })
+    } else {
+      filteredSleepData[sleepLogEntry.userID] = [
+        {
+          date: sleepLogEntry.date,
+          hoursSlept: sleepLogEntry.hoursSlept,
+          sleepQuality: sleepLogEntry.sleepQuality
+        },
+      ]
+    }
+  })
+  Object.keys(filteredSleepData).forEach((userID) => {
+    sleepUsers.push(new Sleep(userID, filteredSleepData))
+  })
+  sleepRepositoryData = new SleepRepository(sleepUsers)
+}
+
+const loadHydrationCard = () => {
+    const currentUserWater = hydrationUsers.find((user) => {
+      return user.userID == currentUser.id
     })
-    currentHydrationChartData = userWater.getWaterInWeek(calendar.value.substring(4))
-    userWaterToday.innerText = `You drank ${userWater.getWaterByDate(
+    currentHydrationChartData = currentUserWater.getWaterInWeek(
       calendar.value.substring(4)
-    )} oz today!`
+    )
+    userWaterToday.innerText = ` ${currentUserWater.getWaterByDate(
+      calendar.value.substring(4)
+    )}`
+}
+
+const loadSleepCard = () => {
+  const currentUserSleep = sleepUsers.find((user) => {
+    return user.userID == currentUser.id
+  })
+  currentSleepTimeChartData = currentUserSleep.getSleepTimeInWeek(
+    calendar.value.substring(4)
+  )
+  currentSleepQualityChartData = currentUserSleep.getSleepQualityInWeek(
+    calendar.value.substring(4)
+  )
+  sleepHoursAndQuality.innerText = `You slept for ${currentUserSleep.getSleepTimeByDate(
+    calendar.value.substring(4)
+  )} hours today
+  at the quality of ${currentUserSleep.getSleepQualityByDate(
+    calendar.value.substring(4)
+  )}`
+  allTimeAvgSleepHoursAndQuality.innerText = `Your all time average
+  Sleep Hours: ${currentUserSleep.getAvgSleepTime()}
+  Sleep Quality: ${currentUserSleep.getAvgSleepQuality()}`
 }
 
 // event listeners
 window.addEventListener('load', fetchAllData)
-
-calendar.addEventListener('blur', () => {
-  const userWater = hydrationUsers.find((user) => {
-    return user.userID == currentUser.id
-  })
-  currentHydrationUser = userWater
-})
-
-calendar.addEventListener('focusout', () => {
-  setTimeout(() => {
-    hydrationChart.data.datasets = [
-      {
-        label: 'Ounces',
-        data: currentHydrationUser.getWaterInWeek(calendar.value.substring(4)),
-        backgroundColor: ['#7699d4', '#ff8552'],
-      },
-    ]
-    userWaterToday.innerText = `You drank ${currentHydrationUser.getWaterByDate(
-      calendar.value.substring(4)
-    )} oz today!`
-    hydrationChart.update()
-  },500)
-})

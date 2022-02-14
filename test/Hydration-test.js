@@ -103,8 +103,8 @@ describe('Hydration', () => {
   })
 
   it('should have a method to return ounces of water drank per day over the course of a week', () => {
-    expect(hydratedUser.getWaterInWeek('Jun 26 2019')).to.deep.equal([
-      69, 54, 41, 37, 75, 47, 99
+    expect(hydratedUser.getWaterInWeek('Jun 19 2019')).to.deep.equal([
+      85, 69, 54, 41, 37, 75, 47,
     ])
   })
 })
