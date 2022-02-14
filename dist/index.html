@@ -7,7 +7,9 @@
   <body>
     <div class="nav-wrapper">
       <nav class="welcome-nav">
-        <img src="./images/succulent.svg" alt="succulent" height="100px" width="100px">
+        <div class="white-circle">
+          <img src="./images/succulent.svg" alt="succulent" height="100px" width="100px">
+        </div>
         <div class="welcome-text">
           <h1>Get Fit Get Lit</h1>
           <h2 id="welcomeName">Welcome</h2>
@@ -47,12 +49,14 @@
         <p id="dailySleepHoursAndQuality" class="sleep-text">
           You slept for   hours today at the quality of
         </p>
-        <!-- <p class="sleep-average">
-          Your all time average
-        </p> -->
-        <p id="allTimeAvgSleepHoursAndQuality" class="sleep-text">
-          All Time Average Sleep Hours/quality:
-        </p>
+        <div>
+          <p class="sleep-average">
+            Your all time average
+          </p>
+          <p id="allTimeAvgSleepHoursAndQuality" class="sleep-text">
+            All Time Average Sleep Hours/quality:
+          </p>
+        </div>
         <div class="sleep-canvas-wrapper">
         <p>
           Weekly Sleep Data:
@@ -66,7 +70,8 @@
         <p class ="water-text">
         You drank
         <p id="waterToday">
-        </p> ounces today!
+        </p>
+        ounces today!
         </p>
         <div class="hydration-canvas-wrapper">
         <p id="waterThisWeek">Weekly Water Intake:</p>

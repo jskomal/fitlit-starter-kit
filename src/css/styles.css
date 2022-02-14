@@ -33,7 +33,7 @@ input, button, textarea, select {
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-  font-size: .8vw;
+  font-size: 0.8vw;
   overflow-wrap: break-word;
   margin-left: 0.5em;
   padding: 0, 0.25em;
@@ -56,6 +56,7 @@ h1 {
   -webkit-text-stroke-color: #31393C;
 }
 
+
 nav, section {
   border-radius: 3px;
 }
@@ -73,11 +74,12 @@ nav {
 }
 
 .welcome-nav {
-  color: #31393C;
   display: flex;
   align-items: center;
   width: 62%;
+  padding: .5vw;
 }
+
 
 .welcome-nav, .user-card, .activity-box, .sleep-box, .hydration-box {
   background-color: #ccd0d4;
@@ -94,7 +96,7 @@ nav {
 .activities-wrapper {
   display: flex;
   width: 100vw;
-  height: 70vh;
+  height: 65vh;
   justify-content: space-between;
 }
 
@@ -109,11 +111,12 @@ nav {
 }
 
 .activity-box > p, .sleep-box > p, .hydration-box > p {
-  font-size: 1.5vw;
+  font-size: 1vw;
   margin: 0;
 }
 
 .card-text {
+  padding-top: 3vw;
   font-size: 2.5vw;
   font-weight: 800;
   color: #7699d4;
@@ -157,8 +160,7 @@ nav {
 }
 
 canvas {
-  height: 60%;
-  /* width: 5%; */
+  height: 80%;
 }
 
 .hydration-canvas-wrapper {
@@ -167,11 +169,14 @@ canvas {
   align-items: center;
   padding: 0.5vw;
   height: 45vh;
+  height: 25vw;
   justify-content: center;
 }
 
 .sleep-canvas-wrapper {
   display: flex;
+  padding-top: .5vw;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   height: 30vh;
@@ -192,10 +197,17 @@ canvas {
   -webkit-text-stroke-color: #31393C;
 }
 
-/* .sleep-average {
-  border: 1px solid red;
+.sleep-average {
+  display: flex;
+  justify-content: center;
+  height: 3vw;
+  flex-direction: row;
+  align-items: flex-end;
+  border-bottom: solid 2px #31393C;
 }
 
 #allTimeAvgSleepHoursAndQuality {
-  border: 1px solid red;
-} */
+  font-size: 1.2vw;
+  display: flex;
+
+}

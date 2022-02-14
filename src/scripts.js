@@ -266,7 +266,7 @@ const loadSleepCard = (randomUser) => {
     calendar.value.substring(4)
   )} hours today
   at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
-  allTimeAvgSleepHoursAndQuality.innerText = `Your all time average
+  allTimeAvgSleepHoursAndQuality.innerText = `
   Sleep Hours: ${userSleep.getAvgSleepTime()}
   Sleep Quality: ${userSleep.getAvgSleepQuality()}`
 }
