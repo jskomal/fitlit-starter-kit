@@ -49,7 +49,7 @@ Jessica Fatta | [GitHub](https://github.com/JessFatta)
 --------
 ### Links
 
-Repository Link: [Get Fit Get Link ](https://github.com/jskomal/get-fit-get-lit)
+Repository Link: [Get Fit Get Link 😎](https://github.com/jskomal/get-fit-get-lit)
 
 ------------
 ### Architecture & Technologies Used
