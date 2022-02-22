@@ -158,6 +158,11 @@ describe('Activity', () => {
     }
   ])
   })
+
+  it('should have a method to calculate a user\'s all-time stair climbing record', () => {
+    expect(activityUser.getAllTimeStairRecord()).to.equal(40)
+  })
+
   
 
 
