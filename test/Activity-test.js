@@ -33,6 +33,9 @@ describe('Activity', () => {
     expect(Activity).to.be.a('function')
   })
 
+  it('should instantiate the Activity class', () => {
+    expect(activityUser).to.be.an.instanceof(Activity)
+  })
 
 
 
