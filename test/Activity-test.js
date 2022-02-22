@@ -7,6 +7,8 @@ describe('Activity', () => {
   let userActivityData1
   let userActivityData2
   let userActivityData3
+  let testActivityData
+  let activityUser
 
   beforeEach(() => {
     userActivityData1 = {
@@ -27,6 +29,14 @@ describe('Activity', () => {
       minutesActive: 116,
       flightsOfStairs: 33 
     } 
+    
+    testActivityData = {1: [
+      userActivityData1,
+      userActivityData2,
+      userActivityData3
+    ]}
+
+    activityUser = new Activity(1, testActivityData)
   })
 
   it('should be a function', () => {
@@ -36,6 +46,12 @@ describe('Activity', () => {
   it('should instantiate the Activity class', () => {
     expect(activityUser).to.be.an.instanceof(Activity)
   })
+
+  it('should have an id', () => {
+    expect(activityUser.userID).to.equal(1)
+  })
+
+  
 
 
 
