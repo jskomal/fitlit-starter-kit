@@ -73,7 +73,10 @@ describe('Activity', () => {
       }
     ])
   })
-  
+
+  it('should have a method to calculate a user\'s mileage by a date', () => {
+    expect(activityUser.getMileageByDate('2019/06/17')).to.equal(6.03)
+  })
 
 
 
