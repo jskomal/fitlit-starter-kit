@@ -123,7 +123,7 @@ describe('Activity', () => {
       },
       {
         date: dayjs('2019/06/21'),
-        numSteps: 9735,
+        numSteps: 10001,
         minutesActive: 110,
         flightsOfStairs: 15 
       } 
@@ -140,8 +140,15 @@ describe('Activity', () => {
   })
 
   it('should have a method to calculate average minutes active for a given week', () => {
-    expect(activityUser.getAverageActivityMinutesPerWeek('2019/06/21')).to.equal(121.86)
+    expect(activityUser.getAvgActivityMinutesPerWeek('2019/06/21')).to.equal(121.86)
   })
+
+  it('should have a method to calculate if they reached their step goal for a given day', () => {
+    expect(activityUser.getDailyStepGoalReached('2019/06/20')).to.equal(false)
+    expect(activityUser.getDailyStepGoalReached('2019/06/21')).to.equal(true)
+  })
+
+  
 
 
 
