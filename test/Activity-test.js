@@ -51,6 +51,28 @@ describe('Activity', () => {
     expect(activityUser.userID).to.equal(1)
   })
 
+  it('should have a property that holds the activity data', () => {
+    expect(activityUser.activityData).to.deep.equal([
+      { 
+        date: dayjs('2019/06/15'),
+        numSteps: 3577,
+        minutesActive: 140,
+        flightsOfStairs: 16 
+      }, 
+      {
+        date: dayjs('2019/06/16'),
+        numSteps: 4294,
+        minutesActive: 138,
+        flightsOfStairs: 10 
+      },
+      {
+        date: dayjs('2019/06/17'),
+        numSteps: 7402,
+        minutesActive: 116,
+        flightsOfStairs: 33 
+      }
+    ])
+  })
   
 
 
