@@ -78,6 +78,12 @@ describe('Activity', () => {
     expect(activityUser.getMileageByDate('2019/06/17')).to.equal(6.03)
   })
 
+  it('should have a method to return minutes active by date', () => {
+    expect(activityUser.getMinutesActiveByDate('2019/06/16')).to.equal(138)
+  })
+
+  
+
 
 
 
