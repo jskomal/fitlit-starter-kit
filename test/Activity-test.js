@@ -148,6 +148,16 @@ describe('Activity', () => {
     expect(activityUser.getDailyStepGoalReached('2019/06/21')).to.equal(true)
   })
 
+  it('should have a method to return all the days they exceeded their step goal', () => {
+    expect(activityUser.getExceededStepGoalDays()).to.deep.equal([
+      {
+      date: dayjs('2019/06/21'),
+      numSteps: 10001,
+      minutesActive: 110,
+      flightsOfStairs: 15 
+    }
+  ])
+  })
   
 
 
