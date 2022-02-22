@@ -163,7 +163,7 @@ describe('Activity', () => {
     expect(activityUser.getAllTimeStairRecord()).to.equal(40)
   })
 
-  
+  it('should')
 
 
 
