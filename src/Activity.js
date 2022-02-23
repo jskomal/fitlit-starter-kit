@@ -1,7 +1,21 @@
+import dayjs from 'dayjs'
+
+
 class Activity {
-  constructor() {
-    
+  constructor(userID, activityData) {
+    this.userID = userID;
+    this.activityData = activityData[userID].map((activityLogEntry) => {
+      return {
+        date: dayjs(activityLogEntry.date),
+        numSteps: activityLogEntry.numSteps,
+        minutesActive: activityLogEntry.minutesActive,
+        flightsOfStairs: activityLogEntry.flightsOfStairs,
+    }
+   })
   }
+
+
+
 }
 
 

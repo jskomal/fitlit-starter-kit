@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import Activity from '../src/Activity'
 
 
-describe('Activity', () => {
+describe.only('Activity', () => {
   let userActivityData1
   let userActivityData2
   let userActivityData3
@@ -53,7 +53,7 @@ describe('Activity', () => {
     },
     userActivityData7 = {
       date: '2019/06/21',
-      numSteps: 9735,
+      numSteps: 10001,
       minutesActive: 110,
       flightsOfStairs: 15 
     } 
@@ -162,12 +162,6 @@ describe('Activity', () => {
   it('should have a method to calculate a user\'s all-time stair climbing record', () => {
     expect(activityUser.getAllTimeStairRecord()).to.equal(40)
   })
-
-  it('should')
-
-
-
-
 
 
 })
