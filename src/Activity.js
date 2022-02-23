@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
 import UserRepository from '../src/UserRepository'
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
 
 class Activity {
   constructor(userID, activityData) {
@@ -13,6 +15,7 @@ class Activity {
       }
     })
   }
+
   getMileageByDate(user, date) {
     const steps = this.activityData.find((activityLogEntry) => {
       return dayjs(date).isSame(activityLogEntry.date)
@@ -22,10 +25,31 @@ class Activity {
     const result = parseFloat(miles.toFixed(2))
     return result
   }
+
   getMinutesActiveByDate(date) {
     return this.activityData.find((activityLogEntry) => {
       return dayjs(date).isSame(activityLogEntry.date)
     }).minutesActive
+  }
+
+  getAvgActivityMinutesPerWeek(date) {
+    // return an array of the week's minutesActive
+    const weeklyActivity = this.activityData.filter((activityLogEntry) => {
+      return dayjs(activityLogEntry.date).isBetween(
+        dayjs(date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(date, 'MMM D YYYY'),
+        null,
+        '[]'
+      )
+    })
+    const mappedActivity = weeklyActivity.map((activityLogEntry) => {
+      return activityLogEntry.minutesActive
+    })
+    const sum = mappedActivity.reduce((acc, currentMinutesActive) => {
+      acc += currentMinutesActive
+      return acc
+    }, 0)
+    return parseFloat((sum / 7).toFixed(2))
   }
 }
 
