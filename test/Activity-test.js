@@ -167,8 +167,12 @@ describe.only('Activity', () => {
   })
 
   it('should have a method to calculate if they reached their step goal for a given day', () => {
-    expect(activityUser.getDailyStepGoalReached('2019/06/20')).to.equal(false)
-    expect(activityUser.getDailyStepGoalReached('2019/06/21')).to.equal(true)
+    expect(activityUser.getDailyStepGoalReached(testUser.data[0], '2019/06/20')).to.equal(
+      false
+    )
+    expect(activityUser.getDailyStepGoalReached(testUser.data[0], '2019/06/21')).to.equal(
+      true
+    )
   })
 
   it('should have a method to return all the days they exceeded their step goal', () => {

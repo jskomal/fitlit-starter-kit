@@ -33,7 +33,6 @@ class Activity {
   }
 
   getAvgActivityMinutesPerWeek(date) {
-    // return an array of the week's minutesActive
     const weeklyActivity = this.activityData.filter((activityLogEntry) => {
       return dayjs(activityLogEntry.date).isBetween(
         dayjs(date, 'MMM D YYYY').subtract(6, 'day'),
@@ -50,6 +49,10 @@ class Activity {
       return acc
     }, 0)
     return parseFloat((sum / 7).toFixed(2))
+  }
+
+  getDailyStepGoalReached(user, date) {
+    // return a boolean reflecting if their daily steps is higher or lower than their goal
   }
 }
 
