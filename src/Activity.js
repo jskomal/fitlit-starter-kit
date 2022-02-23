@@ -53,6 +53,11 @@ class Activity {
 
   getDailyStepGoalReached(user, date) {
     // return a boolean reflecting if their daily steps is higher or lower than their goal
+    const todaySteps = this.activityData.find((activityLogEntry) => {
+      return dayjs(date).isSame(activityLogEntry.date)
+    }).numSteps
+    const stepGoal = user.dailyStepGoal
+    return todaySteps >= stepGoal ? true : false
   }
 }
 
