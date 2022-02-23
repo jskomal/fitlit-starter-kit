@@ -176,7 +176,7 @@ describe.only('Activity', () => {
   })
 
   it('should have a method to return all the days they exceeded their step goal', () => {
-    expect(activityUser.getExceededStepGoalDays()).to.deep.equal([
+    expect(activityUser.getExceededStepGoalDays(testUser.data[0])).to.deep.equal([
       {
         date: dayjs('2019/06/21'),
         numSteps: 10001,
