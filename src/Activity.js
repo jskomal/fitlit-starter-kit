@@ -22,6 +22,11 @@ class Activity {
     const result = parseFloat(miles.toFixed(2))
     return result
   }
+  getMinutesActiveByDate(date) {
+    return this.activityData.find((activityLogEntry) => {
+      return dayjs(date).isSame(activityLogEntry.date)
+    }).minutesActive
+  }
 }
 
 export default Activity
