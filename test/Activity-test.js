@@ -15,7 +15,7 @@ describe.only('Activity', () => {
   let activityUser
 
   beforeEach(() => {
-    ;(userRepo = [
+    userRepo = [
       {
         id: 1,
         name: 'Luisa Hane',
@@ -25,61 +25,70 @@ describe.only('Activity', () => {
         dailyStepGoal: 10000,
         friends: [16, 4, 8],
       },
-    ]),
-      (userActivityData1 = {
-        date: '2019/06/15',
-        numSteps: 3577,
-        minutesActive: 140,
-        flightsOfStairs: 16,
-      }),
-      (userActivityData2 = {
-        date: '2019/06/16',
-        numSteps: 4294,
-        minutesActive: 138,
-        flightsOfStairs: 10,
-      }),
-      (userActivityData3 = {
-        date: '2019/06/17',
-        numSteps: 7402,
-        minutesActive: 116,
-        flightsOfStairs: 33,
-      }),
-      (userActivityData4 = {
-        date: '2019/06/18',
-        numSteps: 5021,
-        minutesActive: 48,
-        flightsOfStairs: 12,
-      }),
-      (userActivityData5 = {
-        date: '2019/06/19',
-        numSteps: 3640,
-        minutesActive: 180,
-        flightsOfStairs: 40,
-      }),
-      (userActivityData6 = {
-        date: '2019/06/20',
-        numSteps: 8952,
-        minutesActive: 121,
-        flightsOfStairs: 5,
-      }),
-      (userActivityData7 = {
-        date: '2019/06/21',
-        numSteps: 10001,
-        minutesActive: 110,
-        flightsOfStairs: 15,
-      }),
-      (testActivityData = {
-        1: [
-          userActivityData1,
-          userActivityData2,
-          userActivityData3,
-          userActivityData4,
-          userActivityData5,
-          userActivityData6,
-          userActivityData7,
-        ],
-      }),
-      (activityUser = new Activity(1, testActivityData))
+    ]
+
+    userActivityData1 = {
+      date: '2019/06/15',
+      numSteps: 3577,
+      minutesActive: 140,
+      flightsOfStairs: 16,
+    }
+
+    userActivityData2 = {
+      date: '2019/06/16',
+      numSteps: 4294,
+      minutesActive: 138,
+      flightsOfStairs: 10,
+    }
+
+    userActivityData3 = {
+      date: '2019/06/17',
+      numSteps: 7402,
+      minutesActive: 116,
+      flightsOfStairs: 33,
+    }
+
+    userActivityData4 = {
+      date: '2019/06/18',
+      numSteps: 5021,
+      minutesActive: 48,
+      flightsOfStairs: 12,
+    }
+
+    userActivityData5 = {
+      date: '2019/06/19',
+      numSteps: 3640,
+      minutesActive: 180,
+      flightsOfStairs: 40,
+    }
+
+    userActivityData6 = {
+      date: '2019/06/20',
+      numSteps: 8952,
+      minutesActive: 121,
+      flightsOfStairs: 5,
+    }
+
+    userActivityData7 = {
+      date: '2019/06/21',
+      numSteps: 10001,
+      minutesActive: 110,
+      flightsOfStairs: 15,
+    }
+
+    testActivityData = {
+      1: [
+        userActivityData1,
+        userActivityData2,
+        userActivityData3,
+        userActivityData4,
+        userActivityData5,
+        userActivityData6,
+        userActivityData7,
+      ],
+    }
+
+    activityUser = new Activity(1, testActivityData)
   })
 
   it('should be a function', () => {
@@ -150,9 +159,7 @@ describe.only('Activity', () => {
   })
 
   it('should have a method to calculate average minutes active for a given week', () => {
-    expect(activityUser.getAvgActivityMinutesPerWeek('2019/06/21')).to.equal(
-      121.86
-    )
+    expect(activityUser.getAvgActivityMinutesPerWeek('2019/06/21')).to.equal(121.86)
   })
 
   it('should have a method to calculate if they reached their step goal for a given day', () => {
