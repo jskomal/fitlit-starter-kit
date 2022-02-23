@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
 import UserRepository from '../src/UserRepository'
-import User from '../src/User'
 
 class Activity {
   constructor(userID, activityData) {
@@ -10,26 +9,18 @@ class Activity {
         date: dayjs(activityLogEntry.date),
         numSteps: activityLogEntry.numSteps,
         minutesActive: activityLogEntry.minutesActive,
-        flightsOfStairs: activityLogEntry.flightsOfStairs,
+        flightsOfStairs: activityLogEntry.flightsOfStairs
       }
     })
   }
-  getMileageByDate(date) {
-    const dateObj = this.activityData.find((activityLogEntry) => {
+  getMileageByDate(user, date) {
+    const steps = this.activityData.find((activityLogEntry) => {
       return dayjs(date).isSame(activityLogEntry.date)
-    })
-
-    const strideLength = userRepo.find((user) => {
-      return user.id === this.userID
-    }).strideLength
-    return strideLength
-    // return parseFloat(
-    //   (
-    //     this.activityData.find((activityLogEntry) => {
-    //       return dayjs(date).isSame(activityLogEntry.date)
-    //     }).numSteps / 5280
-    //   ).toFixed(2)
-    // )
+    }).numSteps
+    const strideLength = user.strideLength
+    const miles = (strideLength * steps) / 5280
+    const result = parseFloat(miles.toFixed(2))
+    return result
   }
 }
 
