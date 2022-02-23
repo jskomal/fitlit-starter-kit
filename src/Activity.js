@@ -66,6 +66,16 @@ class Activity {
     })
     return result
   }
+
+  getAllTimeStairRecord() {
+    const sortedFlights = this.activityData.sort(
+      (a, b) => b.flightsOfStairs - a.flightsOfStairs
+    )
+    const mapFlights = sortedFlights.map(
+      (activityLogEntry) => activityLogEntry.flightsOfStairs
+    )
+    return mapFlights[0]
+  }
 }
 
 export default Activity
