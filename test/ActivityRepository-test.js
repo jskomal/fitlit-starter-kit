@@ -69,7 +69,7 @@ describe.only('Activity Repository', () => {
   })
 
   it('should have a method to calculate the average steps taken by date', () => {
-    expect(activityRepository.getAllAvgStepsByDate('2019/06/15')).to.equal(5090.33)
+    expect(activityRepository.getAllAvgStepsByDate('2019/06/15')).to.equal(5091)
   })
 
   it('should have a method to calculate the average minutes active by date', () => {
