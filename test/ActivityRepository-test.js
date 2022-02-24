@@ -73,6 +73,6 @@ describe.only('Activity Repository', () => {
   })
 
   it('should have a method to calculate the average minutes active by date', () => {
-    expect(activityRepository.getAllAvgMinsActiveByDate('2019/06/15')).to.equal(148)
+    expect(activityRepository.getAllAvgMinsActiveByDate('2019/06/15')).to.equal(131.33)
   })
 })

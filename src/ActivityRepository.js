@@ -34,6 +34,21 @@ class ActivityRepository {
     }, 0)
     return parseFloat((sum / this.allActivityData.length).toFixed(2))
   }
+
+  getAllAvgMinsActiveByDate(date) {
+    const allMinsByDate = []
+    this.allActivityData.forEach((user) => {
+      allMinsByDate.push(
+        user.activityData.find((activityLogEntry) => {
+          return dayjs(date).isSame(activityLogEntry.date)
+        }).minutesActive
+      )
+    })
+    const sum = allMinsByDate.reduce((acc, currentMins) => {
+      return acc + currentMins
+    }, 0)
+    return parseFloat((sum / this.allActivityData.length).toFixed(2))
+  }
 }
 
 export default ActivityRepository
