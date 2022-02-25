@@ -5,7 +5,7 @@ const fetchUserData = () => {
 }
 
 const fetchSleepData = () => {
-  return fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
+  return fetch('http://localhost:3001/api/v1/sleep')
   .then(response => response.json())
 }
 
