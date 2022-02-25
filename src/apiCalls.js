@@ -15,7 +15,7 @@ const fetchActivityData = () => {
 }
 
 const fetchHydrationData = () => {
-  return fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
+  return fetch('http://localhost:3001/api/v1/hydration	')
   .then(response => response.json())
 }
 
