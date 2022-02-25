@@ -114,6 +114,21 @@ class Activity {
     })
     return weeklyMinutesActive.reverse()
   }
+
+  getWeeklyFlightsClimbed(date) {
+    const weeklyActivity = this.activityData.filter((activityLogEntry) => {
+      return dayjs(activityLogEntry.date).isBetween(
+        dayjs(date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(date, 'MMM D YYYY'),
+        null,
+        '[]'
+      )
+    })
+    const weeklyFlightsClimbed = weeklyActivity.map((activityLogEntry) => {
+      return activityLogEntry.flightsOfStairs
+    })
+    return weeklyFlightsClimbed.reverse()
+  }
 }
 
 export default Activity
