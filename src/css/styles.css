@@ -2,14 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
 @import '~js-datepicker/dist/datepicker.min.css';
 
-body, html {
-  background: url('../images/grey_waves.jpg') #31393C;
+body,
+html {
+  background: url('../images/grey_waves.jpg') #31393c;
   height: 100%;
   background-size: cover;
   transition: all 500ms ease-in-out;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,23 +26,37 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 0.8vw;
   overflow-wrap: break-word;
   margin-left: 0.5em;
   padding: 0, 0.25em;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -49,15 +66,15 @@ h1 {
 }
 
 #welcomeName {
-  color: #7699d4;
+  color: black;
   font-size: 2vw;
-  -webkit-text-fill-color: #7699d4;
-  -webkit-text-stroke-width: .02vw;
-  -webkit-text-stroke-color: #31393C;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 0.02vw;
+  -webkit-text-stroke-color: #31393c;
 }
 
-
-nav, section {
+nav,
+section {
   border-radius: 3px;
 }
 
@@ -77,18 +94,21 @@ nav {
   display: flex;
   align-items: center;
   width: 62%;
-  padding: .5vw;
+  padding: 0.5vw;
 }
 
-
-.welcome-nav, .user-card, .activity-box, .sleep-box, .hydration-box {
+.welcome-nav,
+.user-card,
+.activity-box,
+.sleep-box,
+.hydration-box {
   background-color: #ccd0d4;
-  box-shadow: 2.0px 6.0px 6.0px hsl(0deg 0% 0% / 0.10);
+  box-shadow: 2px 6px 6px hsl(0deg 0% 0% / 0.1);
 }
 
 .user-card {
   width: 35%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -100,7 +120,9 @@ nav {
   justify-content: space-between;
 }
 
-.activity-box, .sleep-box, .hydration-box {
+.activity-box,
+.sleep-box,
+.hydration-box {
   display: flex;
   justify-content: space-around;
   width: 30vw;
@@ -110,7 +132,9 @@ nav {
   align-items: center;
 }
 
-.activity-box > p, .sleep-box > p, .hydration-box > p {
+.activity-box > p,
+.sleep-box > p,
+.hydration-box > p {
   font-size: 1vw;
   margin: 0;
 }
@@ -121,7 +145,7 @@ nav {
   font-weight: 800;
   color: #7699d4;
   -webkit-text-fill-color: #7699d4;
-  -webkit-text-stroke-width: .03vw;
+  -webkit-text-stroke-width: 0.03vw;
   -webkit-text-stroke-color: #606366;
 }
 
@@ -132,8 +156,8 @@ nav {
 }
 
 .fade:hover {
- transform: scale(1.04);
- background-color: #ccd0d4;
+  transform: scale(1.04);
+  background-color: #ccd0d4;
 }
 
 .activity-box {
@@ -148,14 +172,14 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 12vw
+  margin-left: 12vw;
 }
 
 .calendar {
   width: 8vw;
   text-align: center;
   font-size: 0.8vw;
-  box-shadow: 2.0px 6.0px 6.0px hsl(0deg 0% 0% / 0.10);
+  box-shadow: 2px 6px 6px hsl(0deg 0% 0% / 0.1);
   background-color: #dde1e4;
 }
 
@@ -179,7 +203,7 @@ canvas {
 
 .sleep-canvas-wrapper {
   display: flex;
-  padding-top: .5vw;
+  padding-top: 0.5vw;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -197,8 +221,8 @@ canvas {
   color: #ff8552;
   font-size: 4vw;
   -webkit-text-fill-color: #ff8552;
-  -webkit-text-stroke-width: .05vw;
-  -webkit-text-stroke-color: #31393C;
+  -webkit-text-stroke-width: 0.05vw;
+  -webkit-text-stroke-color: #31393c;
 }
 
 .sleep-average {
@@ -207,11 +231,10 @@ canvas {
   height: 3vw;
   flex-direction: row;
   align-items: flex-end;
-  border-bottom: solid 2px #31393C;
+  border-bottom: solid 2px #31393c;
 }
 
 #allTimeAvgSleepHoursAndQuality {
   font-size: 1.2vw;
   display: flex;
-
 }
