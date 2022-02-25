@@ -4,7 +4,7 @@ import Activity from '../src/Activity'
 import User from '../src/User'
 import UserRepository from '../src/UserRepository'
 
-describe('Activity', () => {
+describe.only('Activity', () => {
   let testUser
   let userActivityData1
   let userActivityData2
@@ -188,5 +188,9 @@ describe('Activity', () => {
 
   it("should have a method to calculate a user's all-time stair climbing record", () => {
     expect(activityUser.getAllTimeStairRecord()).to.equal(40)
+  })
+
+  it("should have a method to return a user's steps on a given date", () => {
+    expect(activityUser.getDailySteps('2019/06/15')).to.equal(3577)
   })
 })

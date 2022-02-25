@@ -3,7 +3,7 @@ import Activity from '../src/Activity'
 import ActivityRepository from '../src/ActivityRepository'
 import dayjs from 'dayjs'
 
-describe.only('Activity Repository', () => {
+describe('Activity Repository', () => {
   let userActivityData1
   let userActivityData2
   let userActivityData3

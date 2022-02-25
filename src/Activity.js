@@ -76,6 +76,13 @@ class Activity {
     )
     return mapFlights[0]
   }
+
+  getDailySteps(date) {
+    const steps = this.activityData.find((activityLogEntry) => {
+      return dayjs(date).isSame(activityLogEntry.date)
+    }).numSteps
+    return steps
+  }
 }
 
 export default Activity
