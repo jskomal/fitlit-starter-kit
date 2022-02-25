@@ -37,10 +37,27 @@ const postSleepData = (newSleepData) => {
   })
 }
 
+const postHydrationData = (newHydrationData) => {
+  fetch('http://localhost:3001/api/v1/hydration', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json' },
+    body: JSON.stringify(newHydrationData)
+  })
+  .then(response => {
+    if(!response.ok) {
+      throw new Error('Failed to send hydration data')
+    } else {
+      response.json()
+    }
+  })
+}
+
+
 export {
   fetchUserData,
   fetchSleepData,
   fetchActivityData,
   fetchHydrationData,
-  postSleepData
+  postSleepData,
+  postHydrationData
 }
