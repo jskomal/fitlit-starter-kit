@@ -109,7 +109,7 @@ const displayRandomUser = () => {
   loadSleepCard(currentUser)
   displaySleepChart()
   loadActivityCard(currentUser)
-  // displayActivityChart
+  displayActivityChart()
 }
 
 const updateUserCard = (currentUser) => {
@@ -188,6 +188,43 @@ const displaySleepChart = () => {
         {
           label: 'Quality',
           data: currentSleepQualityChartData,
+          backgroundColor: '#7699d4'
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+  })
+}
+
+const displayActivityChart = () => {
+  activityChart = new Chart(activityCanvas, {
+    type: 'line',
+    data: {
+      labels: [
+        'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like..almost a week ago',
+        'A week ago'
+      ],
+      datasets: [
+        {
+          label: 'Steps',
+          data: currentActivityChartStepsData,
+          backgroundColor: '#ff8552'
+        },
+        {
+          label: 'Minutes Active',
+          data: currentActivityChartMinutesData,
+          backgroundColor: '#7699d4'
+        },
+        {
+          label: 'Flights Climbed',
+          data: currentActivityChartFlightsData,
           backgroundColor: '#7699d4'
         }
       ]
