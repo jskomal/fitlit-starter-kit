@@ -163,6 +163,7 @@ nav {
 
 .activity-box {
   margin-left: 1rem;
+ 
 }
 
 .hydration-box {
@@ -211,6 +212,19 @@ canvas {
   height: 30vh;
   width: 29vw;
   justify-content: flex-start;
+}
+
+.activity-chart {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+#worldSteps,
+#worldMin,
+#worldFlights {
+  font-size: .8vw;
 }
 
 .sleep-text {
