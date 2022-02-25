@@ -89,6 +89,30 @@
         </div>
       </section>
     </div>
+    <form class="modal activity-modal">
+      <h2 class="modal-title">Add Today's Activity Data</h2>
+      <div class="input-wrapper">
+      <label for="numSteps">
+        Add Steps
+      </label>
+      <input type="text" name="numSteps" required>
+      </div>
+      <div class="input-wrapper">
+      <label for="minsActive">
+        Add Activity Minutes
+      </label>
+      <input type="text" name="minsActive" required>
+      </div>
+      <div class="input-wrapper">
+      <label for="flightsClimbed">
+        Add Flights of Stairs
+      </label>
+      <input type="text" name="flightsClimbed" required>
+      </div>
+      <button class="submit-button">
+        Submit
+      </button>
+    </form>
  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
