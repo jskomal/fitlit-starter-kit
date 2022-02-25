@@ -84,6 +84,21 @@ class Activity {
     }).numSteps
     return steps
   }
+
+  getWeeklySteps(date) {
+    const weeklyActivity = this.activityData.filter((activityLogEntry) => {
+      return dayjs(activityLogEntry.date).isBetween(
+        dayjs(date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(date, 'MMM D YYYY'),
+        null,
+        '[]'
+      )
+    })
+    const weeklySteps = weeklyActivity.map((activityLogEntry) => {
+      return activityLogEntry.numSteps
+    })
+    return weeklySteps.reverse()
+  }
 }
 
 export default Activity
