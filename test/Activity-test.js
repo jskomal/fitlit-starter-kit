@@ -200,7 +200,11 @@ describe.only('Activity', () => {
     ])
   })
 
-  // it('should have a method to return the minutes active in a week', () => {})
+  it('should have a method to return the minutes active in a week', () => {
+    expect(activityUser.getWeeklyMinutesActive('2019/06/21')).to.deep.equal([
+      110, 121, 180, 48, 116, 138, 140
+    ])
+  })
 
   // it('should have a method to return the flights of stairs in a week', () => {})
 })

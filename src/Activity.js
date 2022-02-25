@@ -99,6 +99,21 @@ class Activity {
     })
     return weeklySteps.reverse()
   }
+
+  getWeeklyMinutesActive(date) {
+    const weeklyActivity = this.activityData.filter((activityLogEntry) => {
+      return dayjs(activityLogEntry.date).isBetween(
+        dayjs(date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(date, 'MMM D YYYY'),
+        null,
+        '[]'
+      )
+    })
+    const weeklyMinutesActive = weeklyActivity.map((activityLogEntry) => {
+      return activityLogEntry.minutesActive
+    })
+    return weeklyMinutesActive.reverse()
+  }
 }
 
 export default Activity
