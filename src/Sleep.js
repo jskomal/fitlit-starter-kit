@@ -71,7 +71,6 @@ class Sleep {
         )
       })
       .map((sleepLogEntry) => sleepLogEntry.sleepQuality)
-    console.log(weeklySleepQualities)
     return weeklySleepQualities.reverse()
   }
 }
