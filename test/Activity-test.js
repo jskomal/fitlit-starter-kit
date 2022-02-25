@@ -211,4 +211,8 @@ describe.only('Activity', () => {
       15, 5, 40, 12, 33, 10, 16
     ])
   })
+
+  it('should have a method to return the number of flights climbed by date', () => {
+    expect(activityUser.getDailyFlights('2019/06/21')).to.equal(15)
+  })
 })

@@ -129,6 +129,13 @@ class Activity {
     })
     return weeklyFlightsClimbed.reverse()
   }
+
+  getDailyFlights(date) {
+    const flights = this.activityData.find((activityLogEntry) => {
+      return dayjs(date).isSame(activityLogEntry.date)
+    }).flightsOfStairs
+    return flights
+  }
 }
 
 export default Activity
