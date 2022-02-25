@@ -52,6 +52,22 @@ const postHydrationData = (newHydrationData) => {
   })
 }
 
+const postActivityData = (newActivityData) => {
+  fetch('http://localhost:3001/api/v1/activity', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json' },
+    body: JSON.stringify(newActivityData)
+  })
+  .then(response => {
+    if(!response.ok) {
+      throw new Error('Failed to send activity data')
+    } else {
+      response.json()
+    }
+  })
+}
+
+
 
 export {
   fetchUserData,
@@ -59,5 +75,6 @@ export {
   fetchActivityData,
   fetchHydrationData,
   postSleepData,
-  postHydrationData
+  postHydrationData,
+  postActivityData
 }
