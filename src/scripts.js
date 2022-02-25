@@ -45,6 +45,7 @@ const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
 const userSteps = document.querySelector('#userSteps')
 const userMins = document.querySelector('#userMins')
 const userFlights = document.querySelector('#userFlights')
+const userMiles = document.querySelector('#userMiles')
 const worldSteps = document.querySelector('#worldSteps')
 const worldMins = document.querySelector('#worldMins')
 const worldFlights = document.querySelector('#worldFlights')
@@ -324,7 +325,22 @@ const loadActivityCard = (currentUser) => {
   userMins.innerText = `Minutes Active: ${userActivity.getMinutesActiveByDate(
     calendar.value.substring(4)
   )}`
-  userFlights.innerText = `Flights Climbed: ${userActivity.get}`
+  userFlights.innerText = `Flights Climbed: ${userActivity.getDailyFlights(
+    calendar.value.substring(4)
+  )}`
+  userMiles.innerText = `Miles Walked: ${userActivity.getMileageByDate(
+    currentUser,
+    calendar.value.substring(4)
+  )}`
+  worldSteps.innerText = `VS the world average of: ${activityRepositoryData.getAllAvgStepsByDate(
+    calendar.value.substring(4)
+  )}`
+  worldMins.innerText = `VS the world average of: ${activityRepositoryData.getAllAvgMinsActiveByDate(
+    calendar.value.substring(4)
+  )}`
+  worldFlights.innerText = `VS the world average of: ${activityRepositoryData.getAllAvgStairsByDate(
+    calendar.value.substring(4)
+  )}`
 }
 
 // event listeners
