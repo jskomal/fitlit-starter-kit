@@ -17,14 +17,30 @@ const fetchActivityData = () => {
 }
 
 const fetchHydrationData = () => {
-  return fetch('http://localhost:3001/api/v1/hydration	')
+  return fetch('http://localhost:3001/api/v1/hydration')
   .then(response => response.json())
   .catch(error => console.log(error))
+}
+
+const postSleepData = (newSleepData) => {
+  fetch('http://localhost:3001/api/v1/sleep', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json' },
+    body: JSON.stringify(newSleepData)
+  })
+  .then(response => {
+    if(!response.ok) {
+      throw new Error('Failed to send sleep data')
+    } else {
+      response.json()
+    }
+  })
 }
 
 export {
   fetchUserData,
   fetchSleepData,
   fetchActivityData,
-  fetchHydrationData
+  fetchHydrationData,
+  postSleepData
 }
