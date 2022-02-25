@@ -89,25 +89,55 @@
         </div>
       </section>
     </div>
-    <form class="modal activity-modal">
+    <form class="modal activity-modal hidden">
       <h2 class="modal-title">Add Today's Activity Data</h2>
       <div class="input-wrapper">
       <label for="numSteps">
         Add Steps
       </label>
-      <input type="text" name="numSteps" required>
+      <input type="text" name="numSteps" class="form-input" required>
       </div>
       <div class="input-wrapper">
       <label for="minsActive">
         Add Activity Minutes
       </label>
-      <input type="text" name="minsActive" required>
+      <input type="text" name="minsActive" class="form-input" required>
       </div>
       <div class="input-wrapper">
       <label for="flightsClimbed">
         Add Flights of Stairs
       </label>
-      <input type="text" name="flightsClimbed" required>
+      <input type="text" name="flightsClimbed" class="form-input" required>
+      </div>
+      <button class="submit-button">
+        Submit
+      </button>
+    </form>
+    <form class="modal sleep-modal hidden">
+      <h2 class="modal-title">Add Today's Sleep Data</h2>
+      <div class="input-wrapper">
+      <label for="sleepTime">
+        Add Sleep Time
+      </label>
+      <input type="text" name="sleepTime" class="form-input" required>
+      </div>
+      <div class="input-wrapper">
+      <label for="sleepQuality">
+        Add Sleep Quality
+      </label>
+      <input type="text" name="sleepQuality" class="form-input" required>
+      </div>
+      <button class="submit-button">
+        Submit
+      </button>
+    </form>
+    <form class="modal hydration-modal">
+      <h2 class="modal-title">Add Today's Hydration Data</h2>
+      <div class="input-wrapper">
+      <label for="ouncesDrank">
+        Add Ounces Drank
+      </label>
+      <input type="text" name="ouncesDrank" class="form-input" required>
       </div>
       <button class="submit-button">
         Submit
