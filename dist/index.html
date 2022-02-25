@@ -15,8 +15,8 @@
           <h2 id="welcomeName">Welcome</h2>
         </div>
         <div class="calendar-wrapper">
-          <label>Select your date</label>
-          <input class="calendar" id="calendar" value="Sat Jun 22 2019"></input>
+          <label for="calendar">Select your date</label>
+          <input class="calendar" id="calendar" name="calendar" value="Sat Jun 22 2019"></input>
         </div>
       </nav>
       <nav class="user-card">
@@ -31,17 +31,20 @@
     <div class="activities-wrapper">
       <section class="activity-box fade">
         <h3 class="card-text">Activity</h3>
-        <p>
-          Current Date:
-        </p>
-        <p>
+        <p id="userSteps">
           Number of Steps:
         </p>
-        <p>
+        <p id="worldSteps">
+          VS the world average of: 100
+        </p>
+        <p id="userMins">
           Minutes Active:
         </p>
+        <p id="worldMins">VS the world average of: 99</p>
+        <p id="userFlights">Flights Climbed:</p>
+        <p id="worldFlights">VS the world average of: 40</p>
         <p>
-          Flights of Stairs:
+          Miles Walked
         </p>
       </section>
       <section class="sleep-box fade">
