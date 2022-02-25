@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import UserRepository from '../src/UserRepository'
 import isBetween from 'dayjs/plugin/isBetween'
+import ActivityRepository from '../src/ActivityRepository'
 dayjs.extend(isBetween)
 
 class Activity {

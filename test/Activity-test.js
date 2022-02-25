@@ -193,4 +193,12 @@ describe.only('Activity', () => {
   it("should have a method to return a user's steps on a given date", () => {
     expect(activityUser.getDailySteps('2019/06/15')).to.equal(3577)
   })
+
+  it('should have a method to return the steps in a week', () => {
+    expect(activityUser.getWeeklySteps('2019/06/21')).to.deep.equal([10001, 8952, 3640])
+  })
+
+  it('should have a method to return the minutes active in a week', () => {})
+
+  it('should have a method to return the flights of stairs in a week', () => {})
 })
