@@ -75,6 +75,10 @@ let currentHydrationChartData
 let currentSleepTimeChartData
 let currentSleepQualityChartData
 
+let currentActivityChartStepsData
+let currentActivityChartMinutesData
+let currentActivityChartFlightsData
+
 // functions
 
 // on load
@@ -103,6 +107,8 @@ const displayRandomUser = () => {
   displayHydrationChart()
   loadSleepCard(currentUser)
   displaySleepChart()
+  loadActivityCard(currentUser)
+  // displayActivityChart
 }
 
 const updateUserCard = (currentUser) => {
@@ -288,10 +294,8 @@ const loadHydrationCard = () => {
   )}`
 }
 
-const loadSleepCard = (randomUser) => {
-  const userSleep = sleepUsers.find((user) => {
-    return user.userID == randomUser.id
-  })
+const loadSleepCard = (currentUser) => {
+  const userSleep = sleepUsers.find((user) => user.userID == currentUser.id)
   currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
   currentSleepQualityChartData = userSleep.getSleepQualityInWeek(
     calendar.value.substring(4)
@@ -303,6 +307,24 @@ const loadSleepCard = (randomUser) => {
   allTimeAvgSleepHoursAndQuality.innerText = `
   Sleep Hours: ${userSleep.getAvgSleepTime()}
   Sleep Quality: ${userSleep.getAvgSleepQuality()}`
+}
+
+const loadActivityCard = (currentUser) => {
+  const userActivity = activityUsers.find((user) => user.userID == currentUser.id)
+  currentActivityChartStepsData = userActivity.getWeeklySteps(calendar.value.substring(4))
+  currentActivityChartMinutesData = userActivity.getWeeklyMinutesActive(
+    calendar.value.substring(4)
+  )
+  currentActivityChartFlightsData = userActivity.getWeeklyFlightsClimbed(
+    calendar.value.substring(4)
+  )
+  userSteps.innerText = `Number of Steps: ${userActivity.getDailySteps(
+    calendar.value.substring(4)
+  )}`
+  userMins.innerText = `Minutes Active: ${userActivity.getMinutesActiveByDate(
+    calendar.value.substring(4)
+  )}`
+  userFlights.innerText = `Flights Climbed: ${userActivity.get}`
 }
 
 // event listeners
