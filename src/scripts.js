@@ -7,7 +7,7 @@ import {
   fetchUserData,
   fetchSleepData,
   fetchActivityData,
-  fetchHydrationData,
+  fetchHydrationData
 } from './apiCalls'
 import './css/styles.css'
 import './images/succulent.svg'
@@ -15,6 +15,8 @@ import './images/grey_waves.jpg'
 import Hydration from './Hydration'
 import Sleep from './Sleep'
 import SleepRepository from './SleepRepository'
+import Activity from './Activity'
+import ActivityRepository from './ActivityRepository'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -34,7 +36,9 @@ const hydrationCanvas = document.querySelector('#hydrationChart').getContext('2d
 
 // sleep card
 const sleepHoursAndQuality = document.querySelector('#dailySleepHoursAndQuality')
-const allTimeAvgSleepHoursAndQuality = document.querySelector('#allTimeAvgSleepHoursAndQuality')
+const allTimeAvgSleepHoursAndQuality = document.querySelector(
+  '#allTimeAvgSleepHoursAndQuality'
+)
 const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
 
 // globals
@@ -53,6 +57,10 @@ let sleepChart
 let sleepRepositoryData
 
 let activityData
+let activityUsers = []
+let activityChart
+
+let activityRepositoryData
 
 let currentHydrationChartData
 let currentSleepTimeChartData
@@ -66,7 +74,7 @@ const fetchAllData = () => {
     fetchUserData(),
     fetchSleepData(),
     fetchActivityData(),
-    fetchHydrationData(),
+    fetchHydrationData()
   ]).then((allData) => parseAllData(allData))
 }
 
@@ -112,7 +120,7 @@ const datePicker = datepicker('#calendar', {
   },
   startDate: new Date(2019, 5, 22),
   minDate: new Date(2019, 5, 15),
-  maxDate: new Date(2020, 0, 22),
+  maxDate: new Date(2020, 0, 22)
 })
 
 const displayHydrationChart = () => {
@@ -126,19 +134,19 @@ const displayHydrationChart = () => {
         'Yassturday',
         'So long ago',
         'Like..almost a week ago',
-        'A week ago',
+        'A week ago'
       ],
       datasets: [
         {
           label: 'Ounces',
           data: currentHydrationChartData,
-          backgroundColor: '#7699d4',
-        },
-      ],
+          backgroundColor: '#7699d4'
+        }
+      ]
     },
     options: {
-      responsive: true,
-    },
+      responsive: true
+    }
   })
 }
 
@@ -153,24 +161,24 @@ const displaySleepChart = () => {
         'Yassturday',
         'So long ago',
         'Like..almost a week ago',
-        'A week ago',
+        'A week ago'
       ],
       datasets: [
         {
           label: 'Hours',
           data: currentSleepTimeChartData,
-          backgroundColor: '#ff8552',
+          backgroundColor: '#ff8552'
         },
         {
           label: 'Quality',
           data: currentSleepQualityChartData,
-          backgroundColor: '#7699d4',
-        },
-      ],
+          backgroundColor: '#7699d4'
+        }
+      ]
     },
     options: {
-      responsive: true,
-    },
+      responsive: true
+    }
   })
 }
 
@@ -183,6 +191,7 @@ const parseAllData = (allData) => {
   sleepData = allData[1].sleepData
   parseSleepData(sleepData)
   activityData = allData[2].activityData
+  parseActivityData(activityData)
   displayRandomUser()
 }
 
@@ -192,14 +201,14 @@ const parseHydrationData = (hydrationData) => {
     if (waterLogEntry.userID in filteredData) {
       filteredData[waterLogEntry.userID].push({
         date: waterLogEntry.date,
-        numOunces: waterLogEntry.numOunces,
+        numOunces: waterLogEntry.numOunces
       })
     } else {
       filteredData[waterLogEntry.userID] = [
         {
           date: waterLogEntry.date,
-          numOunces: waterLogEntry.numOunces,
-        },
+          numOunces: waterLogEntry.numOunces
+        }
       ]
     }
   })
@@ -223,7 +232,7 @@ const parseSleepData = (sleepData) => {
           date: sleepLogEntry.date,
           hoursSlept: sleepLogEntry.hoursSlept,
           sleepQuality: sleepLogEntry.sleepQuality
-        },
+        }
       ]
     }
   })
@@ -233,16 +242,41 @@ const parseSleepData = (sleepData) => {
   sleepRepositoryData = new SleepRepository(sleepUsers)
 }
 
+const parseActivityData = (activityData) => {
+  const filteredActivityData = {}
+  activityData.forEach((activityLogEntry) => {
+    if (activityLogEntry.userID in filteredActivityData) {
+      filteredActivityData[activityLogEntry.userID].push({
+        date: activityLogEntry.date,
+        numSteps: activityLogEntry.numSteps,
+        minutesActive: activityLogEntry.minutesActive,
+        flightsOfStairs: activityLogEntry.flightsOfStairs
+      })
+    } else {
+      filteredActivityData[activityLogEntry.userID] = [
+        {
+          date: activityLogEntry.date,
+          numSteps: activityLogEntry.numSteps,
+          minutesActive: activityLogEntry.minutesActive,
+          flightsOfStairs: activityLogEntry.flightsOfStairs
+        }
+      ]
+    }
+  })
+  Object.keys(filteredActivityData).forEach((userID) => {
+    activityUsers.push(new Activity(userID, filteredActivityData))
+  })
+  activityRepositoryData = new ActivityRepository(activityUsers)
+}
+
 const loadHydrationCard = () => {
-    const currentUserWater = hydrationUsers.find((user) => {
-      return user.userID == currentUser.id
-    })
-    currentHydrationChartData = currentUserWater.getWaterInWeek(
-      calendar.value.substring(4)
-    )
-    userWaterToday.innerText = ` ${currentUserWater.getWaterByDate(
-      calendar.value.substring(4)
-    )}`
+  const currentUserWater = hydrationUsers.find((user) => {
+    return user.userID == currentUser.id
+  })
+  currentHydrationChartData = currentUserWater.getWaterInWeek(calendar.value.substring(4))
+  userWaterToday.innerText = ` ${currentUserWater.getWaterByDate(
+    calendar.value.substring(4)
+  )}`
 }
 
 const loadSleepCard = (randomUser) => {
@@ -250,7 +284,9 @@ const loadSleepCard = (randomUser) => {
     return user.userID == randomUser.id
   })
   currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
-  currentSleepQualityChartData = userSleep.getSleepQualityInWeek(calendar.value.substring(4))
+  currentSleepQualityChartData = userSleep.getSleepQualityInWeek(
+    calendar.value.substring(4)
+  )
   sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
     calendar.value.substring(4)
   )} hours today
