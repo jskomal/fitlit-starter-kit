@@ -62,7 +62,7 @@ h6 {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 h1 {
@@ -304,4 +304,8 @@ canvas {
 
 .modal-title {
   font-size: 2em;
+}
+
+.form-input {
+  background-color: #dde1e4;
 }
