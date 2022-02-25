@@ -13,6 +13,7 @@ const fetchSleepData = () => {
 const fetchActivityData = () => {
   return fetch('http://localhost:3001/api/v1/activity')
   .then(response => response.json())
+  .catch(error => console.log(error))
 }
 
 const fetchHydrationData = () => {
