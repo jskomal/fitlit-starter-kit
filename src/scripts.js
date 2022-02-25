@@ -41,6 +41,15 @@ const allTimeAvgSleepHoursAndQuality = document.querySelector(
 )
 const sleepCanvas = document.querySelector('#weeklySleepChart').getContext('2d')
 
+// activity card
+const userSteps = document.querySelector('#userSteps')
+const userMins = document.querySelector('#userMins')
+const userFlights = document.querySelector('#userFlights')
+const worldSteps = document.querySelector('#worldSteps')
+const worldMins = document.querySelector('#worldMins')
+const worldFlights = document.querySelector('#worldFlights')
+const activityCanvas = document.querySelector('#weeklyActivityChart').getContext('2d')
+
 // globals
 let users
 let userRepo
