@@ -94,6 +94,7 @@ nav {
 .welcome-nav {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   width: 62%;
   padding: 0.5vw;
 }
@@ -105,6 +106,23 @@ nav {
 .hydration-box {
   background-color: #ccd0d4;
   box-shadow: 2px 6px 6px hsl(0deg 0% 0% / 0.1);
+}
+
+.add-data-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-button {
+  height: 3vh;
+  width: 8vw;
+  font-size: .6em;
+  margin: .5em;
+  background-color: #dde1e4;
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
 
 .user-card {
@@ -174,7 +192,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 12vw;
+  margin-left: 3vw;
 }
 
 .calendar {
