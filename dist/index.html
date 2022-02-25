@@ -46,26 +46,23 @@
         <p>
           Miles Walked
         </p>
+        <div class="activity-chart">
+          <label for="activityChart" class="activity-chart-label">Weekly Activity Data</label>
+          <canvas name="activityChart" id="weeklyActivityChart"></canvas>
+        </div>
       </section>
       <section class="sleep-box fade">
         <h3 class="card-text">Sleep</h3>
         <p id="dailySleepHoursAndQuality" class="sleep-text">
-          You slept for   hours today at the quality of
-        </p>
+          You slept for   hours today at the quality of</p>
         <div>
-          <p class="sleep-average">
-            Your all time average
-          </p>
-          <p id="allTimeAvgSleepHoursAndQuality" class="sleep-text">
-          </p>
+          <p class="sleep-average">Your all time average</p>
+          <p id="allTimeAvgSleepHoursAndQuality" class="sleep-text"></p>
         </div>
         <div class="sleep-canvas-wrapper">
-        <p>
-          Weekly Sleep Data:
-        </p>
-        <canvas id="weeklySleepChart">
-        </canvas>
-      </div>
+          <label for="sleepChart">Weekly Sleep Data</label>
+          <canvas name="sleepChart"id="weeklySleepChart"></canvas>
+        </div>
       </section>
       <section class="hydration-box fade">
         <h3 class="card-text">Hydration</h3>
@@ -76,8 +73,8 @@
         ounces today!
         </p>
         <div class="hydration-canvas-wrapper">
-        <p id="waterThisWeek">Weekly Water Intake:</p>
-        <canvas id="hydrationChart"></canvas>
+        <label for="waterChart">Weekly Water intake</label>
+        <canvas name="waterChart" id="hydrationChart"></canvas>
         </div>
       </section>
     </div>
