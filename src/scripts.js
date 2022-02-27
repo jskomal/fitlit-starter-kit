@@ -254,19 +254,20 @@ const displayActivityChart = () => {
       ],
       datasets: [
         {
-          label: 'Steps',
-          data: currentActivityChartStepsData,
-          backgroundColor: '#ff8552',
-        },
-        {
           label: 'Minutes Active',
           data: currentActivityChartMinutesData,
-          backgroundColor: '#333',
+          backgroundColor: '#7699d4',
+          pointBackgroundColor: '#dde1e4',
         },
         {
           label: 'Flights Climbed',
           data: currentActivityChartFlightsData,
-          backgroundColor: '#7699d4',
+          backgroundColor: '#dde1e4',
+        },
+        {
+          label: 'Steps',
+          data: currentActivityChartStepsData,
+          backgroundColor: '#ff8552',
         },
       ],
     },
