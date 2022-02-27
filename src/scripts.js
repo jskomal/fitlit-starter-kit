@@ -57,7 +57,9 @@ const activityResponse = document.querySelector('#activityResponse')
 const sleepResponse = document.querySelector('#sleepResponse')
 const hydrationResponse = document.querySelector('#hydrationResponse')
 
-const modalWrapper = document.querySelector('.modal-wrapper')
+const activityModalWrapper = document.querySelector('.activity-modal-wrapper')
+const sleepModalWrapper = document.querySelector('.sleep-modal-wrapper')
+const hydrationModalWrapper = document.querySelector('.hydration-modal-wrapper')
 // user card
 const userName = document.querySelector('#name')
 const userAddress = document.querySelector('#address')
@@ -435,20 +437,20 @@ const loadActivityCard = (currentUser) => {
 
 const toggleActivityModal = (event) => {
   event.preventDefault()
-  modalWrapper.classList.toggle('hidden')
   activityModal.classList.toggle('hidden')
+  activityModalWrapper.classList.toggle('hidden')
 }
 
 const toggleSleepModal = (event) => {
   event.preventDefault()
-  modalWrapper.classList.toggle('hidden')
   sleepModal.classList.toggle('hidden')
+  sleepModalWrapper.classList.toggle('hidden')
 }
 
 const toggleHydrationModal = (event) => {
   event.preventDefault()
-  modalWrapper.classList.toggle('hidden')
   hydrationModal.classList.toggle('hidden')
+  hydrationModalWrapper.classList.toggle('hidden')
 }
 
 const submitActivityData = (event) => {
