@@ -9,6 +9,8 @@ import {
   fetchActivityData,
   fetchHydrationData,
   postActivityData,
+  postHydrationData,
+  postSleepData,
 } from './apiCalls'
 import './css/styles.css'
 import './images/succulent.svg'
@@ -19,6 +21,7 @@ import Sleep from './Sleep'
 import SleepRepository from './SleepRepository'
 import Activity from './Activity'
 import ActivityRepository from './ActivityRepository'
+import dayjs from 'dayjs'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -40,6 +43,17 @@ const hydrationSubmitButton = document.querySelector('#hydrationSubmit')
 const activityModal = document.querySelector('#activityModal')
 const sleepModal = document.querySelector('#sleepModal')
 const hydrationModal = document.querySelector('#hydrationModal')
+
+// Modal inputs
+const activityStepsInput = document.querySelector('#activityStepsInput')
+const activityMinsInput = document.querySelector('#activityMinsInput')
+const activityFlightsInput = document.querySelector('#activityFlightsInput')
+
+const sleepTimeInput = document.querySelector('#sleepTimeInput')
+const sleepQualityInput = document.querySelector('#sleepQualityInput')
+
+const hydrationOzInput = document.querySelector('#hydrationOzInput')
+const activityResponse = document.querySelector('#activityResponse')
 
 // user card
 const userName = document.querySelector('#name')
@@ -430,7 +444,16 @@ const toggleHydrationModal = (event) => {
   hydrationModal.classList.toggle('hidden')
 }
 
-const submitActivityData = () => {}
+const submitActivityData = (event) => {
+  event.preventDefault()
+  postActivityData({
+    userID: currentUser.id,
+    date: dayjs(),
+    flightsOfStairs: activityFlightsInput.value,
+    minutesActive: activityMinsInput.value,
+    numSteps: activityStepsInput.value,
+  })
+}
 
 // event listeners
 window.addEventListener('load', fetchAllData)

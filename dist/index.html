@@ -91,24 +91,25 @@
     </div>
     <form class="modal activity-modal hidden" id="activityModal">
       <button class="close-button" id="activityClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
+      <p id="activityResponse"></p>
       <h2 class="modal-title">Add Today's Activity Data</h2>
       <div class="input-wrapper">
       <label for="numSteps">
         Add Steps
       </label>
-      <input type="text" name="numSteps" class="form-input" required>
+      <input type="text" id="activityStepsInput" name="numSteps" class="form-input" required>
       </div>
       <div class="input-wrapper">
       <label for="minsActive">
         Add Activity Minutes
       </label>
-      <input type="text" name="minsActive" class="form-input" required>
+      <input type="text" id="activityMinsInput" name="minsActive" class="form-input" required>
       </div>
       <div class="input-wrapper">
       <label for="flightsClimbed">
         Add Flights of Stairs
       </label>
-      <input type="text" name="flightsClimbed" class="form-input" required>
+      <input type="text" id="activityFlightsInput" name="flightsClimbed" class="form-input" required>
       </div>
       <button class="submit-button" id="activitySubmit">
         Submit
@@ -121,13 +122,13 @@
       <label for="sleepTime">
         Add Sleep Time
       </label>
-      <input type="text" name="sleepTime" class="form-input" required>
+      <input type="text" id="sleepTimeInput" name="sleepTime" class="form-input" required>
       </div>
       <div class="input-wrapper">
       <label for="sleepQuality">
         Add Sleep Quality
       </label>
-      <input type="text" name="sleepQuality" class="form-input" required>
+      <input type="text" id="sleepQualityInput" name="sleepQuality" class="form-input" required>
       </div>
       <button class="submit-button" id="sleepSubmit">
         Submit
@@ -140,7 +141,7 @@
       <label for="ouncesDrank">
         Add Ounces Drank
       </label>
-      <input type="text" name="ouncesDrank" class="form-input" required>
+      <input type="text" id="hydrationOzInput" name="ouncesDrank" class="form-input" required>
       </div>
       <button class="submit-button" id="hydrationSubmit">
         Submit
