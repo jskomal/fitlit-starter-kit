@@ -413,16 +413,28 @@ const loadActivityCard = (currentUser) => {
     calendar.value.substring(4)
   )}`
 }
-const openActivityModal = () => {
-  activityModal.classList.remove('hidden')
+
+const toggleActivityModal = (event) => {
+  event.preventDefault()
+  activityModal.classList.toggle('hidden')
 }
 
-const closeActivityModal = (event) => {
+const toggleSleepModal = (event) => {
   event.preventDefault()
-  activityModal.classList.add('hidden')
+  sleepModal.classList.toggle('hidden')
+}
+const toggleHydrationModal = (event) => {
+  event.preventDefault()
+  hydrationModal.classList.toggle('hidden')
 }
 
 // event listeners
 window.addEventListener('load', fetchAllData)
-addActivityButton.addEventListener('click', openActivityModal)
-activityCloseButton.addEventListener('click', closeActivityModal)
+addActivityButton.addEventListener('click', toggleActivityModal)
+activityCloseButton.addEventListener('click', toggleActivityModal)
+
+addSleepButton.addEventListener('click', toggleSleepModal)
+sleepCloseButton.addEventListener('click', toggleSleepModal)
+
+addHydrationButton.addEventListener('click', toggleHydrationModal)
+hydrationCloseButton.addEventListener('click', toggleHydrationModal)
