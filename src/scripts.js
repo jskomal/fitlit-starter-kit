@@ -8,6 +8,7 @@ import {
   fetchSleepData,
   fetchActivityData,
   fetchHydrationData,
+  postActivityData,
 } from './apiCalls'
 import './css/styles.css'
 import './images/succulent.svg'
@@ -423,10 +424,13 @@ const toggleSleepModal = (event) => {
   event.preventDefault()
   sleepModal.classList.toggle('hidden')
 }
+
 const toggleHydrationModal = (event) => {
   event.preventDefault()
   hydrationModal.classList.toggle('hidden')
 }
+
+const submitActivityData = () => {}
 
 // event listeners
 window.addEventListener('load', fetchAllData)
@@ -438,3 +442,5 @@ sleepCloseButton.addEventListener('click', toggleSleepModal)
 
 addHydrationButton.addEventListener('click', toggleHydrationModal)
 hydrationCloseButton.addEventListener('click', toggleHydrationModal)
+
+activitySubmitButton.addEventListener('click', submitActivityData)
