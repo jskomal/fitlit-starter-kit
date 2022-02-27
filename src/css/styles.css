@@ -129,6 +129,12 @@ nav {
   border-radius: 0.5em;
 }
 
+.post-button:hover {
+  background-color: #ff8552;
+  border: solid #ff8552;
+  transition: 0.3s;
+}
+
 .user-card {
   width: 35%;
   display: flex;
@@ -316,4 +322,13 @@ canvas {
   align-self: flex-start;
   height: 2vw;
   width: 2vw;
+}
+
+.modal-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

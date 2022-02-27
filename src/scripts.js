@@ -57,6 +57,7 @@ const activityResponse = document.querySelector('#activityResponse')
 const sleepResponse = document.querySelector('#sleepResponse')
 const hydrationResponse = document.querySelector('#hydrationResponse')
 
+const modalWrapper = document.querySelector('.modal-wrapper')
 // user card
 const userName = document.querySelector('#name')
 const userAddress = document.querySelector('#address')
@@ -241,7 +242,7 @@ const displaySleepChart = () => {
 
 const displayActivityChart = () => {
   activityChart = new Chart(activityCanvas, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: [
         'Today',
@@ -434,16 +435,19 @@ const loadActivityCard = (currentUser) => {
 
 const toggleActivityModal = (event) => {
   event.preventDefault()
+  modalWrapper.classList.toggle('hidden')
   activityModal.classList.toggle('hidden')
 }
 
 const toggleSleepModal = (event) => {
   event.preventDefault()
+  modalWrapper.classList.toggle('hidden')
   sleepModal.classList.toggle('hidden')
 }
 
 const toggleHydrationModal = (event) => {
   event.preventDefault()
+  modalWrapper.classList.toggle('hidden')
   hydrationModal.classList.toggle('hidden')
 }
 

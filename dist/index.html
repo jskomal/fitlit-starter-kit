@@ -89,66 +89,72 @@
         </div>
       </section>
     </div>
-    <form class="modal activity-modal hidden" id="activityModal">
-      <div></div><button class="close-button" id="activityClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
-      <p id="activityResponse"></p>
-      <h2 class="modal-title">Add Today's Activity Data</h2>
-      <div class="input-wrapper">
-      <label for="numSteps">
-        Add Steps
-      </label>
-      <input type="number" id="activityStepsInput" name="numSteps" class="form-input" required>
-      </div>
-      <div class="input-wrapper">
-      <label for="minsActive">
-        Add Activity Minutes
-      </label>
-      <input type="number" id="activityMinsInput" name="minsActive" class="form-input" required>
-      </div>
-      <div class="input-wrapper">
-      <label for="flightsClimbed">
-        Add Flights of Stairs
-      </label>
-      <input type="number" id="activityFlightsInput" name="flightsClimbed" class="form-input" required>
-      </div>
-      <button class="submit-button" id="activitySubmit">
-        Submit
-      </button>
-    </form>
-    <form class="modal sleep-modal hidden" id="sleepModal">
-      <button class="close-button" id="sleepClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
-      <p id="sleepResponse"></p>
-      <h2 class="modal-title">Add Today's Sleep Data</h2>
-      <div class="input-wrapper">
-      <label for="sleepTime">
-        Add Sleep Time
-      </label>
-      <input type="number" id="sleepTimeInput" name="sleepTime" class="form-input" required>
-      </div>
-      <div class="input-wrapper">
-      <label for="sleepQuality">
-        Add Sleep Quality
-      </label>
-      <input type="number" id="sleepQualityInput" name="sleepQuality" class="form-input" required>
-      </div>
-      <button class="submit-button" id="sleepSubmit">
-        Submit
-      </button>
-    </form>
-    <form class="modal hydration-modal hidden" id="hydrationModal">
-      <button class="close-button" id="hydrationClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
-      <p id="hydrationResponse"></p>
-      <h2 class="modal-title">Add Today's Hydration Data</h2>
-      <div class="input-wrapper">
-      <label for="ouncesDrank">
-        Add Ounces Drank
-      </label>
-      <input type="number" id="hydrationOzInput" name="ouncesDrank" class="form-input" required>
-      </div>
-      <button class="submit-button" id="hydrationSubmit">
-        Submit
-      </button>
-    </form>
+    <div class ="modal-wrapper hidden">
+      <form class="modal activity-modal hidden" id="activityModal">
+        <div></div><button class="close-button" id="activityClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
+        <p id="activityResponse"></p>
+        <h2 class="modal-title">Add Today's Activity Data</h2>
+        <div class="input-wrapper">
+        <label for="numSteps">
+          Add Steps
+        </label>
+        <input type="number" id="activityStepsInput" name="numSteps" class="form-input" required>
+        </div>
+        <div class="input-wrapper">
+        <label for="minsActive">
+          Add Activity Minutes
+        </label>
+        <input type="number" id="activityMinsInput" name="minsActive" class="form-input" required>
+        </div>
+        <div class="input-wrapper">
+        <label for="flightsClimbed">
+          Add Flights of Stairs
+        </label>
+        <input type="number" id="activityFlightsInput" name="flightsClimbed" class="form-input" required>
+        </div>
+        <button class="submit-button" id="activitySubmit">
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class ="modal-wrapper hidden">
+      <form class="modal sleep-modal hidden" id="sleepModal">
+        <button class="close-button" id="sleepClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
+        <p id="sleepResponse"></p>
+        <h2 class="modal-title">Add Today's Sleep Data</h2>
+        <div class="input-wrapper">
+        <label for="sleepTime">
+          Add Sleep Time
+        </label>
+        <input type="number" id="sleepTimeInput" name="sleepTime" class="form-input" required>
+        </div>
+        <div class="input-wrapper">
+        <label for="sleepQuality">
+          Add Sleep Quality
+        </label>
+        <input type="number" id="sleepQualityInput" name="sleepQuality" class="form-input" required>
+        </div>
+        <button class="submit-button" id="sleepSubmit">
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class ="modal-wrapper hidden">
+      <form class="modal hydration-modal hidden" id="hydrationModal">
+        <button class="close-button" id="hydrationClose"><img src="./images/x-icon.svg" alt="x-icon"> </button>
+        <p id="hydrationResponse"></p>
+        <h2 class="modal-title">Add Today's Hydration Data</h2>
+        <div class="input-wrapper">
+        <label for="ouncesDrank">
+          Add Ounces Drank
+        </label>
+        <input type="number" id="hydrationOzInput" name="ouncesDrank" class="form-input" required>
+        </div>
+        <button class="submit-button" id="hydrationSubmit">
+          Submit
+        </button>
+      </form>
+    </div>
  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
