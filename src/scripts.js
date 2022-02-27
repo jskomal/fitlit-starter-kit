@@ -54,6 +54,8 @@ const sleepQualityInput = document.querySelector('#sleepQualityInput')
 
 const hydrationOzInput = document.querySelector('#hydrationOzInput')
 const activityResponse = document.querySelector('#activityResponse')
+const sleepResponse = document.querySelector('#sleepResponse')
+const hydrationResponse = document.querySelector('#hydrationResponse')
 
 // user card
 const userName = document.querySelector('#name')
