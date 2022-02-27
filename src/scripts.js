@@ -261,7 +261,7 @@ const displayActivityChart = () => {
         {
           label: 'Minutes Active',
           data: currentActivityChartMinutesData,
-          backgroundColor: '#7699d4',
+          backgroundColor: '#333',
         },
         {
           label: 'Flights Climbed',

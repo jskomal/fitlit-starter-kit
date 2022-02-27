@@ -240,8 +240,11 @@ canvas {
 
 .activity-chart {
   display: flex;
+  width: 30vw;
+  height: 20vw;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 #worldSteps,
