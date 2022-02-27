@@ -7,11 +7,12 @@ import {
   fetchUserData,
   fetchSleepData,
   fetchActivityData,
-  fetchHydrationData
+  fetchHydrationData,
 } from './apiCalls'
 import './css/styles.css'
 import './images/succulent.svg'
 import './images/grey_waves.jpg'
+import './images/x-icon.svg'
 import Hydration from './Hydration'
 import Sleep from './Sleep'
 import SleepRepository from './SleepRepository'
@@ -32,10 +33,14 @@ const compareUserSteps = document.querySelector('#compareStepGoal')
 
 // hydration card
 const userWaterToday = document.querySelector('#waterToday')
-const hydrationCanvas = document.querySelector('#hydrationChart').getContext('2d')
+const hydrationCanvas = document
+  .querySelector('#hydrationChart')
+  .getContext('2d')
 
 // sleep card
-const sleepHoursAndQuality = document.querySelector('#dailySleepHoursAndQuality')
+const sleepHoursAndQuality = document.querySelector(
+  '#dailySleepHoursAndQuality'
+)
 const allTimeAvgSleepHoursAndQuality = document.querySelector(
   '#allTimeAvgSleepHoursAndQuality'
 )
@@ -49,7 +54,9 @@ const userMiles = document.querySelector('#userMiles')
 const worldSteps = document.querySelector('#worldSteps')
 const worldMins = document.querySelector('#worldMins')
 const worldFlights = document.querySelector('#worldFlights')
-const activityCanvas = document.querySelector('#weeklyActivityChart').getContext('2d')
+const activityCanvas = document
+  .querySelector('#weeklyActivityChart')
+  .getContext('2d')
 
 // globals
 let users
@@ -88,7 +95,7 @@ const fetchAllData = () => {
     fetchUserData(),
     fetchSleepData(),
     fetchActivityData(),
-    fetchHydrationData()
+    fetchHydrationData(),
   ]).then((allData) => parseAllData(allData))
 }
 
@@ -136,7 +143,7 @@ const datePicker = datepicker('#calendar', {
   },
   startDate: new Date(2019, 5, 22),
   minDate: new Date(2019, 5, 15),
-  maxDate: new Date(2020, 0, 22)
+  maxDate: new Date(2020, 0, 22),
 })
 
 const displayHydrationChart = () => {
@@ -150,19 +157,19 @@ const displayHydrationChart = () => {
         'Yassturday',
         'So long ago',
         'Like..almost a week ago',
-        'A week ago'
+        'A week ago',
       ],
       datasets: [
         {
           label: 'Ounces',
           data: currentHydrationChartData,
-          backgroundColor: '#7699d4'
-        }
-      ]
+          backgroundColor: '#7699d4',
+        },
+      ],
     },
     options: {
-      responsive: true
-    }
+      responsive: true,
+    },
   })
 }
 
@@ -177,24 +184,24 @@ const displaySleepChart = () => {
         'Yassturday',
         'So long ago',
         'Like..almost a week ago',
-        'A week ago'
+        'A week ago',
       ],
       datasets: [
         {
           label: 'Hours',
           data: currentSleepTimeChartData,
-          backgroundColor: '#ff8552'
+          backgroundColor: '#ff8552',
         },
         {
           label: 'Quality',
           data: currentSleepQualityChartData,
-          backgroundColor: '#7699d4'
-        }
-      ]
+          backgroundColor: '#7699d4',
+        },
+      ],
     },
     options: {
-      responsive: true
-    }
+      responsive: true,
+    },
   })
 }
 
@@ -209,29 +216,29 @@ const displayActivityChart = () => {
         'Yassturday',
         'So long ago',
         'Like..almost a week ago',
-        'A week ago'
+        'A week ago',
       ],
       datasets: [
         {
           label: 'Steps',
           data: currentActivityChartStepsData,
-          backgroundColor: '#ff8552'
+          backgroundColor: '#ff8552',
         },
         {
           label: 'Minutes Active',
           data: currentActivityChartMinutesData,
-          backgroundColor: '#7699d4'
+          backgroundColor: '#7699d4',
         },
         {
           label: 'Flights Climbed',
           data: currentActivityChartFlightsData,
-          backgroundColor: '#7699d4'
-        }
-      ]
+          backgroundColor: '#7699d4',
+        },
+      ],
     },
     options: {
-      responsive: true
-    }
+      responsive: true,
+    },
   })
 }
 
@@ -254,14 +261,14 @@ const parseHydrationData = (hydrationData) => {
     if (waterLogEntry.userID in filteredData) {
       filteredData[waterLogEntry.userID].push({
         date: waterLogEntry.date,
-        numOunces: waterLogEntry.numOunces
+        numOunces: waterLogEntry.numOunces,
       })
     } else {
       filteredData[waterLogEntry.userID] = [
         {
           date: waterLogEntry.date,
-          numOunces: waterLogEntry.numOunces
-        }
+          numOunces: waterLogEntry.numOunces,
+        },
       ]
     }
   })
@@ -277,15 +284,15 @@ const parseSleepData = (sleepData) => {
       filteredSleepData[sleepLogEntry.userID].push({
         date: sleepLogEntry.date,
         hoursSlept: sleepLogEntry.hoursSlept,
-        sleepQuality: sleepLogEntry.sleepQuality
+        sleepQuality: sleepLogEntry.sleepQuality,
       })
     } else {
       filteredSleepData[sleepLogEntry.userID] = [
         {
           date: sleepLogEntry.date,
           hoursSlept: sleepLogEntry.hoursSlept,
-          sleepQuality: sleepLogEntry.sleepQuality
-        }
+          sleepQuality: sleepLogEntry.sleepQuality,
+        },
       ]
     }
   })
@@ -303,7 +310,7 @@ const parseActivityData = (activityData) => {
         date: activityLogEntry.date,
         numSteps: activityLogEntry.numSteps,
         minutesActive: activityLogEntry.minutesActive,
-        flightsOfStairs: activityLogEntry.flightsOfStairs
+        flightsOfStairs: activityLogEntry.flightsOfStairs,
       })
     } else {
       filteredActivityData[activityLogEntry.userID] = [
@@ -311,8 +318,8 @@ const parseActivityData = (activityData) => {
           date: activityLogEntry.date,
           numSteps: activityLogEntry.numSteps,
           minutesActive: activityLogEntry.minutesActive,
-          flightsOfStairs: activityLogEntry.flightsOfStairs
-        }
+          flightsOfStairs: activityLogEntry.flightsOfStairs,
+        },
       ]
     }
   })
@@ -326,7 +333,9 @@ const loadHydrationCard = () => {
   const currentUserWater = hydrationUsers.find((user) => {
     return user.userID == currentUser.id
   })
-  currentHydrationChartData = currentUserWater.getWaterInWeek(calendar.value.substring(4))
+  currentHydrationChartData = currentUserWater.getWaterInWeek(
+    calendar.value.substring(4)
+  )
   userWaterToday.innerText = ` ${currentUserWater.getWaterByDate(
     calendar.value.substring(4)
   )}`
@@ -334,22 +343,30 @@ const loadHydrationCard = () => {
 
 const loadSleepCard = (currentUser) => {
   const userSleep = sleepUsers.find((user) => user.userID == currentUser.id)
-  currentSleepTimeChartData = userSleep.getSleepTimeInWeek(calendar.value.substring(4))
+  currentSleepTimeChartData = userSleep.getSleepTimeInWeek(
+    calendar.value.substring(4)
+  )
   currentSleepQualityChartData = userSleep.getSleepQualityInWeek(
     calendar.value.substring(4)
   )
   sleepHoursAndQuality.innerText = `You slept for ${userSleep.getSleepTimeByDate(
     calendar.value.substring(4)
   )} hours today
-  at the quality of ${userSleep.getSleepQualityByDate(calendar.value.substring(4))}`
+  at the quality of ${userSleep.getSleepQualityByDate(
+    calendar.value.substring(4)
+  )}`
   allTimeAvgSleepHoursAndQuality.innerText = `
   Sleep Hours: ${userSleep.getAvgSleepTime()}
   Sleep Quality: ${userSleep.getAvgSleepQuality()}`
 }
 
 const loadActivityCard = (currentUser) => {
-  const userActivity = activityUsers.find((user) => user.userID == currentUser.id)
-  currentActivityChartStepsData = userActivity.getWeeklySteps(calendar.value.substring(4))
+  const userActivity = activityUsers.find(
+    (user) => user.userID == currentUser.id
+  )
+  currentActivityChartStepsData = userActivity.getWeeklySteps(
+    calendar.value.substring(4)
+  )
   currentActivityChartMinutesData = userActivity.getWeeklyMinutesActive(
     calendar.value.substring(4)
   )
