@@ -455,30 +455,40 @@ const toggleHydrationModal = (event) => {
 
 const submitActivityData = (event) => {
   event.preventDefault()
-  postActivityData({
-    userID: currentUser.id,
-    date: dayjs(),
-    flightsOfStairs: activityFlightsInput.value,
-    minutesActive: activityMinsInput.value,
-    numSteps: activityStepsInput.value,
-  })
+  if (activityFlightsInput.value && minutesActive.value && numSteps.value) {
+    postActivityData({
+      userID: currentUser.id,
+      date: dayjs(),
+      flightsOfStairs: activityFlightsInput.value,
+      minutesActive: activityMinsInput.value,
+      numSteps: activityStepsInput.value,
+    })
+  }
+  activityResponse.innerText = 'Please fill out all fields before submitting'
 }
+
 const submitSleepData = (event) => {
   event.preventDefault()
-  postSleepData({
-    userID: currentUser.id,
-    date: dayjs(),
-    hoursSlept: sleepTimeInput.value,
-    sleepQuality: sleepQualityInput.value,
-  })
+  if (sleepTimeInput.value && sleepQualityInput.value) {
+    postSleepData({
+      userID: currentUser.id,
+      date: dayjs(),
+      hoursSlept: sleepTimeInput.value,
+      sleepQuality: sleepQualityInput.value,
+    })
+  }
+  sleepResponse.innerText = 'Please fill out all fields before submitting'
 }
 const submitHydrationData = (event) => {
   event.preventDefault()
-  postHydrationData({
-    userID: currentUser.id,
-    date: dayjs(),
-    numOunces: hydrationOzInput.value,
-  })
+  if (hydrationOzInput.value) {
+    postHydrationData({
+      userID: currentUser.id,
+      date: dayjs(),
+      numOunces: hydrationOzInput.value,
+    })
+  }
+  hydrationResponse.innerText = 'Please fill out all fields before submitting'
 }
 
 // event listeners
