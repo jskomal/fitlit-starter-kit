@@ -31,6 +31,7 @@ const postSleepData = (newSleepData) => {
     if (!response.ok) {
       throw new Error('Failed to send sleep data')
     } else {
+      sleepResponse.innerText = 'Successfully submitted your data!'
       response.json()
     }
   })
@@ -45,6 +46,7 @@ const postHydrationData = (newHydrationData) => {
     if (!response.ok) {
       throw new Error('Failed to send hydration data')
     } else {
+      hydrationResponse.innerText = 'Successfully submitted your data!'
       response.json()
     }
   })
