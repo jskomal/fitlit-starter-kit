@@ -36,6 +36,10 @@ const activitySubmitButton = document.querySelector('#activitySubmit')
 const sleepSubmitButton = document.querySelector('#sleepSubmit')
 const hydrationSubmitButton = document.querySelector('#hydrationSubmit')
 
+const activityModal = document.querySelector('#activityModal')
+const sleepModal = document.querySelector('#sleepModal')
+const hydrationModal = document.querySelector('#hydrationModal')
+
 // user card
 const userName = document.querySelector('#name')
 const userAddress = document.querySelector('#address')
@@ -412,3 +416,6 @@ const loadActivityCard = (currentUser) => {
 
 // event listeners
 window.addEventListener('load', fetchAllData)
+addActivityButton.addEventListener('click', openActivityModal)
+
+const openActivityModal = () => {}
