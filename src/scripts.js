@@ -456,6 +456,23 @@ const submitActivityData = (event) => {
     numSteps: activityStepsInput.value,
   })
 }
+const submitSleepData = (event) => {
+  event.preventDefault()
+  postSleepData({
+    userID: currentUser.id,
+    date: dayjs(),
+    hoursSlept: sleepTimeInput.value,
+    sleepQuality: sleepQualityInput.value,
+  })
+}
+const submitHydrationData = (event) => {
+  event.preventDefault()
+  postHydrationData({
+    userID: currentUser.id,
+    date: dayjs(),
+    numOunces: hydrationOzInput.value,
+  })
+}
 
 // event listeners
 window.addEventListener('load', fetchAllData)
@@ -469,3 +486,5 @@ addHydrationButton.addEventListener('click', toggleHydrationModal)
 hydrationCloseButton.addEventListener('click', toggleHydrationModal)
 
 activitySubmitButton.addEventListener('click', submitActivityData)
+sleepSubmitButton.addEventListener('click', submitSleepData)
+hydrationSubmitButton.addEventListener('click', submitHydrationData)
