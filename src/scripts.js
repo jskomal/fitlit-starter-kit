@@ -437,8 +437,8 @@ const loadActivityCard = (currentUser) => {
 
 const toggleActivityModal = (event) => {
   event.preventDefault()
-  activityModal.classList.toggle('hidden')
   activityModalWrapper.classList.toggle('hidden')
+  activityModal.classList.toggle('hidden')
 }
 
 const toggleSleepModal = (event) => {

@@ -324,7 +324,9 @@ canvas {
   width: 2vw;
 }
 
-.modal-wrapper {
+.activity-modal-wrapper,
+.sleep-modal-wrapper,
+.hydration-modal-wrapper {
   position: fixed;
   height: 100vh;
   width: 100vw;
