@@ -413,9 +413,16 @@ const loadActivityCard = (currentUser) => {
     calendar.value.substring(4)
   )}`
 }
+const openActivityModal = () => {
+  activityModal.classList.remove('hidden')
+}
+
+const closeActivityModal = (event) => {
+  event.preventDefault()
+  activityModal.classList.add('hidden')
+}
 
 // event listeners
 window.addEventListener('load', fetchAllData)
 addActivityButton.addEventListener('click', openActivityModal)
-
-const openActivityModal = () => {}
+activityCloseButton.addEventListener('click', closeActivityModal)
