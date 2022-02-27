@@ -23,6 +23,19 @@ import ActivityRepository from './ActivityRepository'
 const welcomeUser = document.querySelector('#welcomeName')
 const calendar = document.querySelector('#calendar')
 
+// Add user input data
+const addActivityButton = document.querySelector('#addActivityButton')
+const addSleepButton = document.querySelector('#addSleepButton')
+const addHydrationButton = document.querySelector('#addHydrationButton')
+
+const activityCloseButton = document.querySelector('#activityClose')
+const sleepCloseButton = document.querySelector('#sleepClose')
+const hydrationCloseButton = document.querySelector('#hydrationClose')
+
+const activitySubmitButton = document.querySelector('#activitySubmit')
+const sleepSubmitButton = document.querySelector('#sleepSubmit')
+const hydrationSubmitButton = document.querySelector('#hydrationSubmit')
+
 // user card
 const userName = document.querySelector('#name')
 const userAddress = document.querySelector('#address')
