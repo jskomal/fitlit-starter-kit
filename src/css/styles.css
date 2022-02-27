@@ -120,8 +120,8 @@ nav {
 .post-button {
   height: 3vh;
   width: 8vw;
-  font-size: .6em;
-  margin: .5em;
+  font-size: 0.6em;
+  margin: 0.5em;
   background-color: #dde1e4;
   overflow: hidden;
   display: flex;
@@ -129,7 +129,7 @@ nav {
   justify-content: center;
   padding: 0.5em;
   border: solid #7699d4;
-  border-radius: .2em;
+  border-radius: 0.2em;
 }
 
 .user-card {
@@ -188,7 +188,6 @@ nav {
 
 .activity-box {
   margin-left: 1rem;
- 
 }
 
 .hydration-box {
@@ -243,13 +242,12 @@ canvas {
   display: flex;
   justify-content: center;
   flex-direction: column;
-
 }
 
 #worldSteps,
 #worldMin,
 #worldFlights {
-  font-size: .8vw;
+  font-size: 0.8vw;
 }
 
 .sleep-text {
@@ -292,8 +290,9 @@ canvas {
   background-color: #ccd0d4;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
 }
 
 .input-wrapper {
@@ -308,4 +307,11 @@ canvas {
 
 .form-input {
   background-color: #dde1e4;
+}
+
+.close-button {
+  justify-self: flex-start;
+  align-self: flex-start;
+  height: 2vw;
+  width: 2vw;
 }
