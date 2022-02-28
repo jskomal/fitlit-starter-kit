@@ -22,6 +22,7 @@ import SleepRepository from './SleepRepository'
 import Activity from './Activity'
 import ActivityRepository from './ActivityRepository'
 import dayjs from 'dayjs'
+import domUpdates from './domUpdates'
 
 // query selectors
 const welcomeUser = document.querySelector('#welcomeName')
@@ -481,7 +482,11 @@ const toggleHydrationModal = (event) => {
 
 const submitActivityData = (event) => {
   event.preventDefault()
-  if (activityFlightsInput.value && minutesActive.value && numSteps.value) {
+  if (
+    activityFlightsInput.value &&
+    activityMinsInput.value &&
+    activityStepsInput.value
+  ) {
     postActivityData({
       userID: currentUser.id,
       date: dayjs(),
