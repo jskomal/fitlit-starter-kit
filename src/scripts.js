@@ -481,7 +481,11 @@ const toggleHydrationModal = (event) => {
 
 const submitActivityData = (event) => {
   event.preventDefault()
-  if (activityFlightsInput.value && minutesActive.value && numSteps.value) {
+  if (
+    activityFlightsInput.value &&
+    activityMinsInput.value &&
+    activityStepsInput.value
+  ) {
     postActivityData({
       userID: currentUser.id,
       date: dayjs(),
