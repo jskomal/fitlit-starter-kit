@@ -1,7 +1,23 @@
-import currentUser from './scripts'
+
 import datepicker from 'js-datepicker'
 import Chart from 'chart.js/auto'
 import dayjs from 'dayjs'
+import {
+  currentUser, 
+  currentHydrationChartData,
+  currentSleepTimeChartData,
+  currentSleepQualityChartData,
+  currentActivityChartStepsData,
+  currentActivityChartMinutesData,
+  currentActivityChartFlightsData,
+  userActivity,
+  userSleep,
+  currentUserWater,
+  activityRepositoryData,
+  hydrationCanvas,
+  sleepCanvas,
+  activityCanvas
+} from './scripts'
 
 //DOM updates
 
