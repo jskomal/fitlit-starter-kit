@@ -16,7 +16,7 @@ import {
   activityRepositoryData,
   hydrationCanvas,
   sleepCanvas,
-  activityCanvas
+  activityCanvas,
 } from './scripts'
 
 //DOM updates

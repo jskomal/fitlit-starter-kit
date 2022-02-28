@@ -150,17 +150,17 @@ const selectRandomUser = () => {
   return users[randomIndex]
 }
 
-const displayRandomUser = () => {
-  currentUser = selectRandomUser()
-  updateUserCard(currentUser)
-  loadHydrationCard(currentUser)
-  displayHydrationChart()
-  loadSleepCard(currentUser)
-  displaySleepChart()
-  loadActivityCard(currentUser)
-  displayActivityChart()
-  displayActivityMinsFlightsChart()
-}
+// const displayRandomUser = () => {
+//   currentUser = selectRandomUser()
+//   updateUserCard(currentUser)
+//   loadHydrationCard(currentUser)
+//   displayHydrationChart()
+//   loadSleepCard(currentUser)
+//   displaySleepChart()
+//   loadActivityCard(currentUser)
+//   displayActivityChart()
+//   displayActivityMinsFlightsChart()
+// }
 
 const updateUserCard = (currentUser) => {
   welcomeUser.innerText = `Welcome, ${currentUser.returnFirstName()}!`
@@ -536,3 +536,21 @@ hydrationCloseButton.addEventListener('click', toggleHydrationModal)
 activitySubmitButton.addEventListener('click', submitActivityData)
 sleepSubmitButton.addEventListener('click', submitSleepData)
 hydrationSubmitButton.addEventListener('click', submitHydrationData)
+
+export {
+  currentUser, 
+  currentHydrationChartData,
+  currentSleepTimeChartData,
+  currentSleepQualityChartData,
+  currentActivityChartStepsData,
+  currentActivityChartMinutesData,
+  currentActivityChartFlightsData,
+  userActivity,
+  userSleep,
+  currentUserWater,
+  activityRepositoryData,
+  hydrationCanvas,
+  sleepCanvas,
+  activityCanvas,
+  selectRandomUser
+}
