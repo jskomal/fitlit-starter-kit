@@ -153,9 +153,9 @@ nav {
 .sleep-box,
 .hydration-box {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 30vw;
-  height: 40vw;
+  height: 75vh;
   border-top: 10px solid #ff8552;
   flex-direction: column;
   align-items: center;
@@ -239,19 +239,24 @@ canvas {
   justify-content: flex-start;
 }
 
-.activity-chart {
+.activity-chart-wrapper {
   display: flex;
-  width: 27vw;
-  height: 13vw;
+  width: 30vw;
+  height: 20vw;
   justify-content: center;
-  flex-direction: column;
+
   align-items: center;
-  padding-bottom: 2vw;
 }
 
 .activity-chart-label {
-  padding-top: 5vw;
+  padding-top: 1vw;
   border-bottom: rgb(93, 93, 93) solid 0.05em;
+}
+
+.flights-mins-chart,
+.steps-chart {
+  max-width: 50%;
+  max-height: 100%;
 }
 
 #worldSteps,

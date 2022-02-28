@@ -94,7 +94,9 @@ const worldFlights = document.querySelector('#worldFlights')
 const activityCanvas = document
   .querySelector('#weeklyActivityChart')
   .getContext('2d')
-
+const activityFlightsMinsCanvas = document
+  .querySelector('#weeklyActivityMinsFlightsChart')
+  .getContext('2d')
 // globals
 let users
 let userRepo
@@ -113,6 +115,8 @@ let sleepRepositoryData
 let activityData
 let activityUsers = []
 let activityChart
+let activityMinsChart
+let activityFlightsChart
 
 let activityRepositoryData
 
@@ -154,6 +158,7 @@ const displayRandomUser = () => {
   displaySleepChart()
   loadActivityCard(currentUser)
   displayActivityChart()
+  displayActivityMinsFlightsChart()
 }
 
 const updateUserCard = (currentUser) => {
@@ -252,7 +257,34 @@ const displayActivityChart = () => {
         'Presturday',
         'Yassturday',
         'So long ago',
-        'Like..almost a week ago',
+        'Like...almost a week ago',
+        'A week ago',
+      ],
+      datasets: [
+        {
+          label: 'Steps',
+          data: currentActivityChartStepsData,
+          backgroundColor: '#ff8552',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  })
+}
+
+const displayActivityMinsFlightsChart = () => {
+  activityMinsChart = new Chart(activityFlightsMinsCanvas, {
+    type: 'line',
+    data: {
+      labels: [
+        'Today',
+        'Yesterday',
+        'Presturday',
+        'Yassturday',
+        'So long ago',
+        'Like...almost a week ago',
         'A week ago',
       ],
       datasets: [
@@ -260,17 +292,11 @@ const displayActivityChart = () => {
           label: 'Minutes Active',
           data: currentActivityChartMinutesData,
           backgroundColor: '#7699d4',
-          pointBackgroundColor: '#dde1e4',
         },
         {
           label: 'Flights Climbed',
           data: currentActivityChartFlightsData,
-          backgroundColor: '#dde1e4',
-        },
-        {
-          label: 'Steps',
-          data: currentActivityChartStepsData,
-          backgroundColor: '#ff8552',
+          backgroundColor: '#5D5D5D',
         },
       ],
     },
