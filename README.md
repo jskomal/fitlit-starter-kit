@@ -2,7 +2,7 @@
 -------
 ### Overview
 
-Get Fit Get Lit is an interactive webpage that tracks a user's wellness data and renders it on a dashboard. Our goal is to present a useful application for a user to view their latest activity data, goals, and milestones. 
+Get Fit Get Lit is an interactive webpage that tracks a user's wellness data and renders it on a dashboard. Our goal is to present a useful application for a user to view their latest data, goals, and milestones. 
 
 This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Development with Mocha and Chai. This application also involves the use of a API server.
 
@@ -10,6 +10,7 @@ This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Developm
 - The user can see their sleep time and sleep quality and compare that data against the rest of their week
 - The user can track their active mintues, flights of stairs climbed, and distance walked/steps taken for the day, as well as over the past week
 - The user can view their daily steps and see where they stand with the average amount of daily steps compared to other users 
+- The user can enter custom data for all activity, sleep, and hydration categories. The user will see an error if they leave a blank field and will see a confirmation of successful logging of data
 
  
 ![Pick a date to show user data](https://media1.giphy.com/media/HhvitJgHADGc2lpa3z/giphy.gif)
