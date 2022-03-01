@@ -30,7 +30,7 @@ This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Developm
  - Run `npm install` 
  - Run `npm start`
 
- - Fork and Clone [this link](https://github.com/turingschool-examples/fitlit-api)
+ - Fork and Clone [this API](https://github.com/turingschool-examples/fitlit-api) repository
  - `CD` into the directory
  - Run `npm install` 
  - Run `npm start`
