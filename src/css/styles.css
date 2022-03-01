@@ -61,17 +61,18 @@ h6 {
   isolation: isolate;
 }
 
+.hidden {
+  display: none !important;
+}
+
 h1 {
   font-family: 'Tenor Sans', sans-serif;
   font-size: 3vw;
 }
 
 #welcomeName {
-  color: black;
+  color: rgb(93, 93, 93);
   font-size: 2vw;
-  -webkit-text-fill-color: black;
-  -webkit-text-stroke-width: 0.02vw;
-  -webkit-text-stroke-color: #31393c;
 }
 
 nav,
@@ -94,6 +95,7 @@ nav {
 .welcome-nav {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   width: 62%;
   padding: 0.5vw;
 }
@@ -105,6 +107,32 @@ nav {
 .hydration-box {
   background-color: #ccd0d4;
   box-shadow: 2px 6px 6px hsl(0deg 0% 0% / 0.1);
+}
+
+.add-data-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-button {
+  height: 3vh;
+  width: 8vw;
+  font-size: 0.6em;
+  margin: 0.5em;
+  background-color: #dde1e4;
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: 0.5em;
+  border: solid #7699d4;
+  border-radius: 0.5em;
+}
+
+.post-button:hover {
+  background-color: #ff8552;
+  border: solid #ff8552;
+  transition: 0.3s;
 }
 
 .user-card {
@@ -125,9 +153,9 @@ nav {
 .sleep-box,
 .hydration-box {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 30vw;
-  height: 100%;
+  height: 75vh;
   border-top: 10px solid #ff8552;
   flex-direction: column;
   align-items: center;
@@ -145,9 +173,7 @@ nav {
   font-size: 2.5vw;
   font-weight: 800;
   color: #7699d4;
-  -webkit-text-fill-color: #7699d4;
-  -webkit-text-stroke-width: 0.03vw;
-  -webkit-text-stroke-color: #606366;
+  text-shadow: 2px 6px 6px hsl(0deg 0% 0% / 0.1);
 }
 
 .fade {
@@ -173,7 +199,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 12vw;
+  margin-left: 3vw;
 }
 
 .calendar {
@@ -213,6 +239,32 @@ canvas {
   justify-content: flex-start;
 }
 
+.activity-chart-wrapper {
+  display: flex;
+  width: 30vw;
+  height: 20vw;
+  justify-content: center;
+
+  align-items: center;
+}
+
+.activity-chart-label {
+  padding-top: 1vw;
+  border-bottom: rgb(93, 93, 93) solid 0.05em;
+}
+
+.flights-mins-chart,
+.steps-chart {
+  max-width: 50%;
+  max-height: 100%;
+}
+
+#worldSteps,
+#worldMins,
+#worldFlights {
+  font-size: 0.8vw;
+}
+
 .sleep-text {
   text-align: center;
 }
@@ -221,9 +273,7 @@ canvas {
   font-weight: bold;
   color: #ff8552;
   font-size: 4vw;
-  -webkit-text-fill-color: #ff8552;
-  -webkit-text-stroke-width: 0.05vw;
-  -webkit-text-stroke-color: #31393c;
+  text-shadow: 2px 6px 6px hsl(0deg 0% 0% / 0.3);
 }
 
 .sleep-average {
@@ -238,4 +288,54 @@ canvas {
 #allTimeAvgSleepHoursAndQuality {
   font-size: 1.2vw;
   display: flex;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 70vh;
+  border: 1px solid #7699d4;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 100vw rgba(51, 51, 51, 0.699);
+  background-color: #ccd0d4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 2em;
+}
+
+.form-input {
+  background-color: #dde1e4;
+}
+
+.close-button {
+  justify-self: flex-start;
+  align-self: flex-start;
+  height: 2vw;
+  width: 2vw;
+}
+
+.activity-modal-wrapper,
+.sleep-modal-wrapper,
+.hydration-modal-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
