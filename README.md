@@ -30,7 +30,7 @@ This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Developm
  - Run `npm install` 
  - Run `npm start`
 
- - Fork and Clone [this](https://github.com/turingschool-examples/fitlit-api) repository
+ - Fork and Clone [this link](https://github.com/turingschool-examples/fitlit-api)
  - `CD` into the directory
  - Run `npm install` 
  - Run `npm start`
@@ -65,7 +65,7 @@ Repository Link: [Get Fit Get Link 😎](https://github.com/jskomal/get-fit-get-
 ### Architecture & Technologies Used
 This application was built using JavaScript, CSS, and HTML and utilizes Test Driven Development with Mocha and Chai.
 
-This application uses a API server to fetch and post data.
+This application uses a local API server to fetch and post data.
 
 This application consists of a series of seven class files and their corresponding test files, as well as the scripts, DOM Updates, css, and HTML files. Lastly, there is the apiCalls file which holds the fetch calls for retrieving the data.
 
