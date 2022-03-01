@@ -4,7 +4,7 @@ import Activity from '../src/Activity'
 import User from '../src/User'
 import UserRepository from '../src/UserRepository'
 
-describe.only('Activity', () => {
+describe('Activity', () => {
   let testUser
   let userActivityData1
   let userActivityData2

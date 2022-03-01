@@ -61,10 +61,6 @@ h6 {
   isolation: isolate;
 }
 
-.hidden {
-  display: none !important;
-}
-
 h1 {
   font-family: 'Tenor Sans', sans-serif;
   font-size: 3vw;
@@ -338,4 +334,8 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.hidden {
+  display: none;
 }
