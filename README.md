@@ -4,16 +4,22 @@
 
 Get Fit Get Lit is an interactive webpage that tracks a user's wellness data and renders it on a dashboard. Our goal is to present a useful application for a user to view their latest activity data, goals, and milestones. 
 
-This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Development with Mocha and Chai.
+This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Development with Mocha and Chai. This application also involves the use of a API server.
 
 - The user can choose a date that will display their water intake for the selected day and over the course of that last week
-- The user can also see their sleep time and sleep quality and compare that data against the rest of their week
-- Lastly, the user can view their daily steps and see where they stand with the average amount of daily steps compared to other users 
+- The user can see their sleep time and sleep quality and compare that data against the rest of their week
+- The user can track their active mintues, flights of stairs climbed, and distance walked/steps taken for the day, as well as over the past week
+- The user can view their daily steps and see where they stand with the average amount of daily steps compared to other users 
+
  
-![User Card on Load](https://media4.giphy.com/media/5obYVSmIhsRQ0wvSUa/giphy.gif)
+![Pick a date to show user data](https://media1.giphy.com/media/HhvitJgHADGc2lpa3z/giphy.gif)
 
 
-![Selected Date Repopulates Data](https://media1.giphy.com/media/bDyfRjVTE9sMwlSHH1/giphy.gif)
+![The user can enter custom activity data](https://media4.giphy.com/media/eRvyLjiLxMaldZuesz/giphy.gif)
+
+![The user can enter custom sleep data](https://media1.giphy.com/media/kWQs3ebzMxT7D9RQG6/giphy.gif)
+
+![The user can enter custom hydration data](https://media0.giphy.com/media/MOLXQvXpTkta7o8Tem/giphy.gif)
 
 
 ---------
