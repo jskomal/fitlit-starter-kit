@@ -8,32 +8,39 @@ class Hydration {
     this.waterData = filteredUserData[userID].map((waterLogEntry) => {
       return {
         date: dayjs(waterLogEntry.date),
-        numOunces: waterLogEntry.numOunces,
+        numOunces: waterLogEntry.numOunces
       }
     })
   }
 
   getAvgWater() {
-    return parseFloat((this.waterData.reduce((acc, waterLogEntry) => {
-      return acc + waterLogEntry.numOunces
-    },0)/this.waterData.length).toFixed(2))
+    return parseFloat(
+      (
+        this.waterData.reduce((acc, waterLogEntry) => {
+          return acc + waterLogEntry.numOunces
+        }, 0) / this.waterData.length
+      ).toFixed(2)
+    )
   }
 
   getWaterByDate(date) {
-    return this.waterData.find(waterLogEntry => {
+    return this.waterData.find((waterLogEntry) => {
       return dayjs(date).isSame(waterLogEntry.date)
     }).numOunces
   }
 
   getWaterInWeek(date) {
-    return this.waterData.filter(waterLogEntry => {
-      return dayjs(date).isBetween(
-        dayjs(waterLogEntry.date, 'MMM D YYYY'),
-        dayjs(waterLogEntry.date, 'MMM D YYYY').subtract(6, 'day'),
+    const weeklyWater = this.waterData.filter((waterLogEntry) => {
+      return dayjs(waterLogEntry.date).isBetween(
+        dayjs(date, 'MMM D YYYY').subtract(6, 'day'),
+        dayjs(date, 'MMM D YYYY'),
         null,
         '[]'
       )
-    }).map(waterLogEntry => waterLogEntry.numOunces)
+    })
+    const mapped = weeklyWater.map((waterLogEntry) => waterLogEntry.numOunces)
+    if (mapped.length > 7) mapped.pop()
+    return mapped.reverse()
   }
 }
 
