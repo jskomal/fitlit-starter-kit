@@ -29,10 +29,12 @@ This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Developm
  - `CD` into the directory
  - Run `npm install` 
  - Run `npm start`
+
  - Fork and Clone [this link](https://github.com/turingschool-examples/fitlit-api)
  - `CD` into the directory
  - Run `npm install` 
  - Run `npm start`
+
  - In your browser, go to [this link](http://localhost:8080/)
 
 
@@ -40,11 +42,8 @@ This app is built using JavaScript, HTML, CSS, and utilizes Test Driven Developm
 
 ### Future Features
 
- - Add functionality on the Activity card that will display miles walked based on a user's number of steps as well as a user's active minutes by the day and by the week
- - Add functionality on the Activity card that will display if a user reached their step goal for a given day as well as display data that shows all the days where a user exceeded their step goal
- - Add functionality on the Activity card that will display a user's all time stair climbing record
- - Add functionality on the Activity card that will display the average number of stairs climbed, steps taken, and active minutes of all users for a specific date
- - Finally, add accessibilty features that will function with a screen reader as well as a colorblind extension
+ - Add animation on modals
+ - Implement a log-in view and a way to select which user to view
 
 
 ---------
@@ -66,7 +65,9 @@ Repository Link: [Get Fit Get Link 😎](https://github.com/jskomal/get-fit-get-
 ### Architecture & Technologies Used
 This application was built using JavaScript, CSS, and HTML and utilizes Test Driven Development with Mocha and Chai.
 
-This application consists of a series of six class files and their corresponding test files, as well as the scripts, css, and HTML files. Lastly, there is the apiCalls file which holds the fetch calls for retrieving the data.
+This application uses a API server to fetch and post data.
+
+This application consists of a series of seven class files and their corresponding test files, as well as the scripts, DOM Updates, css, and HTML files. Lastly, there is the apiCalls file which holds the fetch calls for retrieving the data.
 
 ------------
 ### Wins & Challenges
